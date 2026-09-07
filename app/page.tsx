@@ -14,7 +14,7 @@ const useCases = [
 ]
 
 function Logo() {
-  return <a href="#top" className="flex items-center gap-2.5 font-semibold tracking-[-0.04em] text-lg"><span className="logo-mark"><span /></span>yuviz</a>
+  return <a href="#top" className="flex items-center gap-2.5 font-semibold tracking-[-0.04em] text-lg"><span className="logo-mark"><span /></span>yuviz ai</a>
 }
 
 function Button({ children, variant = 'lime', href = '#demo', onClick }: { children: React.ReactNode; variant?: 'lime' | 'quiet'; href?: string; onClick?: () => void }) {

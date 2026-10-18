@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mic, Settings, Database, Wrench, ShieldCheck, Check, Sparkles, Play } from 'lucide-react'
 
@@ -9,7 +9,7 @@ type TabKey = 'voice' | 'knowledge' | 'personality' | 'tools' | 'handoff'
 export function AgentBuilderVisual() {
   const [activeTab, setActiveTab] = useState<TabKey>('voice')
   const [voiceSpeed, setVoiceSpeed] = useState('1.0x')
-  const [selectedVoice, setSelectedVoice] = useState('Maya (Warm & Professional)')
+  const [selectedVoice, setSelectedVoice] = useState('Maya (Indian English & Hinglish)')
 
   const tabs: { id: TabKey; label: string; icon: React.ComponentType<{ size?: number; className?: string }> }[] = [
     { id: 'voice', label: 'Voice & Latency', icon: Mic },
@@ -21,74 +21,71 @@ export function AgentBuilderVisual() {
 
   const tabContents: Record<TabKey, { title: string; desc: string; options: string[] }> = {
     voice: {
-      title: 'Voice Persona & Ultra-Low Latency',
-      desc: 'Select a natural sounding voice model tuned for human speech cadence, pause handling, and immediate responses.',
-      options: ['Maya (Warm & Professional)', 'Ethan (Direct & Clear)', 'Clara (Empathetic Support)', 'Marcus (Executive Sales)'],
+      title: 'Voice Persona & Dialect Tuning',
+      desc: 'Select a natural-sounding voice model tuned for human speech cadence, regional accents, and sub-300ms turnaround.',
+      options: ['Maya (Front Desk Receptionist)', 'Ethan (Executive Sales Desk)', 'Elena (Customer Support)', 'Marcus (Technical Support Desk)'],
     },
     knowledge: {
       title: 'Ground-Truth Document Knowledge',
-      desc: 'Connect FAQs, website URLs, PDF manuals, and internal Notion/Confluence docs for verified answers.',
-      options: ['Pricing_Matrix_2026.pdf (Synced)', 'Return_Policy_FAQ.docx (Synced)', 'Web_Catalog_Index (Live)', 'API_Support_KB (Synced)'],
+      desc: 'Connect FAQs, website URLs, PDF brochures, and internal Notion/Confluence docs for verified answers without hallucinations.',
+      options: ['Pricing_Matrix_2026.pdf (Synced)', 'Property_Availability_FAQ.docx (Synced)', 'Catalog_Inventory_Index (Live)', 'Customer_Support_KB (Synced)'],
     },
     personality: {
       title: 'Conversational Boundary & Tone',
-      desc: 'Define custom system prompts, greeting tone, conciseness rules, and forbidden phrases.',
-      options: ['Tone: Professional & Courteous', 'Greeting: "Thank you for calling Yuviz, how can I help?"', 'Max Turn Length: 3 Sentences', 'Interruptibility: Active'],
+      desc: 'Define custom system instructions, polite greetings, brevity thresholds, and strict compliance guardrails.',
+      options: ['Tone: Courteous, Concise & Action-Oriented', 'Greeting: "Thank you for calling Yuviz, how can I help you today?"', 'Turn Cadence: Natural Human Pauses', 'Interruptibility: Active (Instant Stop on User Speech)'],
     },
     tools: {
-      title: 'Action Trigger & Webhook Tools',
-      desc: 'Give agents permission to query APIs, check calendar availability, and post CRM records in real time.',
-      options: ['Google Calendar API (Active)', 'Salesforce Lead Sync (Active)', 'Stripe Payment Lookup (Active)', 'Twilio SMS Gateway (Active)'],
+      title: 'Action Trigger & Telephony Tools',
+      desc: 'Give agents permission to query your CRM, check calendar slots, and dispatch instant SMS confirmations.',
+      options: ['Google Calendar API (Active)', 'HubSpot / Salesforce Sync (Active)', 'Stripe Payment Lookup (Active)', 'Twilio / Telnyx SIP Trunk (Connected)'],
     },
     handoff: {
-      title: 'Contextual Escalation Rules',
-      desc: 'Configure exact conditions when an agent hands off a call to a human teammate along with call transcript summaries.',
-      options: ['Escalate on explicitly requested human representative', 'Escalate on sentiment score drop (<0.3)', 'Warm Transfer to Front Desk Desk-04', 'Pass real-time conversation summary text'],
+      title: 'Contextual Human Escalation',
+      desc: 'Configure exact conditions when an agent warms transfers a caller to human reps with a live transcript summary.',
+      options: ['Escalate on explicit human request', 'Escalate on caller frustration detection', 'Warm Transfer with 1-Sentence Summary', 'Zero-Drop Telephony SIP Referral'],
     },
   }
 
   return (
-    <section className="section bg-card/60 border-y border-line" id="agent-builder">
-      <div className="container">
+    <section className="section bg-[#FAF7F2] border-y border-[#E8DFD4]" id="agent-builder">
+      <div className="container mx-auto px-4">
         <div className="section-heading text-center max-w-2xl mx-auto">
           <p className="eyebrow justify-center">
             <span />
-            No-Code Agent Creation
+            Visual Agent Studio
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
-            Configure an agent in <em>minutes.</em>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#221A1E]">
+            Configure an agent in <span className="font-editorial text-[#B85D3B] font-normal">minutes.</span>
           </h2>
-          <p className="text-muted leading-7">
-            Designing a Yuviz voice agent feels like onboarding a top-tier teammate. Define knowledge, pick a voice, and wire up your workflow tools without writing complex code.
+          <p className="text-sm sm:text-base text-[#635952] leading-relaxed">
+            Designing a Yuviz voice agent feels like onboarding a top-tier teammate. Define knowledge, pick a voice, and wire up your workflow tools without complex engineering.
           </p>
         </div>
 
         {/* Builder Interface Mockup */}
-        <div className="mt-12 border border-line rounded-2xl bg-panel overflow-hidden shadow-md">
+        <div className="mt-10 border border-[#E8DFD4] rounded-3xl bg-white overflow-hidden shadow-sm">
           {/* Top Header */}
-          <div className="flex flex-wrap items-center justify-between p-6 border-b border-line bg-card">
+          <div className="flex flex-wrap items-center justify-between p-5 sm:p-6 border-b border-[#E8DFD4] bg-[#FAF7F2]/60">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-lime text-background flex items-center justify-center font-bold text-sm">
+              <div className="w-9 h-9 rounded-full bg-[#B85D3B] text-white flex items-center justify-center font-bold text-sm shadow-2xs">
                 Y
               </div>
               <div>
-                <h3 className="text-base font-semibold text-foreground">Yuviz Agent Configurator</h3>
-                <p className="text-xs text-muted font-mono">Agent ID: agt_9824_production</p>
+                <h3 className="text-sm sm:text-base font-bold text-[#221A1E]">Yuviz Agent Studio</h3>
+                <p className="text-xs text-[#796F68] font-mono">Agent ID: agt_9824_production</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-xs font-mono text-lime font-semibold px-3 py-1 rounded-full bg-lime-soft/50 border border-lime/30">
-                <span className="w-2 h-2 rounded-full bg-lime animate-pulse" /> Status: Ready to Deploy
+            <div className="flex items-center gap-2.5">
+              <span className="flex items-center gap-1.5 text-xs font-mono text-[#B85D3B] font-semibold px-3 py-1 rounded-full bg-[#F7EEE7] border border-[#B85D3B]/25">
+                <span className="w-2 h-2 rounded-full bg-[#B85D3B] animate-pulse" /> Live Telephony Ready
               </span>
-              <button className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-lime text-background text-xs font-semibold hover:opacity-90 transition-opacity">
-                <Play size={13} /> Test Agent
-              </button>
             </div>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="flex border-b border-line bg-panel overflow-x-auto">
+          {/* Navigation Tabs (Smooth horizontal scrolling on mobile) */}
+          <div className="flex border-b border-[#E8DFD4] bg-[#FAF7F2] overflow-x-auto select-none">
             {tabs.map((tab) => {
               const Icon = tab.icon
               const isActive = activeTab === tab.id
@@ -96,13 +93,13 @@ export function AgentBuilderVisual() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-4 text-xs font-semibold whitespace-nowrap transition-all border-b-2 ${
+                  className={`flex items-center gap-2 px-5 sm:px-6 py-3.5 text-xs font-semibold whitespace-nowrap transition-all border-b-2 cursor-pointer ${
                     isActive
-                      ? 'border-lime text-foreground bg-card'
-                      : 'border-transparent text-muted hover:text-foreground'
+                      ? 'border-[#B85D3B] text-[#B85D3B] bg-white'
+                      : 'border-transparent text-[#796F68] hover:text-[#221A1E]'
                   }`}
                 >
-                  <Icon size={16} className={isActive ? 'text-lime' : 'text-muted'} />
+                  <Icon size={15} className={isActive ? 'text-[#B85D3B]' : 'text-[#796F68]'} />
                   {tab.label}
                 </button>
               )
@@ -110,36 +107,40 @@ export function AgentBuilderVisual() {
           </div>
 
           {/* Content Body */}
-          <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-card">
+          <div className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-white">
             {/* Left Options Controls */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.25 }}
+                  exit={{ opacity: 0, x: 8 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <h4 className="text-xl font-semibold text-foreground">{tabContents[activeTab].title}</h4>
-                  <p className="mt-1 text-sm text-muted leading-relaxed">{tabContents[activeTab].desc}</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-[#221A1E]">{tabContents[activeTab].title}</h4>
+                  <p className="mt-1 text-xs sm:text-sm text-[#635952] leading-relaxed">{tabContents[activeTab].desc}</p>
 
-                  <div className="mt-6 space-y-3">
+                  <div className="mt-5 space-y-2.5">
                     {tabContents[activeTab].options.map((opt, i) => (
                       <div
                         key={i}
                         onClick={() => {
                           if (activeTab === 'voice') setSelectedVoice(opt)
                         }}
-                        className={`p-4 rounded-xl border transition-all flex items-center justify-between cursor-pointer ${
+                        className={`p-3.5 sm:p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${
                           activeTab === 'voice' && selectedVoice === opt
-                            ? 'border-lime bg-lime-soft/20 text-foreground font-medium'
-                            : 'border-line bg-panel/40 hover:bg-panel text-foreground/90'
+                            ? 'border-[#B85D3B] bg-[#F7EEE7] text-[#221A1E] font-semibold shadow-2xs'
+                            : 'border-[#E8DFD4] bg-[#FAF7F2]/60 hover:bg-[#FAF7F2] text-[#221A1E]'
                         }`}
                       >
-                        <span className="text-sm font-medium">{opt}</span>
-                        <div className="w-5 h-5 rounded-full border border-lime flex items-center justify-center text-lime bg-card">
-                          <Check size={12} />
+                        <span className="text-xs sm:text-sm">{opt}</span>
+                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 ${
+                          activeTab === 'voice' && selectedVoice === opt
+                            ? 'border-[#B85D3B] bg-[#B85D3B] text-white'
+                            : 'border-[#E8DFD4] bg-white text-transparent'
+                        }`}>
+                          <Check size={12} strokeWidth={3} />
                         </div>
                       </div>
                     ))}
@@ -148,17 +149,17 @@ export function AgentBuilderVisual() {
               </AnimatePresence>
 
               {activeTab === 'voice' && (
-                <div className="p-4 rounded-xl border border-line bg-panel flex items-center justify-between">
-                  <span className="text-xs text-muted font-medium">Speech Rate Multiplier:</span>
-                  <div className="flex gap-2">
+                <div className="p-4 rounded-2xl border border-[#E8DFD4] bg-[#FAF7F2] flex items-center justify-between">
+                  <span className="text-xs text-[#796F68] font-medium">Speech Rate Multiplier:</span>
+                  <div className="flex gap-1.5">
                     {['0.9x', '1.0x', '1.1x'].map((speed) => (
                       <button
                         key={speed}
                         onClick={() => setVoiceSpeed(speed)}
-                        className={`px-3 py-1 rounded-md text-xs font-mono font-semibold transition-colors ${
+                        className={`px-3 py-1 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer ${
                           voiceSpeed === speed
-                            ? 'bg-lime text-background'
-                            : 'bg-card text-muted border border-line'
+                            ? 'bg-[#B85D3B] text-white shadow-2xs'
+                            : 'bg-white text-[#635952] border border-[#E8DFD4]'
                         }`}
                       >
                         {speed}
@@ -170,35 +171,35 @@ export function AgentBuilderVisual() {
             </div>
 
             {/* Right Live Preview Card */}
-            <div className="lg:col-span-5 border border-line rounded-xl bg-panel p-6">
-              <div className="flex items-center justify-between border-b border-line pb-3 mb-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-muted">Config Preview</span>
-                <span className="text-xs font-mono text-lime">Active Simulation</span>
+            <div className="lg:col-span-5 border border-[#E8DFD4] rounded-2xl bg-[#FAF7F2] p-5 sm:p-6 shadow-2xs">
+              <div className="flex items-center justify-between border-b border-[#E8DFD4] pb-3 mb-4">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#796F68] font-semibold">Config Preview</span>
+                <span className="text-xs font-mono text-[#B85D3B] font-semibold">Active Studio</span>
               </div>
 
-              <div className="space-y-3 text-xs font-mono">
-                <div className="p-3 rounded-lg bg-card border border-line flex justify-between">
-                  <span className="text-muted">Selected Voice:</span>
-                  <span className="font-semibold text-foreground truncate max-w-[170px]">{selectedVoice}</span>
+              <div className="space-y-2.5 text-xs font-mono">
+                <div className="p-3 rounded-xl bg-white border border-[#E8DFD4] flex justify-between items-center gap-2">
+                  <span className="text-[#796F68]">Selected Voice:</span>
+                  <span className="font-bold text-[#221A1E] truncate text-right">{selectedVoice}</span>
                 </div>
-                <div className="p-3 rounded-lg bg-card border border-line flex justify-between">
-                  <span className="text-muted">Speech Speed:</span>
-                  <span className="font-semibold text-lime">{voiceSpeed}</span>
+                <div className="p-3 rounded-xl bg-white border border-[#E8DFD4] flex justify-between items-center">
+                  <span className="text-[#796F68]">Speech Speed:</span>
+                  <span className="font-bold text-[#B85D3B]">{voiceSpeed}</span>
                 </div>
-                <div className="p-3 rounded-lg bg-card border border-line flex justify-between">
-                  <span className="text-muted">Active Knowledge:</span>
-                  <span className="font-semibold text-foreground">4 Synced Files</span>
+                <div className="p-3 rounded-xl bg-white border border-[#E8DFD4] flex justify-between items-center">
+                  <span className="text-[#796F68]">Knowledge Base:</span>
+                  <span className="font-bold text-[#221A1E]">4 Documents Synced</span>
                 </div>
-                <div className="p-3 rounded-lg bg-card border border-line flex justify-between">
-                  <span className="text-muted">Connected APIs:</span>
-                  <span className="font-semibold text-foreground">Google Cal + CRM</span>
+                <div className="p-3 rounded-xl bg-white border border-[#E8DFD4] flex justify-between items-center">
+                  <span className="text-[#796F68]">Connected APIs:</span>
+                  <span className="font-bold text-[#221A1E]">Calendar + CRM</span>
                 </div>
               </div>
 
-              <div className="mt-6 p-4 rounded-xl bg-card border border-line text-center">
-                <Sparkles size={20} className="mx-auto text-lime mb-2" />
-                <p className="text-xs text-foreground font-semibold">Agent Ready to Handle Live Calls</p>
-                <p className="text-[11px] text-muted mt-1">Changes sync automatically across telephony routes.</p>
+              <div className="mt-5 p-4 rounded-xl bg-white border border-[#E8DFD4] text-center shadow-2xs">
+                <Sparkles size={18} className="mx-auto text-[#B85D3B] mb-1.5" />
+                <p className="text-xs text-[#221A1E] font-bold">Agent Ready to Handle Live Calls</p>
+                <p className="text-[11px] text-[#796F68] mt-0.5">Changes sync automatically across telephony routes.</p>
               </div>
             </div>
           </div>

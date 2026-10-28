@@ -155,10 +155,10 @@ export default function Page() {
         <div className="story-container story-principles-layout">
           <div><span className="story-kicker">DESIGNED FOR REAL CALLS</span><h2>Fluent is good.<br/><em>Reliable is better.</em></h2><p className="story-principles-lede">A good voice experience needs a plan for the moments when speech is unclear, the request changes, a tool is unavailable, or a human should step in.</p><Link href="/contact" className="story-button story-button-primary">Discuss your call flow <ArrowRight size={16}/></Link></div>
           <div className="story-principle-list">
-            <article><span><Check size={16}/></span><div><h3>Defined boundaries</h3><p>Be explicit about what the agent can answer and which actions require another system or a person.</p></div></article>
-            <article><span><Check size={16}/></span><div><h3>Human handoff as a path</h3><p>Plan the escalation experience instead of treating it as an afterthought.</p></div></article>
-            <article><span><Check size={16}/></span><div><h3>Measure the whole outcome</h3><p>Evaluate accuracy, task completion, tool success, recovery, and cost alongside latency.</p></div></article>
-            <article><span><Check size={16}/></span><div><h3>Validate before expanding</h3><p>Test the workflow against representative calls before increasing scope or volume.</p></div></article>
+            <article><span><Check size={16}/></span><div><h3>Defined boundaries</h3></div></article>
+            <article><span><Check size={16}/></span><div><h3>Human handoff as a path</h3></div></article>
+            <article><span><Check size={16}/></span><div><h3>Measure the whole outcome</h3></div></article>
+            <article><span><Check size={16}/></span><div><h3>Validate before expanding</h3></div></article>
           </div>
         </div>
       </section>

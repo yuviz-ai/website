@@ -153,3 +153,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .pricing-factor strong { display: block; margin: 12px 0 7px; color: #E8EAF8; font-family: 'Manrope',sans-serif; font-size: 15px; }
 .pricing-factor p { margin: 0; color: #9CA6C2; font-size: 12px; line-height: 1.8; }
 @media (max-width: 760px) { .contact-page,.pricing-page { padding: 62px 0 70px; }.contact-layout,.pricing-grid { grid-template-columns: 1fr; }.contact-card { padding: 22px; }.faq-item summary { font-size: 14px; padding: 19px 35px 19px 0; } }
+
+.article-body { max-width: 760px; margin: 0 auto; color: #B0B9D2; font-size: 15px; line-height: 1.95; }
+.article-body > p { margin: 0 0 22px; }
+.article-body section { padding-top: 18px; scroll-margin-top: 100px; }
+.article-body h2 { margin: 26px 0 10px; color: #F0F1FC; font-family: 'Manrope',sans-serif; font-size: clamp(23px,3vw,30px); font-weight: 800; line-height: 1.25; letter-spacing: -.8px; }
+.article-body section p { margin: 0 0 18px; }

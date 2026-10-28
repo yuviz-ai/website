@@ -1179,3 +1179,171 @@ body.yuviz-light-theme .nav-pill-dock .absolute.top-full a:hover {
 body.yuviz-light-theme .nav-pill-dock .absolute.top-full a:hover p {
   color: #6B55B7 !important;
 }
+
+
+/* CRM / business-system integration visual */
+.story-integrations {
+  background: radial-gradient(ellipse at 50% 46%, rgba(116, 93, 206, .12), transparent 42%), #0A1020;
+  overflow: hidden;
+}
+.story-integrations-heading { margin-bottom: 34px; }
+.story-integrations-heading > p { max-width: 560px; }
+.story-integration-stage {
+  position: relative;
+  width: min(100%, 980px);
+  height: 440px;
+  margin: 0 auto;
+  isolation: isolate;
+}
+.story-integration-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: .32;
+  background-image: linear-gradient(rgba(167,176,217,.11) 1px, transparent 1px), linear-gradient(90deg, rgba(167,176,217,.11) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse at center, #000 5%, transparent 78%);
+}
+.story-integration-lines {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.story-integration-lines path {
+  fill: none;
+  stroke: rgba(184,165,255,.36);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 7;
+}
+.story-integration-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  width: 142px;
+  height: 142px;
+  transform: translate(-50%,-50%);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid rgba(190,174,255,.55);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, #25254A, #11182B 72%);
+  box-shadow: 0 0 0 12px rgba(155,132,255,.045), 0 0 70px rgba(140,115,255,.22);
+}
+.story-hub-orbit {
+  position: absolute;
+  inset: -13px;
+  border: 1px solid rgba(184,165,255,.19);
+  border-radius: 50%;
+}
+.story-hub-mark {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: linear-gradient(135deg,#C8BBFF,#9D88F5 65%,#FFA995);
+  color: #18162D;
+}
+.story-integration-hub strong { color: #F6F5FF; font-size: 17px; font-weight: 800; letter-spacing: -.04em; }
+.story-integration-hub small { color: #A8B0CE; font-size: 10px; }
+.story-integration-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 218px;
+  min-height: 76px;
+  padding: 13px 15px;
+  border: 1px solid rgba(173,183,222,.19);
+  border-radius: 17px;
+  background: rgba(20,27,47,.94);
+  box-shadow: 0 14px 38px rgba(0,0,0,.18);
+  backdrop-filter: blur(12px);
+}
+.story-node-icon { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border: 1px solid rgba(184,165,255,.17); border-radius: 13px; background: rgba(184,165,255,.11); color: #C7B9FF; }
+.story-node-icon.coral { color: #FFA68F; background: rgba(255,146,124,.1); border-color: rgba(255,146,124,.18); }
+.story-node-icon.blue { color: #8EC6FF; background: rgba(89,158,255,.1); border-color: rgba(89,158,255,.18); }
+.story-node-icon.green { color: #8DE2C3; background: rgba(130,224,189,.1); border-color: rgba(130,224,189,.18); }
+.story-integration-node strong { display: block; color: #F0F2FC; font-size: 11px; font-weight: 800; }
+.story-integration-node small { display: block; margin-top: 5px; color: #929DB9; font-size: 9px; }
+.node-crm { left: 7%; top: 9%; }
+.node-calendar { left: 50%; top: 0; transform: translateX(-50%); }
+.node-helpdesk { right: 5%; top: 10%; }
+.node-knowledge { left: 4%; bottom: 8%; }
+.node-data { left: 50%; bottom: 0; transform: translateX(-50%); }
+.node-messaging { right: 3%; bottom: 8%; }
+.story-integration-foot { display: flex; justify-content: space-between; align-items: center; width: min(100%, 980px); margin: 0 auto; padding-top: 17px; border-top: 1px solid rgba(174,187,224,.12); color: #929DB9; font-size: 10px; }
+.story-integration-foot span:first-child { display: inline-flex; align-items: center; gap: 8px; color: #C6BAFF; font-weight: 700; }
+
+body.yuviz-light-theme .story-integrations {
+  background: radial-gradient(ellipse at 50% 46%, rgba(191,176,248,.26), transparent 45%), linear-gradient(135deg,#F8F6FC,#F0EDF8);
+}
+body.yuviz-light-theme .story-integration-grid {
+  background-image: linear-gradient(rgba(118,101,178,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(118,101,178,.1) 1px, transparent 1px);
+}
+body.yuviz-light-theme .story-integration-lines path { stroke: rgba(126,103,198,.45); }
+body.yuviz-light-theme .story-integration-hub {
+  background: radial-gradient(circle at 35% 25%, #FFFFFF, #EAE4FC 72%);
+  border-color: #D1C5F4;
+  box-shadow: 0 0 0 12px rgba(155,132,255,.07), 0 0 60px rgba(140,115,255,.18);
+}
+body.yuviz-light-theme .story-integration-hub strong { color: #282642; }
+body.yuviz-light-theme .story-integration-hub small { color: #6F6A8C; }
+body.yuviz-light-theme .story-integration-node {
+  background: rgba(255,255,255,.96);
+  border-color: #E0DCEC;
+  box-shadow: 0 14px 34px rgba(54,45,96,.1);
+}
+body.yuviz-light-theme .story-integration-node strong { color: #292D45; }
+body.yuviz-light-theme .story-integration-node small { color: #626B83; }
+body.yuviz-light-theme .story-integration-foot { border-color: #DED9EB; color: #69728A; }
+body.yuviz-light-theme .story-integration-foot span:first-child { color: #705BC1; }
+
+@media (max-width: 760px) {
+  .story-integration-stage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+    height: auto;
+    padding: 8px 0 0;
+  }
+  .story-integration-grid { opacity: .18; }
+  .story-integration-lines { display: none; }
+  .story-integration-hub {
+    position: relative;
+    left: auto;
+    top: auto;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 112px;
+    height: 112px;
+    margin: 0 0 12px;
+    transform: none;
+  }
+  .story-hub-mark { width: 38px; height: 38px; border-radius: 12px; }
+  .story-integration-node,
+  .node-crm,.node-calendar,.node-helpdesk,.node-knowledge,.node-data,.node-messaging {
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-height: 72px;
+    padding: 10px;
+    transform: none;
+    gap: 9px;
+    border-radius: 14px;
+  }
+  .story-node-icon { flex-basis: 34px; height: 34px; border-radius: 10px; }
+  .story-integration-node strong { font-size: 10px; }
+  .story-integration-node small { font-size: 8px; line-height: 1.4; }
+  .story-integration-foot { gap: 10px; font-size: 9px; }
+}
+@media (max-width: 380px) {
+  .story-integration-stage { grid-template-columns: 1fr; }
+  .story-integration-hub { grid-column: auto; }
+}

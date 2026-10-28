@@ -4,6 +4,8 @@ import './globals.css'
 import { RedesignNavbar, RedesignFooter } from '@/components/marketing/RedesignShell'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://yuviz.ai'),
+  alternates: { canonical: '/' },
   title: {
     default: 'Yuviz.ai — Turn Conversations Into Outcomes',
     template: '%s | Yuviz.ai',
@@ -22,6 +24,7 @@ export const metadata: Metadata = {
     title: 'Yuviz.ai — Turn Conversations Into Outcomes',
     description: 'Explore Yuviz.ai, a voice AI platform in active development focused on customer conversations, business context, and call workflows.',
     type: 'website',
+    url: 'https://yuviz.ai',
   },
   twitter: {
     card: 'summary_large_image',

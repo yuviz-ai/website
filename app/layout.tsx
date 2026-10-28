@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     default: 'Yuviz.ai — Turn Conversations Into Outcomes',
     template: '%s | Yuviz.ai',
   },
-  description: 'Explore Yuviz.ai, a voice AI platform concept for building and configuring agents around customer conversations, business knowledge, and call workflows.',
+  description: 'Yuviz.ai is building a voice AI platform for configuring voice agents around customer conversations, business knowledge, and call workflows. Explore the approach, current design concepts, and discuss your use case.',
   applicationName: 'Yuviz.ai',
   keywords: ['voice AI', 'AI voice agents', 'conversational AI', 'voice automation', 'telephony platform'],
   icons: {
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Yuviz.ai — Turn Conversations Into Outcomes',
-    description: 'Build voice experiences around real customer conversations, business context, and the next step.',
+    description: 'Explore Yuviz.ai, a voice AI platform in active development focused on customer conversations, business context, and call workflows.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Yuviz.ai — Turn Conversations Into Outcomes',
-    description: 'Voice AI experiences designed around customer conversations and business workflows.',
+    description: 'Yuviz.ai is building configurable voice-agent experiences around customer conversations, business knowledge, and call workflows.',
   },
 }
 

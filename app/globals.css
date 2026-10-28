@@ -1150,3 +1150,32 @@ body.yuviz-light-theme .story-faq-list details[open] {
   background: #FBFAFE;
   border-radius: 12px;
 }
+
+
+/* Navigation dropdown readability in light mode */
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full {
+  color: #292D45 !important;
+  background: #FFFFFF !important;
+  border-color: #E1DDED !important;
+  box-shadow: 0 22px 60px rgba(35, 31, 65, .18) !important;
+}
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full span,
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full p,
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full a {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full p.text-xs,
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full p[class*="text-\\[\\#221A1E\\]"] {
+  color: #292D45 !important;
+}
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full p[class*="text-\\[\\#796F68\\]"],
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full span[class*="text-\\[\\#796F68\\]"] {
+  color: #626A80 !important;
+}
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full a:hover {
+  background: #F4F0FC !important;
+}
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full a:hover p {
+  color: #6B55B7 !important;
+}

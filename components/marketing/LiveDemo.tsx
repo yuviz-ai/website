@@ -47,37 +47,12 @@ export function FinalCTA() {
 }
 
 export function FooterGuide() {
-  const [open, setOpen] = useState<string | null>(null)
-  const topics = [
-    { id: 'start', label: 'Where should I start?', text: 'Start with one high-volume conversation: scheduling, customer support, or lead qualification. Prove the handoff, then expand.' },
-    { id: 'trust', label: 'How does Yuviz stay reliable?', text: 'Every agent has defined knowledge files, explicit action boundaries, and a warm human escalation path when needed.' },
-    { id: 'fit', label: 'Is this right for my team?', text: 'If your team spends hours answering repetitive phone calls or qualifying prospects, Yuviz immediately frees up hours each day.' },
-  ]
   return (
-    <div className="mb-12 border border-[#E8DFD4] rounded-3xl bg-white p-6 sm:p-8 shadow-sm">
-      <div className="mb-6">
-        <p className="text-xs font-mono uppercase tracking-wider text-[#B85D3B] font-bold">Frequently Addressed Questions</p>
-        <h3 className="text-xl sm:text-2xl font-bold text-[#221A1E] mt-1">Questions before the first call?</h3>
-        <p className="text-xs sm:text-sm text-[#796F68] mt-1">Learn how to choose a useful first workflow and roll out with confidence.</p>
-      </div>
-      <div className="divide-y divide-[#E8DFD4]">
-        {topics.map((topic) => (
-          <div key={topic.id} className="py-3.5">
-            <button
-              type="button"
-              aria-expanded={open === topic.id}
-              onClick={() => setOpen(open === topic.id ? null : topic.id)}
-              className="flex items-center justify-between w-full text-left font-bold text-sm text-[#221A1E] hover:text-[#B85D3B] transition-colors cursor-pointer"
-            >
-              <span>{topic.label}</span>
-              <ChevronDown size={16} className={`transition-transform duration-200 ${open === topic.id ? 'rotate-180 text-[#B85D3B]' : 'text-[#796F68]'}`} />
-            </button>
-            {open === topic.id && (
-              <p className="text-xs sm:text-sm text-[#635952] mt-2 leading-relaxed pr-6">{topic.text}</p>
-            )}
-          </div>
-        ))}
-      </div>
+    <div className="mb-12 rounded-3xl border border-[rgba(174,187,224,.16)] bg-[#111A2D] p-6 sm:p-8">
+      <p className="text-xs font-mono uppercase tracking-wider text-[#B8A5FF] font-bold">Before the first conversation</p>
+      <h3 className="text-xl sm:text-2xl font-bold text-[#F0F2FC] mt-2">Start with a workflow you can validate.</h3>
+      <p className="text-xs sm:text-sm text-[#9CA6C2] mt-2 max-w-2xl leading-relaxed">Bring your call flow, business context, and required systems. We’ll discuss what the current implementation supports and what would need additional work.</p>
+      <Link href="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#C6B9FF] hover:text-white">Talk to Yuviz <ArrowRight size={15}/></Link>
     </div>
   )
 }
@@ -91,7 +66,7 @@ export function Footer() {
         <div className="md:col-span-4">
           <Logo />
           <p className="mt-4 max-w-xs text-xs sm:text-sm leading-relaxed text-[#796F68]">
-            AI voice agents that answer calls, understand customers, and take action — 24/7.
+            Voice AI experiences shaped around customer conversations, business context, and clear next steps.
           </p>
         </div>
 
@@ -124,7 +99,7 @@ export function Footer() {
             <div className="flex flex-col gap-2 text-xs sm:text-sm text-[#635952]">
               <Link href="/resources/faq" className="hover:text-[#B85D3B] transition-colors">FAQ</Link>
               <Link href="/resources/blog" className="hover:text-[#B85D3B] transition-colors">Blog</Link>
-              <Link href="/resources/api-integration" className="hover:text-[#B85D3B] transition-colors">API Docs</Link>
+              <Link href="/resources/api-integration" className="hover:text-[#B85D3B] transition-colors">Integration planning</Link>
               <Link href="/pricing" className="hover:text-[#B85D3B] transition-colors">Pricing</Link>
               <Link href="/contact" className="hover:text-[#B85D3B] transition-colors">Contact Us</Link>
             </div>
@@ -134,7 +109,7 @@ export function Footer() {
 
       <div className="mt-12 pt-6 border-t border-[#E8DFD4] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#796F68]">
         <span>&copy; {new Date().getFullYear()} Yuviz AI. All rights reserved.</span>
-        <span>Crafted for high-performance enterprise voice intelligence.</span>
+        <span>Designed around the realities of voice conversations.</span>
       </div>
     </footer>
   )

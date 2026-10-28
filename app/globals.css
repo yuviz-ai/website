@@ -728,3 +728,114 @@ body:has(.story-site) header [class~="hover:bg-[#F4EBE2]"]:hover {
 .story-subpage .story-breadcrumb a:hover { color: #D3C8FF; }
 .story-subpage .story-subpage-disclaimer { color: #8995B2; }
 
+
+
+/* Optional light theme for visitors; dark remains the default brand experience */
+.theme-toggle {
+  color: #DCE3F6;
+  background: #151B31;
+  border-color: rgba(184,165,255,.35);
+}
+.theme-toggle:hover { background: #222A46; }
+.login-pill { color:#F0F2FC; background:#151B31; border-color:rgba(184,165,255,.4); }
+.login-pill:hover { background:#222A46; }
+
+body.yuviz-light-theme {
+  --background:#F7F8FC;
+  --foreground:#20263A;
+  --card:#FFFFFF;
+  --panel:#EEF1FA;
+  --line:#DDE2EF;
+  --muted:#59647D;
+  --ink:#20263A;
+  --border:#DDE2EF;
+  background:#F7F8FC;
+  color:#20263A;
+  color-scheme:light;
+}
+body.yuviz-light-theme .story-site { background:#F7F8FC; color:#20263A; }
+body.yuviz-light-theme .story-hero,
+body.yuviz-light-theme .story-subpage,
+body.yuviz-light-theme .story-subpage-hero { background:#F7F8FC; }
+body.yuviz-light-theme .story-hero-grid { opacity:.12; }
+body.yuviz-light-theme .story-hero h1,
+body.yuviz-light-theme .story-section h2,
+body.yuviz-light-theme .story-subpage-hero h1,
+body.yuviz-light-theme .story-case-dialogue h2,
+body.yuviz-light-theme .story-faq-page-list summary,
+body.yuviz-light-theme .story-pricing-card h2,
+body.yuviz-light-theme .story-use-index-card h2,
+body.yuviz-light-theme .story-case-card h2,
+body.yuviz-light-theme .story-case-bottom h2 { color:#20263A; }
+body.yuviz-light-theme .story-lede,
+body.yuviz-light-theme .story-section p,
+body.yuviz-light-theme .story-subpage-hero p,
+body.yuviz-light-theme .story-case-dialogue>div:first-child>p,
+body.yuviz-light-theme .story-pricing-card p,
+body.yuviz-light-theme .story-use-index-card p,
+body.yuviz-light-theme .story-case-card p,
+body.yuviz-light-theme .story-case-bottom p,
+body.yuviz-light-theme .story-faq-page-list details p { color:#58637B; }
+body.yuviz-light-theme .story-call-card,
+body.yuviz-light-theme .story-feature-card,
+body.yuviz-light-theme .story-contact-card,
+body.yuviz-light-theme .story-pricing-card,
+body.yuviz-light-theme .story-use-index-card,
+body.yuviz-light-theme .story-case-card,
+body.yuviz-light-theme .story-dialogue-card {
+  background:#FFFFFF;
+  border-color:#DDE2EF;
+  box-shadow:0 12px 35px rgba(39,50,86,.07);
+}
+body.yuviz-light-theme .story-chat-row,
+body.yuviz-light-theme .story-dialogue-line,
+body.yuviz-light-theme .story-contact-form input,
+body.yuviz-light-theme .story-contact-form select,
+body.yuviz-light-theme .story-contact-form textarea {
+  background:#F4F6FB;
+  color:#20263A;
+  border-color:#DDE2EF;
+}
+body.yuviz-light-theme .story-chat-row p,
+body.yuviz-light-theme .story-dialogue-line p { color:#3D4861; }
+body.yuviz-light-theme .story-chat-row small,
+body.yuviz-light-theme .story-dialogue-line small { color:#6550B8; }
+body.yuviz-light-theme .story-dialogue-line.agent,
+body.yuviz-light-theme .story-case-bottom>div,
+body.yuviz-light-theme .story-pricing-bottom>div {
+  background:#F0EDFF;
+  border-color:#D9D0FF;
+  color:#51418F;
+}
+body.yuviz-light-theme .story-proof-note,
+body.yuviz-light-theme .story-breadcrumb,
+body.yuviz-light-theme .story-use-index-note p,
+body.yuviz-light-theme .story-subpage-disclaimer,
+body.yuviz-light-theme .story-form-foot { color:#68738B; }
+body.yuviz-light-theme .story-faq-page-list details { border-color:#DDE2EF; }
+body.yuviz-light-theme .story-text-link,
+body.yuviz-light-theme .story-breadcrumb a { color:#6550B8; }
+body.yuviz-light-theme .story-button-quiet { color:#39435B; border-color:#DDE2EF; }
+body.yuviz-light-theme .story-contact-form label { color:#39435B; }
+body.yuviz-light-theme .nav-pill-dock {
+  background:rgba(255,255,255,.94)!important;
+  border-color:#DDE2EF!important;
+  box-shadow:0 10px 30px rgba(34,45,78,.1);
+}
+body.yuviz-light-theme .nav-pill-dock a,
+body.yuviz-light-theme .nav-pill-dock button { color:#303951!important; }
+body.yuviz-light-theme .nav-pill-dock .btn-pill-primary { color:#FFFFFF!important; }
+body.yuviz-light-theme header [class~="bg-[#FAF7F2]"],
+body.yuviz-light-theme header [class~="bg-white"] { background:#FFFFFF!important; color:#303951!important; }
+body.yuviz-light-theme header [class~="text-[#221A1E]"],
+body.yuviz-light-theme header [class~="text-[#635952]"] { color:#303951!important; }
+body.yuviz-light-theme header [class~="text-[#796F68]"] { color:#68738B!important; }
+body.yuviz-light-theme header [class~="text-[#B85D3B]"] { color:#8B452D!important; }
+body.yuviz-light-theme header [class~="border-[#E8DFD4]"] { border-color:#DDE2EF!important; }
+body.yuviz-light-theme .theme-toggle { color:#51418F; background:#F0EDFF; border-color:#D9D0FF; }
+body.yuviz-light-theme .theme-toggle:hover { background:#E6E0FF; }
+body.yuviz-light-theme .login-pill { color:#FFFFFF; background:#51418F; border-color:#51418F; }
+body.yuviz-light-theme .login-pill:hover { background:#403477; }
+body.yuviz-light-theme footer { background:#F7F8FC!important; color:#68738B!important; border-color:#DDE2EF!important; }
+body.yuviz-light-theme footer a { color:#59647D!important; }
+body.yuviz-light-theme footer a:hover { color:#51418F!important; }

@@ -91,7 +91,7 @@ export default function Page() {
 
       <section id="how-it-works" className="story-section story-flow">
         <div className="story-container">
-          <div className="story-split story-flow-heading"><div><span className="story-kicker">FROM HELLO TO NEXT STEP</span><h2>A voice experience<br/><em>with a clear path.</em></h2></div><p>Every layer has a job. The goal is to make the call understandable, responsive, and easier to improve—not to hide complexity behind a demo.</p></div>
+          <div className="story-split story-flow-heading"><div><span className="story-kicker">FROM HELLO TO NEXT STEP</span><h2>A voice experience<br/><em>with a clear path.</em></h2></div></div>
           <div className="story-flow-track">
             <article><span className="story-flow-icon"><PhoneCall size={20}/></span><span className="story-flow-num">STEP 01</span><h3>The call arrives</h3><p>Telephony routing connects the caller to the voice experience.</p></article>
             <span className="story-flow-arrow"><ArrowRight size={18}/></span>
@@ -101,7 +101,6 @@ export default function Page() {
             <span className="story-flow-arrow"><ArrowRight size={18}/></span>
             <article><span className="story-flow-icon green"><Check size={20}/></span><span className="story-flow-num">STEP 04</span><h3>Choose the next step</h3><p>Continue the conversation, follow a configured action, or hand off when needed.</p></article>
           </div>
-          <div className="story-architecture-note"><Network size={17}/><p><strong>Built with the call path in mind.</strong> Yuviz’s current prototype includes SIP/FreeSWITCH telephony, a C++ media gateway, and a conversation service. Provider and integration availability should be confirmed for each deployment.</p></div>
         </div>
       </section>
 
@@ -109,7 +108,6 @@ export default function Page() {
         <div className="story-container">
           <div className="story-split story-use-heading"><div><span className="story-kicker">WHERE TO BEGIN</span><h2>One useful conversation<br/><em>can be a strong start.</em></h2></div><p>Choose a clear, repeatable job. Confirm the required data and actions. Then evaluate how well the experience handles real variations and edge cases.</p></div>
           <div className="story-use-grid">{useCases.map((item, i) => { const Icon = item.icon; return <article key={item.title} className="story-use-card"><span className="story-use-icon"><Icon size={20}/></span><span className="story-number">0{i+1}</span><h3>{item.title}</h3><p>{item.text}</p><span className="story-use-label">POTENTIAL WORKFLOW</span></article> })}</div>
-          <p className="story-disclaimer">Use cases shown are examples to explore, not claims that every workflow or third-party integration is enabled today.</p>
         </div>
       </section>
 
@@ -134,7 +132,7 @@ export default function Page() {
 
       <section className="story-final-cta">
         <div className="story-final-glow" aria-hidden="true"/>
-        <div className="story-container story-final-content"><span className="story-kicker">LET’S START WITH THE CALL</span><h2>What should your<br/><em>next conversation do?</em></h2><p>Tell us about the callers, the workflow, and the outcome you want. We’ll work through the practical fit and what it takes to validate a first use case.</p><div className="story-actions story-actions-center"><Link href="/contact" className="story-button story-button-primary">Talk through your use case <ArrowRight size={17}/></Link><a href="mailto:hello@yuviz.ai" className="story-button story-button-quiet">Email Yuviz</a></div><span className="story-final-note"><ShieldCheck size={14}/> No inflated metrics. Just a clear conversation about what’s possible.</span></div>
+        <div className="story-container story-final-content"><span className="story-kicker">LET’S START WITH THE CALL</span><h2>What should your<br/><em>next conversation do?</em></h2><p>Tell us about the callers, the workflow, and the outcome you want. We’ll work through the practical fit and what it takes to validate a first use case.</p><div className="story-actions story-actions-center"><Link href="/contact" className="story-button story-button-primary">Talk through your use case <ArrowRight size={17}/></Link><a href="mailto:hello@yuviz.ai" className="story-button story-button-quiet">Email Yuviz</a></div></div>
       </section>
     </main>
   )

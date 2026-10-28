@@ -8,7 +8,8 @@ const navItems = [
   { label: 'Platform', href: '/#platform' },
   { label: 'How it works', href: '/#how-it-works' },
   { label: 'Use cases', href: '/#use-cases' },
-  { label: 'Architecture', href: '/#architecture' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'FAQ', href: '/resources/faq' },
 ]
 
 export function RedesignNavbar() {

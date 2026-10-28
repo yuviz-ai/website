@@ -30,7 +30,7 @@ export interface UseCasePageProps {
 }
 
 export function UseCasePageTemplate({
-  badge, industryName, title, highlightTitle, subtitle, icon: IndustryIcon, workflows, dialogue,
+  badge, industryName, title, highlightTitle, subtitle, workflows, dialogue,
 }: UseCasePageProps) {
   return (
     <main className="pricing-page">

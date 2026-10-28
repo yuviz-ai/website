@@ -1,79 +1,54 @@
-'use client'
+import Link from 'next/link'
+import { ArrowRight, AudioLines, Bot, BrainCircuit, CalendarCheck, Check, ChevronRight, Database, Headphones, Layers3, MessageSquareText, PhoneCall, Radio, ShieldCheck, Workflow, Zap } from 'lucide-react'
 
-import { HeroSection } from '@/components/marketing/HeroTeaser'
-import { TrustStrip, WhatIsYuviz } from '@/components/marketing/WhatIsYuviz'
-import { WhyVoice, AgentTypes } from '@/components/marketing/WhyVoice'
-import { AgentBuilderVisual } from '@/components/marketing/AgentBuilderVisual'
-import { ProductShowcase, HowItWorks } from '@/components/marketing/ProductShowcase'
-import { ConversationVisualizer, KnowledgeSection } from '@/components/marketing/ConversationVisualizer'
-import { InboundOutbound, UseCaseMatrix } from '@/components/marketing/InboundOutbound'
-import { BeforeAfter, ArchitectureSection } from '@/components/marketing/ArchitectureSection'
-import { TranscriptDemo, Integrations } from '@/components/marketing/TranscriptDemo'
-import { HumanHandoff, SecuritySection, WhyYuviz } from '@/components/marketing/HumanHandoff'
-import { FinalCTA } from '@/components/marketing/LiveDemo'
-
+const capabilities = [
+  { icon: Bot, number: '01', title: 'Shape each agent around a job', description: 'Define an agent’s role, instructions, voice experience, and the knowledge it should use—without treating every call as the same conversation.', tags: ['Agent configuration', 'Prompt & behavior'] },
+  { icon: BrainCircuit, number: '02', title: 'Ground conversations in your knowledge', description: 'Give agents business documents to reference so responses can be informed by the material you choose to make available.', tags: ['Knowledge base', 'Business context'] },
+  { icon: Workflow, number: '03', title: 'Connect the conversation to a next step', description: 'Design voice experiences around a clear outcome: answer a question, capture intent, route a call, or hand the conversation to a person when needed.', tags: ['Call flows', 'Human handoff'] },
+]
+const steps = [
+  { icon: PhoneCall, number: '01', title: 'A call arrives', text: 'A configured phone number routes an incoming call into the voice platform.' },
+  { icon: AudioLines, number: '02', title: 'Audio becomes a conversation', text: 'The media path streams caller audio to the conversation layer for processing.' },
+  { icon: BrainCircuit, number: '03', title: 'The agent responds', text: 'The conversation engine coordinates a response using configured agent behavior and available capabilities.' },
+  { icon: Headphones, number: '04', title: 'The call moves forward', text: 'The experience can guide the caller toward an answer or an appropriate next step.' },
+]
+const useCases = [
+  { icon: Headphones, title: 'Customer support', text: 'Handle repeat questions and help callers find the right next step.' },
+  { icon: CalendarCheck, title: 'Appointments & enquiries', text: 'Collect the details needed to move a scheduling conversation forward.' },
+  { icon: Radio, title: 'Inbound call handling', text: 'Give incoming calls a consistent, purpose-built voice experience.' },
+  { icon: MessageSquareText, title: 'Lead qualification', text: 'Ask structured questions and capture intent during a conversation.' },
+]
+function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: React.ReactNode; description: string }) {
+  return <div className="section-heading-new"><span className="eyebrow-new"><span className="eyebrow-dot" />{eyebrow}</span><h2>{title}</h2><p>{description}</p></div>
+}
+function ProductPreview() {
+  return <div className="product-preview" aria-label="Illustrative Yuviz workspace concept">
+    <div className="preview-topbar"><div className="preview-window-dots"><i/><i/><i/></div><span className="preview-product-name"><AudioLines size={14}/> Yuviz workspace</span><span className="preview-mode"><span/> Concept</span></div>
+    <div className="preview-body"><aside className="preview-sidebar" aria-hidden="true"><div className="preview-side-logo"><AudioLines size={18}/></div><span className="side-icon active"><Layers3 size={17}/></span><span className="side-icon"><MessageSquareText size={17}/></span><span className="side-icon"><Database size={17}/></span><span className="side-icon"><ShieldCheck size={17}/></span></aside>
+      <div className="preview-content"><div className="preview-heading-row"><div><span className="preview-kicker">AGENT WORKSPACE</span><h3>Customer care assistant</h3><p>Configure the experience around your use case.</p></div><span className="draft-pill"><span/> Example setup</span></div>
+        <div className="preview-stat-grid"><div className="preview-stat"><span className="stat-icon violet"><Bot size={16}/></span><span className="stat-label">Agent</span><strong>Customer care</strong><small>Voice experience</small></div><div className="preview-stat"><span className="stat-icon blue"><Database size={16}/></span><span className="stat-label">Knowledge</span><strong>Selected sources</strong><small>Business context</small></div><div className="preview-stat"><span className="stat-icon green"><Workflow size={16}/></span><span className="stat-label">Call flow</span><strong>Answer → guide</strong><small>Example journey</small></div></div>
+        <div className="preview-conversation"><div className="conversation-header"><span><AudioLines size={14}/> Conversation preview</span><span className="sample-label">Illustrative sample</span></div><div className="chat-row caller"><span className="chat-avatar">C</span><div><small>CALLER</small><p>Hi, I’d like to understand your service options.</p></div></div><div className="chat-row agent"><span className="chat-avatar"><AudioLines size={15}/></span><div><small>YUVIZ AGENT · EXAMPLE</small><p>Of course. I can help with that. What would you like to know first?</p></div></div><div className="preview-input"><span>Illustrative sample — not a live call</span><span className="input-wave"><i/><i/><i/><i/><i/><i/><i/></span></div></div>
+      </div></div><div className="preview-caption"><span><Check size={13}/> Product concept visual</span><span>Not a live dashboard</span></div>
+  </div>
+}
 export default function Page() {
-  return (
-    <main id="top" className="min-h-screen bg-background text-foreground antialiased selection:bg-lime selection:text-ink">
-      {/* 1. Hero + Interactive Voice Agent Teaser */}
-      <HeroSection />
-
-      {/* 2. Capability & Trust Strip */}
-      <TrustStrip />
-
-      {/* 3. What is Yuviz? ("Meet your AI voice team") */}
-      <WhatIsYuviz />
-
-      {/* 4. Why Voice? ("Some conversations are better spoken") */}
-      <WhyVoice />
-
-      {/* 5. AI Agent Types Grid ("Give every conversation an agent") */}
-      <AgentTypes />
-
-      {/* 6. Interactive Agent Builder Mockup */}
-      <AgentBuilderVisual />
-
-      {/* 7. Control Room Dashboard ("See every conversation clearly") */}
-      <ProductShowcase />
-
-      {/* 8. End-to-End Workflow ("From hello to done") */}
-      <HowItWorks />
-
-      {/* 9. Interactive Conversation Visualizer */}
-      <ConversationVisualizer />
-
-      {/* 10. Grounded RAG Knowledge Base */}
-      <KnowledgeSection />
-
-      {/* 11. Inbound vs Outbound Dual Telephony & Campaigns */}
-      <InboundOutbound />
-
-      {/* 12. Use Case Matrix */}
-      <UseCaseMatrix />
-
-      {/* 13. Before vs After Interactive Comparison */}
-      <BeforeAfter />
-
-      {/* 14. Real-Time Telephony Infrastructure Architecture */}
-      <ArchitectureSection />
-
-      {/* 15. Call Intelligence & Transcript Inspector */}
-      <TranscriptDemo />
-
-      {/* 16. Contextual Human Escalation & Handoff */}
-      <HumanHandoff />
-
-      {/* 17. Security & Data Protection */}
-      <SecuritySection />
-
-      {/* 18. Integration Ecosystem */}
-      <Integrations />
-
-      {/* 19. Core Principles ("Built around the conversation") */}
-      <WhyYuviz />
-
-      {/* 20. High-Impact Final CTA */}
-      <FinalCTA />
-    </main>
-  )
+ return <main id="top" className="redesign-home">
+  <section className="hero-new"><div className="hero-grid" aria-hidden="true"/><div className="hero-glow hero-glow-one" aria-hidden="true"/><div className="hero-glow hero-glow-two" aria-hidden="true"/>
+   <div className="hero-inner"><div className="hero-copy"><div className="announcement-pill"><span className="announcement-icon"><AudioLines size={13}/></span> VOICE AI, BUILT FOR REAL CONVERSATIONS <ChevronRight size={14}/></div>
+    <h1>Turn conversations<br/>into <span className="gradient-text">outcomes.</span></h1><p className="hero-description">Build and manage AI voice agents for customer conversations—with configurable behavior, business knowledge, and a clear path from hello to next step.</p>
+    <div className="hero-actions"><Link href="/contact" className="button-primary">Talk to our team <ArrowRight size={16}/></Link><a href="#platform" className="button-secondary">Explore the platform <ChevronRight size={16}/></a></div>
+    <div className="hero-note"><span className="note-check"><Check size={12}/></span> Designed for voice workflows, not just chat windows.</div>
+   </div><div className="hero-visual"><div className="visual-orbit orbit-a" aria-hidden="true"/><div className="visual-orbit orbit-b" aria-hidden="true"/><div className="visual-node node-top"><span><Radio size={15}/></span><div><strong>Voice input</strong><small>Incoming audio</small></div><span className="node-status"/></div><div className="visual-node node-bottom"><span><Workflow size={15}/></span><div><strong>Next step</strong><small>Call flow</small></div><span className="node-status"/></div><ProductPreview/><div className="floating-note note-left"><span className="floating-note-icon"><BrainCircuit size={15}/></span><div><strong>Context-aware</strong><small>Behavior + knowledge</small></div></div><div className="floating-note note-right"><span className="floating-note-icon violet"><Zap size={15}/></span><div><strong>Voice-first</strong><small>Built around live calls</small></div></div></div></div>
+   <div className="hero-bottom container-new"><span>THE YUVIZ APPROACH</span><span className="bottom-line"/><span>Configure · Connect · Improve</span></div>
+  </section>
+  <section className="intro-band"><div className="container-new intro-inner"><p>THE CONVERSATION IS THE INTERFACE</p><h2>More than a voice that answers.<br/><span>A system designed around what happens next.</span></h2><div className="intro-copy">Yuviz brings voice experiences, agent configuration, knowledge, and call handling into one platform concept—so teams can design conversations around real business needs.</div></div></section>
+  <section className="section-new" id="platform"><div className="container-new"><SectionHeading eyebrow="The platform" title={<>Everything starts with a <span>better conversation.</span></>} description="Shape how an agent speaks, what context it can use, and where a call should go—around the needs of your business."/><div className="capability-grid">{capabilities.map(item=>{const Icon=item.icon;return <article className="capability-card" key={item.number}><div className="capability-card-top"><span className="capability-icon"><Icon size={20}/></span><span className="capability-number">{item.number}</span></div><h3>{item.title}</h3><p>{item.description}</p><div className="capability-tags">{item.tags.map(tag=><span key={tag}>{tag}</span>)}</div><div className="capability-arrow"><ArrowRight size={17}/></div></article>})}</div></div></section>
+  <section className="section-new section-dark" id="how-it-works"><div className="container-new"><SectionHeading eyebrow="How it works" title={<>A clear path from <span>audio to action.</span></>} description="A voice experience depends on more than a model. The call path, media, conversation logic, and next step all have to work together."/><div className="flow-track">{steps.map((step,index)=>{const Icon=step.icon;return <article className="flow-step" key={step.number}><div className="flow-step-top"><span>{step.number}</span>{index<steps.length-1&&<div className="flow-connector"><i/></div>}</div><div className="flow-icon"><Icon size={21}/></div><h3>{step.title}</h3><p>{step.text}</p></article>})}</div><div className="architecture-note"><span className="architecture-note-icon"><Layers3 size={18}/></span><div><strong>Designed as a voice platform</strong><p>Yuviz’s prototype separates telephony/media handling from conversation orchestration. Specific tools and integrations depend on the configured implementation.</p></div><Link href="/contact" aria-label="Ask about the platform architecture"><ArrowRight size={18}/></Link></div></div></section>
+  <section className="section-new" id="use-cases"><div className="container-new"><SectionHeading eyebrow="Where voice can help" title={<>Start with the conversation<br/><span>your customers already have.</span></>} description="Choose a focused use case, define a good outcome, and shape the agent experience around it."/><div className="use-case-grid">{useCases.map(item=>{const Icon=item.icon;return <article className="use-case-card" key={item.title}><span className="use-case-icon"><Icon size={20}/></span><div><h3>{item.title}</h3><p>{item.text}</p></div><ArrowRight className="use-case-arrow" size={17}/></article>})}</div><p className="use-case-disclaimer">Examples of potential voice-agent workflows. Specific actions depend on the integrations and configuration available for your deployment.</p></div></section>
+  <section className="section-new section-architecture" id="architecture"><div className="container-new architecture-layout"><div className="architecture-copy"><span className="eyebrow-new"><span className="eyebrow-dot"/> Built for voice, from the ground up</span><h2>Real-time conversations need <span>real-time thinking.</span></h2><p>Voice systems bring together telephony, streamed audio, turn-taking, and response generation. Yuviz is being built with those pieces in mind—not as a text chatbot with a phone number attached.</p><ul className="architecture-list"><li><Check size={15}/> A dedicated call and media path</li><li><Check size={15}/> Conversation orchestration separated from call handling</li><li><Check size={15}/> Configurable agent and knowledge context</li></ul><Link href="/contact" className="text-link">Discuss your use case <ArrowRight size={16}/></Link></div>
+   <div className="architecture-visual"><div className="architecture-visual-header"><span>CONCEPTUAL SYSTEM VIEW</span><span className="architecture-live-dot"/> <span>Illustrative</span></div>{[{icon:PhoneCall,title:'Telephony',desc:'Call routing & session setup'},{icon:AudioLines,title:'Media gateway',desc:'Streaming audio path'},{icon:BrainCircuit,title:'Conversation engine',desc:'Turns, context & responses'},{icon:Workflow,title:'Configured next step',desc:'Response, routing or handoff'}].map((layer,index)=>{const Icon=layer.icon;return <div key={layer.title}><div className={'architecture-layer '+(index===1||index===2?'highlighted':'')}><span className="layer-icon"><Icon size={18}/></span><div><strong>{layer.title}</strong><small>{layer.desc}</small></div><span className="layer-index">0{index+1}</span></div>{index<3&&<div className="layer-link"><i/></div>}</div>})}<div className="architecture-footnote">High-level illustration. Exact components depend on the deployment.</div></div>
+  </div></section>
+  <section className="section-new section-proof"><div className="container-new proof-layout"><div><span className="eyebrow-new"><span className="eyebrow-dot"/> A more useful way to build</span><h2>Make the voice experience <span>yours.</span></h2><p>Start with the role and the conversation. Then tune the knowledge, behavior, and call flow to match the job you need done.</p></div><div className="proof-points"><div><span><Bot size={18}/></span><div><strong>Purpose-built agents</strong><p>Define a focused role and the behavior it should follow.</p></div></div><div><span><Database size={18}/></span><div><strong>Selected business context</strong><p>Choose the knowledge sources relevant to your agent.</p></div></div><div><span><ShieldCheck size={18}/></span><div><strong>Clear capability boundaries</strong><p>Keep the experience grounded in what is configured and available.</p></div></div></div></div></section>
+  <section className="final-cta"><div className="cta-glow" aria-hidden="true"/><div className="container-new final-cta-inner"><span className="eyebrow-new"><span className="eyebrow-dot"/> Let’s build a better conversation</span><h2>What could your<br/><span>voice experience do?</span></h2><p>Tell us about the calls you want to improve. We’ll help you explore an approach that fits your workflow and implementation needs.</p><Link href="/contact" className="button-primary button-large">Talk to our team <ArrowRight size={17}/></Link><div className="cta-email">Or email <a href="mailto:hello@yuviz.ai">hello@yuviz.ai</a></div></div></section>
+ </main>
 }

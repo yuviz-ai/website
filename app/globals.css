@@ -1006,3 +1006,34 @@ body.yuviz-light-theme .nav-pill-dock a>span,
 body.yuviz-light-theme .nav-pill-dock [class~="text-[#221A1E]"] { color: #30354D!important; }
 body.yuviz-light-theme .nav-pill-dock .btn-pill-primary { background: linear-gradient(105deg,#A996F5,#C0A5F5 62%,#F0A59A)!important; color: #211B3A!important; }
 body.yuviz-light-theme footer { background: #F8F7FC!important; color: #68718A!important; border-color: #E2E0EF!important; }
+
+
+/* Light theme direction: softer premium porcelain with a restrained lavender glow */
+body.yuviz-light-theme,
+body.yuviz-light-theme .story-site {
+  background: #F9F8FC;
+}
+body.yuviz-light-theme .story-hero {
+  background:
+    radial-gradient(ellipse 42% 48% at 78% 28%, rgba(206, 195, 255, .30), transparent 76%),
+    radial-gradient(ellipse 34% 38% at 13% 82%, rgba(255, 207, 194, .20), transparent 78%),
+    linear-gradient(135deg, #FEFDFF 0%, #F8F7FC 58%, #F7F5FB 100%);
+}
+body.yuviz-light-theme .story-challenge,
+body.yuviz-light-theme .story-use-cases,
+body.yuviz-light-theme .story-faq {
+  background: rgba(255,255,255,.78);
+}
+body.yuviz-light-theme .story-approach,
+body.yuviz-light-theme .story-principles {
+  background: linear-gradient(180deg, #F3F0FC 0%, #F9F8FC 100%);
+}
+body.yuviz-light-theme .story-flow {
+  background: linear-gradient(135deg, #F0F1FA 0%, #F5F3FB 100%);
+}
+body.yuviz-light-theme .story-final-cta {
+  background:
+    radial-gradient(ellipse at 18% 20%, rgba(199, 183, 255, .34), transparent 40%),
+    radial-gradient(ellipse at 86% 78%, rgba(255, 195, 180, .27), transparent 38%),
+    linear-gradient(125deg, #F1EDFC 0%, #FAF6F7 100%);
+}

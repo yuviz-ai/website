@@ -59,57 +59,19 @@ export function FooterGuide() {
 
 export function Footer() {
   return (
-    <footer className="container mx-auto px-4 py-16">
-      <FooterGuide />
-      
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pt-10 border-t border-[#E8DFD4]">
-        <div className="md:col-span-4">
-          <Logo />
-          <p className="mt-4 max-w-xs text-xs sm:text-sm leading-relaxed text-[#796F68]">
-            Voice AI experiences shaped around customer conversations, business context, and clear next steps.
-          </p>
-        </div>
-
-        <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
-          <div>
-            <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#221A1E] mb-3">Industries</p>
-            <div className="flex flex-col gap-2 text-xs sm:text-sm text-[#635952]">
-              <Link href="/use-cases/real-estate" className="hover:text-[#B85D3B] transition-colors">Real Estate</Link>
-              <Link href="/use-cases/banking" className="hover:text-[#B85D3B] transition-colors">Banking &amp; FinTech</Link>
-              <Link href="/use-cases/healthcare" className="hover:text-[#B85D3B] transition-colors">Healthcare</Link>
-              <Link href="/use-cases/e-commerce" className="hover:text-[#B85D3B] transition-colors">E-Commerce</Link>
-              <Link href="/use-cases/restaurants" className="hover:text-[#B85D3B] transition-colors">Restaurants</Link>
-              <Link href="/use-cases/government" className="hover:text-[#B85D3B] transition-colors">Government</Link>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#221A1E] mb-3">Platform</p>
-            <div className="flex flex-col gap-2 text-xs sm:text-sm text-[#635952]">
-              <Link href="/product/agent-builder" className="hover:text-[#B85D3B] transition-colors">Agent Builder</Link>
-              <Link href="/product/inbound-calls" className="hover:text-[#B85D3B] transition-colors">Inbound Routing</Link>
-              <Link href="/product/outbound-calls" className="hover:text-[#B85D3B] transition-colors">Outbound Campaigns</Link>
-              <Link href="/product/knowledge-base" className="hover:text-[#B85D3B] transition-colors">Knowledge RAG</Link>
-              <Link href="/product/call-analytics" className="hover:text-[#B85D3B] transition-colors">Analytics &amp; Logs</Link>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#221A1E] mb-3">Company</p>
-            <div className="flex flex-col gap-2 text-xs sm:text-sm text-[#635952]">
-              <Link href="/resources/faq" className="hover:text-[#B85D3B] transition-colors">FAQ</Link>
-              <Link href="/resources/blog" className="hover:text-[#B85D3B] transition-colors">Blog</Link>
-              <Link href="/resources/api-integration" className="hover:text-[#B85D3B] transition-colors">Integration planning</Link>
-              <Link href="/pricing" className="hover:text-[#B85D3B] transition-colors">Pricing</Link>
-              <Link href="/contact" className="hover:text-[#B85D3B] transition-colors">Contact Us</Link>
-            </div>
-          </div>
-        </div>
+    <footer className="story-watermark-footer" aria-label="Site footer">
+      <div className="story-watermark-brand" aria-hidden="true">
+        <span className="story-watermark-mark"><i /><i /></span>
+        <span>yuviz<span className="story-watermark-dot">.</span>ai</span>
       </div>
-
-      <div className="mt-12 pt-6 border-t border-[#E8DFD4] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#796F68]">
-        <span>&copy; {new Date().getFullYear()} Yuviz AI. All rights reserved.</span>
-        <span>Designed around the realities of voice conversations.</span>
+      <div className="story-watermark-rule" aria-hidden="true" />
+      <div className="story-watermark-content">
+        <p>© {new Date().getFullYear()} Inlamitato Private Limited (Yuviz AI). All rights reserved.</p>
+        <nav aria-label="Legal">
+          <Link href="/contact?topic=privacy">Privacy Policy</Link>
+          <Link href="/contact?topic=terms">Terms of Use</Link>
+          <Link href="/contact?topic=legal">Legal</Link>
+        </nav>
       </div>
     </footer>
   )

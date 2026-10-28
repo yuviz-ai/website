@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { ArrowRight, AudioLines, Building2, Mail, MessageSquareText, ShieldCheck } from 'lucide-react'
 
@@ -14,7 +14,7 @@ export default function ContactPage() {
     message: '',
   })
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const subject = `Yuviz.ai enquiry — ${formData.useCase}`
     const body = [

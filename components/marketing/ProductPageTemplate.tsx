@@ -1,3 +1,4 @@
+import type React from 'react'
 import Link from 'next/link'
 import { ArrowRight, ArrowUpRight, Sparkles, Zap } from 'lucide-react'
 

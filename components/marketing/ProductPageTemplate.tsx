@@ -41,7 +41,7 @@ export function ProductPageTemplate({
           <h1 className="mt-5 font-[Manrope] text-4xl sm:text-6xl font-extrabold tracking-[-0.055em] leading-[1.08] text-[#F3F4FC]">
             {title} {highlightTitle && <span className="gradient-text">{highlightTitle}</span>}
           </h1>
-          <p className="mt-5 text-base sm:text-lg leading-8 text-[#9CA6C2] max-w-2xl mx-auto">{subtitle}</p>
+          <p className="mt-5 text-base sm:text-lg leading-8 text-[#9CA6C2] max-w-2xl mx-auto">Potential direction: {subtitle}</p><p className="mt-3 text-xs leading-6 text-[#7783A2] max-w-xl mx-auto">This page explores a product area. Listed capabilities and provider support are discussion points, not a guarantee of current availability; requirements must be confirmed for each deployment.</p>
           <div className="flex flex-wrap justify-center gap-3 mt-7">
             <Link href="/contact" className="button-primary">Discuss your workflow <ArrowRight size={16} /></Link>
             <Link href="/#platform" className="button-secondary">Explore the platform <ArrowUpRight size={16} /></Link>

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, AudioLines, Building2, Cpu, PhoneCall, Workflow } from 'lucide-react'
+import { ArrowRight, AudioLines, Cpu, PhoneCall, Workflow } from 'lucide-react'
 
 const factors = [
   { icon: PhoneCall, title: 'Call volume and routing', text: 'Expected minutes, inbound or outbound direction, and how calls reach the voice experience.' },

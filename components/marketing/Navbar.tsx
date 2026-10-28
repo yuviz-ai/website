@@ -31,7 +31,9 @@ import {
   TrendingUp,
   UserPlus,
   ArrowRight,
-  PhoneCall
+  PhoneCall,
+  Sun,
+  Moon
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -197,8 +199,24 @@ export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null)
+  const [lightTheme, setLightTheme] = useState(false)
   const pathname = usePathname()
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem('yuviz-theme')
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
+    const shouldUseLight = savedTheme ? savedTheme === 'light' : prefersLight
+    setLightTheme(shouldUseLight)
+    document.body.classList.toggle('yuviz-light-theme', shouldUseLight)
+  }, [])
+
+  const toggleTheme = () => {
+    const nextLightTheme = !lightTheme
+    setLightTheme(nextLightTheme)
+    document.body.classList.toggle('yuviz-light-theme', nextLightTheme)
+    window.localStorage.setItem('yuviz-theme', nextLightTheme ? 'light' : 'dark')
+  }
 
   useEffect(() => {
     setActiveDropdown(null)
@@ -410,13 +428,12 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Fixed login action: keep it above the centered navigation dock */}
-          <div className="hidden lg:block fixed right-5 xl:right-8 top-3 md:top-5 z-[60] pointer-events-auto">
-            <Link
-              href="/contact"
-              aria-label="Login"
-              className="inline-flex min-h-10 items-center justify-center px-5 py-2 rounded-full text-sm font-semibold text-[#F0F2FC] bg-[#151B31] hover:bg-[#222A46] border border-[#B8A5FF]/40 shadow-lg shadow-black/20 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5B7FF]"
-            >
+          {/* Theme switch and login stay visible at the top right */}
+          <div className="hidden lg:flex fixed right-5 xl:right-8 top-3 md:top-5 z-[60] items-center gap-2 pointer-events-auto">
+            <button type="button" onClick={toggleTheme} aria-label={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} title={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} className="theme-toggle inline-flex min-h-10 w-10 items-center justify-center rounded-full border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5B7FF]">
+              {lightTheme ? <Moon size={17} /> : <Sun size={17} />}
+            </button>
+            <Link href="/contact" aria-label="Login" className="login-pill inline-flex min-h-10 items-center justify-center px-5 py-2 rounded-full text-sm font-semibold border shadow-lg transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5B7FF]">
               Login
             </Link>
           </div>
@@ -426,6 +443,9 @@ export function Navbar() {
             <Logo />
             
             <div className="flex items-center gap-2">
+              <button type="button" onClick={toggleTheme} aria-label={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} title={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} className="theme-toggle inline-flex h-9 w-9 items-center justify-center rounded-full border">
+                {lightTheme ? <Moon size={16} /> : <Sun size={16} />}
+              </button>
               <Link
                 href="/contact"
                 className="btn-pill-primary px-3 py-1 text-xs font-semibold"

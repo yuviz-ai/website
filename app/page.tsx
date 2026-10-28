@@ -124,10 +124,6 @@ export default function Page() {
             <article className="story-integration-node node-data"><span><strong>Cloud telephony</strong><span className="story-brand-logos"><BrandLogo name="Cloudonix" src="https://logo.clearbit.com/cloudonix.com"/><BrandLogo name="Vobiz" src="https://logo.clearbit.com/vobiz.com"/></span></span></article>
             <article className="story-integration-node node-messaging"><span><strong>Google Workspace</strong><span className="story-brand-logos"><BrandLogo name="Google Drive" slug="googledrive"/><BrandLogo name="Google Sheets" slug="googlesheets"/></span></span></article>
           </div>
-          <div className="story-integration-foot">
-            <span><Workflow size={16}/> Map the systems to the job</span>
-            <span>Context in · Next step out</span>
-          </div>
         </div>
       </section>
 

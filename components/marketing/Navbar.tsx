@@ -399,13 +399,13 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* In-pill CTA Button: Book a demo */}
+            {/* In-pill CTA Button: Talk to our team */}
             <div className="pl-1">
               <Link
                 href="/contact"
                 className="btn-pill-primary px-4 py-1.5 text-xs font-semibold whitespace-nowrap"
               >
-                Book a demo
+                Talk to our team
               </Link>
             </div>
           </div>
@@ -590,7 +590,7 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="btn-pill-primary w-full py-3 text-sm font-semibold justify-center"
                 >
-                  Book a demo
+                  Talk to our team
                 </Link>
                 <Link
                   href="/contact"

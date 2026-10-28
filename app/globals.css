@@ -1250,10 +1250,11 @@ body.yuviz-light-theme .nav-pill-dock .absolute.top-full a:hover p {
   place-items: center;
   width: 48px;
   height: 48px;
+  overflow: hidden;
   border-radius: 15px;
-  background: linear-gradient(135deg,#C8BBFF,#9D88F5 65%,#FFA995);
-  color: #18162D;
+  background: #fff;
 }
+.story-hub-mark img { display:block;width:100%;height:100%;object-fit:cover; }
 .story-integration-hub strong { color: #F6F5FF; font-size: 17px; font-weight: 800; letter-spacing: -.04em; }
 .story-integration-hub small { color: #A8B0CE; font-size: 10px; }
 .story-integration-node {
@@ -1370,6 +1371,8 @@ body.yuviz-light-theme .story-integration-foot span:first-child { color: #705BC1
   margin-top: 10px;
 }
 .story-brand-logo {
+.story-brand-fallback { display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:9px;font-weight:800;letter-spacing:-.02em;color:#6C5CCB; }
+.story-brand-fallback.is-visible { display:flex; }
   display: inline-flex;
   align-items: center;
   justify-content: center;

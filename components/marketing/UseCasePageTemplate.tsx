@@ -1,3 +1,4 @@
+import type React from 'react'
 import Link from 'next/link'
 import { ArrowRight, ArrowUpRight, Bot, MessageSquareText, Workflow } from 'lucide-react'
 

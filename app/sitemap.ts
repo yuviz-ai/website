@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/product/outbound-calls',
     '/resources/api-integration',
     '/resources/blog',
+    '/resources/blog/voice-ai-platform-guide',
     '/resources/documentation',
     '/resources/faq',
   ]

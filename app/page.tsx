@@ -2,7 +2,7 @@ import Link from 'next/link'
 import {
   ArrowDownRight, ArrowRight, AudioLines, Bot, Check, ChevronDown, CirclePlay,
   Headphones, MessageSquareText, Network, PhoneCall, Radio, ShieldCheck,
-  Sparkles, Workflow, Zap,
+  Sparkles, Workflow, Zap, Building2, CalendarDays, Database, MessagesSquare, BookOpen, LifeBuoy,
 } from 'lucide-react'
 
 const useCases = [
@@ -85,6 +85,38 @@ export default function Page() {
             <article className="story-pillar"><span className="story-pillar-icon"><AudioLines size={21}/></span><span className="story-pillar-step">01 / LISTEN</span><h3>Start with the caller</h3><p>Design the experience around what the customer says, the details that matter, and the intent behind the request.</p></article>
             <article className="story-pillar"><span className="story-pillar-icon violet"><Bot size={21}/></span><span className="story-pillar-step">02 / UNDERSTAND</span><h3>Use the right context</h3><p>Shape agent instructions and relevant knowledge around a bounded job, rather than relying on a generic answer.</p></article>
             <article className="story-pillar"><span className="story-pillar-icon coral"><Workflow size={21}/></span><span className="story-pillar-step">03 / MOVE FORWARD</span><h3>Define the next step</h3><p>Plan what the agent should do, what it should not do, and when a person needs to take over.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="integrations" className="story-section story-integrations">
+        <div className="story-container">
+          <div className="story-centered-heading story-integrations-heading">
+            <span className="story-kicker">BUILT AROUND YOUR WORKFLOW</span>
+            <h2>Voice AI belongs<br/><em>in your existing stack.</em></h2>
+            <p>Plan how customer conversations use business context—and where the outcome should go next.</p>
+          </div>
+          <div className="story-integration-stage">
+            <div className="story-integration-grid" aria-hidden="true"/>
+            <svg className="story-integration-lines" viewBox="0 0 900 430" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M450 215 L190 80 M450 215 L450 55 M450 215 L710 80 M450 215 L170 340 M450 215 L450 375 M450 215 L730 340"/>
+            </svg>
+            <div className="story-integration-hub">
+              <span className="story-hub-orbit"/>
+              <span className="story-hub-mark"><AudioLines size={29}/></span>
+              <strong>Yuviz</strong>
+              <small>Voice workflow</small>
+            </div>
+            <article className="story-integration-node node-crm"><span className="story-node-icon coral"><Building2 size={20}/></span><span><strong>CRM</strong><small>Customer records</small></span></article>
+            <article className="story-integration-node node-calendar"><span className="story-node-icon violet"><CalendarDays size={20}/></span><span><strong>Scheduling</strong><small>Appointments</small></span></article>
+            <article className="story-integration-node node-helpdesk"><span className="story-node-icon blue"><LifeBuoy size={20}/></span><span><strong>Support tools</strong><small>Tickets and handoff</small></span></article>
+            <article className="story-integration-node node-knowledge"><span className="story-node-icon green"><BookOpen size={20}/></span><span><strong>Knowledge</strong><small>Business information</small></span></article>
+            <article className="story-integration-node node-data"><span className="story-node-icon violet"><Database size={20}/></span><span><strong>Internal systems</strong><small>Context and records</small></span></article>
+            <article className="story-integration-node node-messaging"><span className="story-node-icon coral"><MessagesSquare size={20}/></span><span><strong>Messaging</strong><small>Follow-up channels</small></span></article>
+          </div>
+          <div className="story-integration-foot">
+            <span><Workflow size={16}/> Map the systems to the job</span>
+            <span>Context in · Next step out</span>
           </div>
         </div>
       </section>

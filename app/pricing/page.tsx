@@ -1,156 +1,51 @@
-'use client'
+import Link from 'next/link'
+import { ArrowRight, AudioLines, Building2, Cpu, PhoneCall, Workflow } from 'lucide-react'
 
-import React, { useState } from 'react'
-import { Check, ArrowRight, Sparkles, ShieldCheck, PhoneCall, Zap } from 'lucide-react'
-import { Button } from '@/components/marketing/Navbar'
-
-const pricingTiers = [
-  {
-    name: 'Starter',
-    badge: 'Self-Serve',
-    priceMonthly: '$49',
-    priceAnnual: '$39',
-    description: 'Perfect for small businesses looking to automate after-hours phone calls.',
-    features: [
-      '1 Dedicated Phone Number',
-      '500 Included Call Minutes / mo',
-      'Standard AI Neural Voices',
-      'Basic Knowledge Base RAG',
-      'Email & Community Support',
-      '$0.12/min overage rate'
-    ],
-    cta: 'Start Free Trial',
-    popular: false
-  },
-  {
-    name: 'Growth',
-    badge: 'Most Popular',
-    priceMonthly: '$199',
-    priceAnnual: '$159',
-    description: 'Ideal for scaling call centers, clinics, and service businesses.',
-    features: [
-      '5 Dedicated Phone Numbers',
-      '2,500 Included Call Minutes / mo',
-      'Sub-300ms Low-Latency Voices',
-      'Custom CRM Webhook Triggers',
-      'Warm Human Agent Handoff',
-      'Full Transcript & Sentiment Analytics',
-      '$0.09/min overage rate'
-    ],
-    cta: 'Get Started with Growth',
-    popular: true
-  },
-  {
-    name: 'Enterprise',
-    badge: 'Custom Architecture',
-    priceMonthly: 'Custom',
-    priceAnnual: 'Custom',
-    description: 'Single-tenant clusters, custom acoustic models, and dedicated SLAs.',
-    features: [
-      'Unlimited Phone Numbers & Channels',
-      'Custom Volume Volume Discounts',
-      'Dedicated Single-Tenant Cluster',
-      'SOC2 Type II, HIPAA & BAA',
-      'Custom Brand Voice Fine-Tuning',
-      'Dedicated 24/7 Voice Architect SLA'
-    ],
-    cta: 'Contact Sales',
-    popular: false
-  }
+const factors = [
+  { icon: PhoneCall, title: 'Call volume and routing', text: 'Expected minutes, inbound or outbound direction, and how calls reach the voice experience.' },
+  { icon: Cpu, title: 'AI services and voice choices', text: 'The speech, language-model, and voice services required for the intended workflow.' },
+  { icon: Workflow, title: 'Workflow and integrations', text: 'The tools, business systems, handoff rules, and call outcomes that need to be supported.' },
 ]
 
 export default function PricingPage() {
-  const [annual, setAnnual] = useState(true)
-
   return (
-    <div className="pt-28 md:pt-36 pb-16 bg-[#FAF7F2] min-h-screen">
-      <div className="container max-w-6xl mx-auto px-4 pt-4">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-soft border border-lime/30 text-lime text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles size={14} />
-            <span>Transparent Pricing</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
-            Predictable Voice AI Pricing
+    <main className="pricing-page">
+      <div className="container-new">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="eyebrow-new"><span className="eyebrow-dot" /> Pricing and scope</span>
+          <h1 className="mt-5 font-[Manrope] text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.055em] leading-[1.08] text-[#F3F4FC]">
+            Pricing should fit<br /><span className="gradient-text">the work you need done.</span>
           </h1>
-          <p className="text-muted text-base sm:text-lg mb-8">
-            Scale your automated telephony with zero hidden fees. Pay only for connected minute volume.
+          <p className="mt-5 text-sm sm:text-base leading-8 text-[#9CA6C2]">
+            Voice AI costs depend on the call path, AI services, usage, and workflow requirements. Rather than publish plan prices or service guarantees that may not fit your deployment, we’ll first understand what you need to build.
           </p>
+          <Link href="/contact" className="button-primary mt-7">Discuss your use case <ArrowRight size={16} /></Link>
+        </div>
 
-          {/* Billing Switch */}
-          <div className="flex items-center justify-center gap-3">
-            <span className={`text-sm font-medium ${!annual ? 'text-foreground font-bold' : 'text-muted'}`}>Monthly</span>
-            <button
-              onClick={() => setAnnual(!annual)}
-              className="w-14 h-8 rounded-full bg-panel border border-line p-1 relative transition-colors focus:outline-none"
-            >
-              <div
-                className={`w-6 h-6 rounded-full bg-lime transition-transform ${
-                  annual ? 'translate-x-6' : 'translate-x-0'
-                }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ${annual ? 'text-foreground font-bold' : 'text-muted'}`}>
-              Annual <span className="text-xs text-lime bg-lime-soft px-2 py-0.5 rounded-full font-bold">Save 20%</span>
-            </span>
+        <div className="pricing-grid">
+          {factors.map((factor) => {
+            const Icon = factor.icon
+            return <article className="pricing-factor" key={factor.title}>
+              <span className="capability-icon"><Icon size={20} /></span>
+              <strong>{factor.title}</strong>
+              <p>{factor.text}</p>
+            </article>
+          })}
+        </div>
+
+        <section className="contact-card max-w-4xl mx-auto mt-8 flex flex-col sm:flex-row sm:items-center gap-5">
+          <span className="brand-mark shrink-0"><AudioLines size={20} /></span>
+          <div className="flex-1">
+            <h2>Need an estimate for a real workflow?</h2>
+            <p className="!m-0">Share your expected call patterns, existing telephony, and required integrations. We can scope the conversation before discussing commercial terms.</p>
           </div>
-        </div>
+          <Link href="/contact" className="button-secondary shrink-0">Contact Yuviz <ArrowRight size={15} /></Link>
+        </section>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {pricingTiers.map((tier, idx) => (
-            <div
-              key={idx}
-              className={`rounded-3xl p-8 bg-card border transition-all flex flex-col justify-between relative shadow-sm hover:shadow-lg ${
-                tier.popular ? 'border-lime ring-2 ring-lime/20' : 'border-line'
-              }`}
-            >
-              {tier.popular && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-lime text-background text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                  {tier.badge}
-                </span>
-              )}
-
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-foreground">{tier.name}</h3>
-                  {!tier.popular && (
-                    <span className="text-xs text-muted font-mono">{tier.badge}</span>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <span className="text-4xl font-extrabold text-foreground">
-                    {annual ? tier.priceAnnual : tier.priceMonthly}
-                  </span>
-                  {tier.priceMonthly !== 'Custom' && (
-                    <span className="text-sm text-muted"> / month</span>
-                  )}
-                </div>
-
-                <p className="text-sm text-muted mb-6 leading-relaxed">{tier.description}</p>
-
-                <div className="space-y-3 mb-8 border-t border-line/60 pt-6">
-                  {tier.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-sm text-foreground">
-                      <Check size={16} className="text-lime flex-shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <Button
-                href="/contact"
-                variant={tier.popular ? 'lime' : 'quiet'}
-                className="w-full"
-              >
-                {tier.cta} <ArrowRight size={15} />
-              </Button>
-            </div>
-          ))}
-        </div>
+        <p className="max-w-3xl mx-auto mt-7 text-center text-xs leading-6 text-[#7F8AA8]">
+          This page does not represent a published price list or a commitment to specific third-party integrations, response times, certifications, or service-level agreements. Those details must be confirmed for each deployment.
+        </p>
       </div>
-    </div>
+    </main>
   )
 }

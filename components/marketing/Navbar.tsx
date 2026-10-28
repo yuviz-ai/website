@@ -410,11 +410,12 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Floating Login Pill on Top Right (Exact Orato Style) */}
-          <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-auto">
+          {/* Fixed login action: keep it above the centered navigation dock */}
+          <div className="hidden lg:block fixed right-5 xl:right-8 top-3 md:top-5 z-[60] pointer-events-auto">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-4 py-1.5 rounded-full text-xs font-medium text-[#221A1E] bg-white/85 hover:bg-white border border-[#E8DFD4] shadow-2xs hover:shadow-sm transition-all"
+              aria-label="Login"
+              className="inline-flex min-h-10 items-center justify-center px-5 py-2 rounded-full text-sm font-semibold text-[#F0F2FC] bg-[#151B31] hover:bg-[#222A46] border border-[#B8A5FF]/40 shadow-lg shadow-black/20 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5B7FF]"
             >
               Login
             </Link>

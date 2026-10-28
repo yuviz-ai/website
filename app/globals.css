@@ -630,4 +630,4 @@ body:has(.story-site) footer .text-[#B85D3B] { color:#C1B3FF!important; }
 body:has(.story-site) .nav-pill-dock a > span { color:#F0F2FC!important; }
 body:has(.story-site) .nav-pill-dock .btn-pill-primary { background:linear-gradient(110deg,#C5B7FF,#A995FF 60%,#FFAA94)!important;color:#111426!important;border-color:transparent!important; }
 body:has(.story-site) .nav-pill-dock .btn-pill-secondary { background:rgba(255,255,255,.035)!important;color:#DCE2F4!important;border-color:rgba(174,187,224,.2)!important; }
-body:has(.story-site) .nav-pill-dock .text-[#221A1E] { color:#F0F2FC!important; }
+body:has(.story-site) .nav-pill-dock [class~="text-[#221A1E]"] { color:#F0F2FC!important; }

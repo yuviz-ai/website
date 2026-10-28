@@ -8,6 +8,7 @@ const navItems = [
   { label: 'Platform', href: '/#platform' },
   { label: 'How it works', href: '/#how-it-works' },
   { label: 'Use cases', href: '/#use-cases' },
+  { label: 'Architecture', href: '/#architecture' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'FAQ', href: '/resources/faq' },
 ]
@@ -72,6 +73,9 @@ export function RedesignFooter() {
           <Link href="/#platform">Platform</Link>
           <Link href="/#how-it-works">How it works</Link>
           <Link href="/#use-cases">Use cases</Link>
+          <Link href="/pricing">Pricing</Link>
+          <Link href="/resources/faq">FAQs</Link>
+          <Link href="/resources/blog">Insights</Link>
         </div>
         <div className="footer-links">
           <span className="footer-label">Connect</span>

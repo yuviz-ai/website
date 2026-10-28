@@ -577,3 +577,43 @@ body:has(.story-site) footer .text-[#B85D3B] { color:#C1B3FF!important; }
  .story-pricing-grid { grid-template-columns:1fr;padding-bottom:25px; }.story-pricing-card { padding:22px; }
  .story-pricing-bottom>div { align-items:flex-start;flex-direction:column;padding:22px; }.story-pricing-bottom>div>.story-button { width:100%; }
 }
+
+.story-use-index-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:13px;padding-bottom:28px; }
+.story-use-index-card { display:block;min-height:225px;padding:23px;border:1px solid rgba(174,187,224,.15);border-radius:16px;background:linear-gradient(150deg,rgba(18,27,47,.88),rgba(12,18,34,.92));transition:transform .2s,border-color .2s; }
+.story-use-index-card:hover { transform:translateY(-3px);border-color:rgba(184,165,255,.45); }
+.story-use-index-card h2 { margin:20px 0 8px;color:#EEF0FC;font-size:14px;font-weight:800; }
+.story-use-index-card p { margin:0;color:#97A2BE;font-size:11px;line-height:1.85; }
+.story-use-index-card .story-text-link { margin-top:20px;font-size:10px; }
+.story-use-index-note { display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:65px; }
+.story-use-index-note p { max-width:680px;margin:0;color:#7884A2;font-size:10px;line-height:1.8; }
+.story-breadcrumb { display:flex;align-items:center;gap:9px;margin-bottom:28px;color:#7F8BA9;font-size:10px; }
+.story-breadcrumb a:hover { color:#C8BBFF; }
+.story-case-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:65px; }
+.story-case-card { padding:25px;border:1px solid rgba(174,187,224,.15);border-radius:16px;background:linear-gradient(150deg,rgba(18,27,47,.88),rgba(12,18,34,.92)); }
+.story-case-card .story-pillar-icon { margin-top:22px; }
+.story-case-card h2 { margin:20px 0 8px;color:#EDF0FC;font-size:15px;font-weight:800; }
+.story-case-card p { margin:0;color:#98A3BF;font-size:11px;line-height:1.9; }
+.story-case-dialogue { display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;padding-bottom:75px; }
+.story-case-dialogue h2 { margin:18px 0 13px;color:#F0F2FC;font-size:clamp(32px,4vw,47px);font-weight:800;line-height:1.12;letter-spacing:-.055em; }
+.story-case-dialogue h2 em { color:#B8A5FF;font-style:normal; }
+.story-case-dialogue>div:first-child>p { max-width:430px;color:#9CA7C2;font-size:12px;line-height:1.9; }
+.story-dialogue-card { display:grid;gap:11px;padding:20px;border:1px solid rgba(174,187,224,.16);border-radius:18px;background:linear-gradient(150deg,rgba(18,27,47,.94),rgba(12,18,34,.98)); }
+.story-dialogue-line { padding:14px;border:1px solid rgba(174,187,224,.12);border-radius:12px;background:rgba(255,255,255,.02); }
+.story-dialogue-line.agent { background:rgba(143,119,239,.07);border-color:rgba(184,165,255,.18); }
+.story-dialogue-line.system { border-style:dashed; }
+.story-dialogue-line small { color:#B8A5FF;font-size:8px;letter-spacing:.12em;font-weight:800; }
+.story-dialogue-line p { margin:7px 0 0;color:#D5DCEF;font-size:11px;line-height:1.8; }
+.story-case-bottom { padding-bottom:70px; }
+.story-case-bottom>div { display:flex;align-items:center;gap:17px;padding:23px;border:1px solid rgba(184,165,255,.17);border-radius:16px;background:rgba(129,103,226,.055); }
+.story-case-bottom>div>div { flex:1; }
+.story-case-bottom h2 { margin:0 0 8px;color:#EDF0FC;font-size:16px;font-weight:800; }
+.story-case-bottom p { margin:0;color:#9CA7C2;font-size:11px;line-height:1.85; }
+.story-case-bottom .story-subpage-disclaimer { margin:18px auto; }
+@media(max-width:1000px) { .story-use-index-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:700px) {
+ .story-use-index-grid,.story-case-grid { grid-template-columns:1fr;gap:10px; }
+ .story-use-index-card { min-height:0;padding:21px; }
+ .story-use-index-note { align-items:flex-start;flex-direction:column;padding-bottom:45px; }
+ .story-case-dialogue { grid-template-columns:1fr;gap:22px;padding-bottom:50px; }
+ .story-case-card { padding:22px; }.story-case-bottom>div { align-items:flex-start;flex-direction:column;padding:21px; }.story-case-bottom>div>.story-button { width:100%; }
+}

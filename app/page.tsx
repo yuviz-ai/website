@@ -155,10 +155,10 @@ export default function Page() {
         <div className="story-container story-principles-layout">
           <div><span className="story-kicker">DESIGNED FOR REAL CALLS</span><h2>Fluent is good.<br/><em>Reliable is better.</em></h2><p className="story-principles-lede">A good voice experience needs a plan for the moments when speech is unclear, the request changes, a tool is unavailable, or a human should step in.</p><Link href="/contact" className="story-button story-button-primary">Discuss your call flow <ArrowRight size={16}/></Link></div>
           <div className="story-principle-list">
-            <article><span><Check size={16}/></span><div><h3>Defined boundaries</h3></div></article>
-            <article><span><Check size={16}/></span><div><h3>Human handoff as a path</h3></div></article>
-            <article><span><Check size={16}/></span><div><h3>Measure the whole outcome</h3></div></article>
-            <article><span><Check size={16}/></span><div><h3>Validate before expanding</h3></div></article>
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Defined boundaries</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Make clear what the agent can handle, what it must avoid, and when it should ask for help.</p></details>
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Human handoff as a path</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Plan how a caller reaches a person when the request needs judgement, support, or an exception.</p></details>
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Measure the whole outcome</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Evaluate whether the caller’s need was resolved, not just whether the agent responded quickly.</p></details>
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Validate before expanding</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Test real call variations and edge cases in one workflow before extending to more use cases.</p></details>
           </div>
         </div>
       </section>

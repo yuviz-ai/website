@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Building2, CalendarCheck, Headphones, Home, Landmark, MessageSquareText, ShoppingBag, Utensils, Users } from 'lucide-react'
+import { ArrowRight, Building2, Headphones, Home, Landmark, MessageSquareText, ShoppingBag, Utensils, Users } from 'lucide-react'
 
 const useCases = [
   { slug: 'real-estate', title: 'Real estate', description: 'Respond to property enquiries, gather buyer or renter requirements, and outline a next step.', icon: Home },
@@ -10,7 +10,6 @@ const useCases = [
   { slug: 'government', title: 'Public information', description: 'Explore structured answers for common service questions and routes to a human representative.', icon: Building2 },
   { slug: 'sales', title: 'Sales qualification', description: 'Ask consistent discovery questions and capture caller intent for a follow-up.', icon: MessageSquareText },
   { slug: 'hr-hiring', title: 'Recruiting and HR', description: 'Explore initial candidate enquiries, role information, and interview-process coordination.', icon: Users },
-  { slug: 'page', title: 'Appointments', description: 'Design conversations that gather the information needed to move a scheduling request forward.', icon: CalendarCheck },
 ]
 
 export default function UseCasesIndexPage() {
@@ -23,7 +22,7 @@ export default function UseCasesIndexPage() {
       </section>
       <section className="container-new pb-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {useCases.filter(item => item.slug !== 'page').map((item) => {
+          {useCases.map((item) => {
             const Icon = item.icon
             return <Link key={item.slug} href={`/use-cases/${item.slug}`} className="capability-card !min-h-0 group">
               <div className="capability-card-top"><span className="capability-icon"><Icon size={20}/></span><span className="capability-number">USE CASE</span></div>

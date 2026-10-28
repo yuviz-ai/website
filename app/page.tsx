@@ -94,7 +94,7 @@ export default function Page() {
           <div className="story-centered-heading story-integrations-heading">
             <span className="story-kicker">BUILT AROUND YOUR WORKFLOW</span>
             <h2>Voice AI belongs<br/><em>in your existing stack.</em></h2>
-            <p>Plan how customer conversations use business context—and where the outcome should go next.</p>
+            <p>Connect telephony, customer records, scheduling, messaging, and workspace tools around your conversation workflows.</p>
           </div>
           <div className="story-integration-stage">
             <div className="story-integration-grid" aria-hidden="true"/>
@@ -107,12 +107,12 @@ export default function Page() {
               <strong>Yuviz</strong>
               <small>Voice workflow</small>
             </div>
-            <article className="story-integration-node node-crm"><span className="story-node-icon coral"><Building2 size={20}/></span><span><strong>CRM</strong><small>Customer records</small></span></article>
-            <article className="story-integration-node node-calendar"><span className="story-node-icon violet"><CalendarDays size={20}/></span><span><strong>Scheduling</strong><small>Appointments</small></span></article>
-            <article className="story-integration-node node-helpdesk"><span className="story-node-icon blue"><LifeBuoy size={20}/></span><span><strong>Support tools</strong><small>Tickets and handoff</small></span></article>
-            <article className="story-integration-node node-knowledge"><span className="story-node-icon green"><BookOpen size={20}/></span><span><strong>Knowledge</strong><small>Business information</small></span></article>
-            <article className="story-integration-node node-data"><span className="story-node-icon violet"><Database size={20}/></span><span><strong>Internal systems</strong><small>Context and records</small></span></article>
-            <article className="story-integration-node node-messaging"><span className="story-node-icon coral"><MessagesSquare size={20}/></span><span><strong>Messaging</strong><small>Follow-up channels</small></span></article>
+            <article className="story-integration-node node-crm"><span className="story-node-icon coral"><Building2 size={20}/></span><span><strong>CRM</strong><small>Salesforce · HubSpot · Zoho CRM</small></span></article>
+            <article className="story-integration-node node-calendar"><span className="story-node-icon violet"><CalendarDays size={20}/></span><span><strong>Scheduling</strong><small>Google Calendar · Cal.com</small></span></article>
+            <article className="story-integration-node node-helpdesk"><span className="story-node-icon blue"><Radio size={20}/></span><span><strong>Telephony</strong><small>Twilio · Plivo · Vonage</small></span></article>
+            <article className="story-integration-node node-knowledge"><span className="story-node-icon green"><MessagesSquare size={20}/></span><span><strong>Messaging</strong><small>WhatsApp</small></span></article>
+            <article className="story-integration-node node-data"><span className="story-node-icon violet"><Database size={20}/></span><span><strong>Cloud telephony</strong><small>Cloudonix · Vobiz</small></span></article>
+            <article className="story-integration-node node-messaging"><span className="story-node-icon coral"><BookOpen size={20}/></span><span><strong>Google Workspace</strong><small>Google Drive · Google Sheets</small></span></article>
           </div>
           <div className="story-integration-foot">
             <span><Workflow size={16}/> Map the systems to the job</span>

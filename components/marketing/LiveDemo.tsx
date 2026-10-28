@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
-import { YuvizLogoIcon } from './Navbar'
 
 // Dedicated Interactive Voice Playground is featured in HeroTeaser.
 // The duplicate footer voice demo box has been removed per specification.
@@ -59,20 +58,13 @@ export function FooterGuide() {
 
 export function Footer() {
   return (
-    <footer className="story-watermark-footer" aria-label="Site footer">
-      <div className="story-watermark-brand" aria-hidden="true">
-        <YuvizLogoIcon className="story-watermark-mark" />
-        <span>yuviz<span className="story-watermark-dot">.</span>ai</span>
-      </div>
-      <div className="story-watermark-rule" aria-hidden="true" />
-      <div className="story-watermark-content">
-        <p>© {new Date().getFullYear()} Yovanex LLP (Yuviz AI). All rights reserved.</p>
-        <nav aria-label="Legal">
-          <Link href="/contact?topic=privacy">Privacy Policy</Link>
-          <Link href="/contact?topic=terms">Terms of Use</Link>
-          <Link href="/contact?topic=legal">Legal</Link>
-        </nav>
-      </div>
+    <footer className="border-t border-white/10 bg-[#090D19] px-6 py-8 text-center text-sm text-slate-400" aria-label="Site footer">
+      <p className="m-0">© {new Date().getFullYear()} Yovanex LLP (Yuviz AI). All rights reserved.</p>
+      <nav className="mt-4 flex flex-wrap items-center justify-center gap-x-7 gap-y-3" aria-label="Legal">
+        <Link className="transition-colors hover:text-white" href="/contact?topic=privacy">Privacy Policy</Link>
+        <Link className="transition-colors hover:text-white" href="/contact?topic=terms">Terms of Use</Link>
+        <Link className="transition-colors hover:text-white" href="/contact?topic=legal">Legal</Link>
+      </nav>
     </footer>
   )
 }

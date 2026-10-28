@@ -1,106 +1,21 @@
-import React from 'react'
-import { Metadata } from 'next'
-import { Code2, ArrowRight, CheckCircle2, Webhook, Zap, Database, ExternalLink } from 'lucide-react'
-import { Button } from '@/components/marketing/Navbar'
+import Link from 'next/link'
+import type { Metadata } from 'next'
+import { ArrowRight, Database, Network, Workflow } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'API Integration & Connectors — Yuviz AI',
-  description: 'Connect Yuviz AI voice agents with Twilio, Salesforce, HubSpot, Stripe, Zapier, and custom Webhooks.',
+  title: 'Integrations and Connectivity | Yuviz.ai',
+  description: 'Discuss telephony, business systems, and AI service integration requirements for Yuviz voice workflows.',
 }
 
-const integrations = [
-  {
-    name: 'Twilio Telephony',
-    category: 'SIP & Carrier',
-    desc: 'Connect your existing Twilio SIP trunks and phone numbers directly to Yuviz Voice Gateway.',
-    badge: 'Native SIP'
-  },
-  {
-    name: 'Salesforce CRM',
-    category: 'CRM & ERP',
-    desc: 'Automatically log call transcripts, sentiment scores, and follow-up tasks into Salesforce leads.',
-    badge: '2-Way Sync'
-  },
-  {
-    name: 'HubSpot CRM',
-    category: 'CRM & Marketing',
-    desc: 'Trigger outbound AI voice follow-ups whenever a contact status changes in your HubSpot pipelines.',
-    badge: 'Automated Triggers'
-  },
-  {
-    name: 'Stripe Payments',
-    category: 'Billing & Commerce',
-    desc: 'Allow AI voice agents to securely process credit card payments over phone using PCI-DSS IVR.',
-    badge: 'PCI Compliant'
-  },
-  {
-    name: 'Google Calendar & Outlook',
-    category: 'Scheduling',
-    desc: 'Real-time calendar slot checking and event dispatching directly during live phone conversations.',
-    badge: 'Realtime Sync'
-  },
-  {
-    name: 'Zapier & Make',
-    category: 'No-Code Automation',
-    desc: 'Connect Yuviz voice events to 5,000+ web applications without writing code.',
-    badge: 'No-Code'
-  },
+const areas = [
+  { title: 'Telephony and carriers', description: 'Existing phone numbers, SIP trunks, call routing, and the media path that connects a caller to the agent.', icon: Network },
+  { title: 'Business systems', description: 'CRM, ticketing, calendar, and internal APIs that may need to inform or receive the result of a conversation.', icon: Database },
+  { title: 'AI services and tools', description: 'Speech recognition, language models, voice synthesis, and any tools the agent needs to complete a defined task.', icon: Workflow },
 ]
-
 export default function ApiIntegrationPage() {
-  return (
-    <div className="py-12 bg-background min-h-screen">
-      <div className="container max-w-5xl mx-auto pt-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-soft border border-lime/30 text-lime text-xs font-semibold uppercase tracking-wider mb-4">
-            <Zap size={14} />
-            <span>Ecosystem & Integrations</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
-            API Integration & Connectors
-          </h1>
-          <p className="text-muted text-base sm:text-lg">
-            Connect Yuviz to your CRM, telephony provider, scheduling tools, and payment gateways in minutes.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {integrations.map((item, idx) => (
-            <div key={idx} className="p-6 rounded-2xl bg-card border border-line hover:border-lime/50 transition-all shadow-sm flex flex-col justify-between group">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono text-muted">{item.category}</span>
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-lime-soft text-lime border border-lime/30">
-                    {item.badge}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-foreground group-hover:text-lime-600 dark:group-hover:text-lime transition-colors mb-2">
-                  {item.name}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed mb-4">
-                  {item.desc}
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-line/60 text-xs font-medium text-lime flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                Configure Connector <ArrowRight size={13} />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="p-8 sm:p-12 rounded-3xl bg-card border border-line flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-2">Need a custom enterprise integration?</h3>
-            <p className="text-muted text-sm max-w-xl">
-              Our integration engineers can build custom REST/gRPC wrappers for your internal database or legacy PBX setup.
-            </p>
-          </div>
-          <Button href="/contact" className="whitespace-nowrap">
-            Request Custom Integration <ArrowRight size={15} />
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
+  return <main className="pricing-page"><div className="container-new">
+    <div className="max-w-3xl mx-auto text-center mb-12"><span className="eyebrow-new"><span className="eyebrow-dot"/> Connectivity and integration planning</span><h1 className="mt-5 font-[Manrope] text-4xl sm:text-6xl font-extrabold tracking-[-0.055em] text-[#F3F4FC]">Connect the call<br/><span className="gradient-text">to the work around it.</span></h1><p className="mt-5 text-sm sm:text-base leading-8 text-[#9CA6C2]">Integration needs vary by deployment. This page describes the areas to plan for; it is not a list of pre-built connectors or a guarantee that a named provider is already integrated.</p></div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">{areas.map(area => {const Icon=area.icon; return <article key={area.title} className="capability-card !min-h-0"><div className="capability-icon"><Icon size={20}/></div><h3>{area.title}</h3><p>{area.description}</p></article>})}</div>
+    <div className="contact-card max-w-4xl mx-auto mt-8 flex flex-col sm:flex-row sm:items-center gap-5"><div className="flex-1"><h2>Have a specific provider or system in mind?</h2><p className="!m-0">Share the name, the data that needs to move, and the action the agent should take. We’ll confirm what is supported and what needs additional engineering.</p></div><Link href="/contact" className="button-primary shrink-0">Discuss integration <ArrowRight size={16}/></Link></div>
+  </div></main>
 }

@@ -617,3 +617,17 @@ body:has(.story-site) footer .text-[#B85D3B] { color:#C1B3FF!important; }
  .story-case-dialogue { grid-template-columns:1fr;gap:22px;padding-bottom:50px; }
  .story-case-card { padding:22px; }.story-case-bottom>div { align-items:flex-start;flex-direction:column;padding:21px; }.story-case-bottom>div>.story-button { width:100%; }
 }
+
+.story-faq-page-list { max-width:900px;padding-bottom:38px; }
+.story-faq-page-list details { border-top:1px solid rgba(174,187,224,.15); }
+.story-faq-page-list details:last-child { border-bottom:1px solid rgba(174,187,224,.15); }
+.story-faq-page-list summary { display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 0;color:#E9ECF9;font-size:13px;font-weight:800;cursor:pointer;list-style:none; }
+.story-faq-page-list summary::-webkit-details-marker { display:none; }
+.story-faq-page-list summary svg { color:#B8A5FF;flex:0 0 auto;transition:transform .2s; }
+.story-faq-page-list details[open] summary svg { transform:rotate(180deg); }
+.story-faq-page-list details p { max-width:790px;margin:-3px 35px 22px 0;color:#9CA7C2;font-size:12px;line-height:1.95; }
+.story-faq-page-list summary:focus-visible { outline:2px solid #C5B7FF;outline-offset:4px;border-radius:4px; }
+body:has(.story-site) .nav-pill-dock a > span { color:#F0F2FC!important; }
+body:has(.story-site) .nav-pill-dock .btn-pill-primary { background:linear-gradient(110deg,#C5B7FF,#A995FF 60%,#FFAA94)!important;color:#111426!important;border-color:transparent!important; }
+body:has(.story-site) .nav-pill-dock .btn-pill-secondary { background:rgba(255,255,255,.035)!important;color:#DCE2F4!important;border-color:rgba(174,187,224,.2)!important; }
+body:has(.story-site) .nav-pill-dock .text-[#221A1E] { color:#F0F2FC!important; }

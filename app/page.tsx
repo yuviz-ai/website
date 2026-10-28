@@ -8,8 +8,10 @@ import {
 
 function BrandLogo({ name, slug, src }: { name: string; slug?: string; src?: string }) {
   const logoSrc = src ?? `https://cdn.simpleicons.org/${slug}`
+  const initials = name.split(/\\s+/).map(part => part[0]).join('').slice(0, 2).toUpperCase()
   return <span className="story-brand-logo" title={name} aria-label={name}>
-    <img src={logoSrc} alt={name} loading="lazy" />
+    <img src={logoSrc} alt={name} loading="lazy" onError={event => { event.currentTarget.style.display = 'none'; event.currentTarget.nextElementSibling?.classList.add('is-visible') }} />
+    <span className="story-brand-fallback" aria-hidden="true">{initials}</span>
   </span>
 }
 
@@ -111,7 +113,7 @@ export default function Page() {
             </svg>
             <div className="story-integration-hub">
               <span className="story-hub-orbit"/>
-              <span className="story-hub-mark"><AudioLines size={29}/></span>
+              <span className="story-hub-mark"><img src="/icon.svg" alt="Yuviz logo" /></span>
               <strong>Yuviz</strong>
               <small>Voice workflow</small>
             </div>

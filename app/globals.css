@@ -1347,3 +1347,11 @@ body.yuviz-light-theme .story-integration-foot span:first-child { color: #705BC1
   .story-integration-stage { grid-template-columns: 1fr; }
   .story-integration-hub { grid-column: auto; }
 }
+
+
+/* Provider lists in integration nodes need room to wrap cleanly */
+.story-integration-node > span:last-child { min-width: 0; }
+.story-integration-node small { line-height: 1.5; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .story-integration-node small { font-size: 8px; line-height: 1.45; }
+}

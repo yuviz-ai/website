@@ -1,95 +1,19 @@
-'use client'
-
-import React, { useState } from 'react'
-import { HelpCircle, ChevronDown, Sparkles, MessageSquare, ArrowRight } from 'lucide-react'
-import { Button } from '@/components/marketing/Navbar'
+import Link from 'next/link'
+import { ArrowRight, HelpCircle } from 'lucide-react'
 
 const faqs = [
-  {
-    q: 'How fast do Yuviz AI voice agents respond on phone calls?',
-    a: 'Yuviz achieves sub-300ms roundtrip audio latency. By streaming speech-to-text, neural LLM inference, and text-to-speech audio frames concurrently over WebRTC/SIP, response times sound completely human without awkward pauses.'
-  },
-  {
-    q: 'Can Yuviz transfer calls to a live human agent when needed?',
-    a: 'Yes. Yuviz supports warm human transfers via SIP REFER or WebRTC bridging. When a caller asks for a supervisor or complex handling is required, the agent transfers the call along with a live transcript summary so the human representative has full context.'
-  },
-  {
-    q: 'How does Yuviz ensure agents do not make up fake information (hallucinate)?',
-    a: 'Yuviz uses a grounded Retrieval-Augmented Generation (RAG) knowledge engine. Agents only speak verified facts ingested from your uploaded manuals, databases, and APIs. If an answer is unavailable, the agent politely admits it or routes the call.'
-  },
-  {
-    q: 'Is Yuviz compliant with HIPAA, SOC2 Type II, and PCI-DSS?',
-    a: 'Yes. Enterprise plans feature encrypted SIP/TLS streams, zero-retention storage options, HIPAA business associate agreements (BAAs), and SOC2 Type II security certifications.'
-  },
-  {
-    q: 'Can I port my existing business phone numbers to Yuviz?',
-    a: 'Absolutely. You can port your existing local or toll-free DID numbers from Twilio, Bandwidth, RingCentral, or traditional carriers into Yuviz, or connect via SIP Trunking.'
-  },
-  {
-    q: 'What voices and speaking styles are supported?',
-    a: 'Yuviz provides lifelike, natural conversational voices with customizable speaking rate, cadence, pitch, empathy levels, and sub-300ms turnaround.'
-  }
+  { q: 'What is Yuviz.ai?', a: 'Yuviz is building a voice AI platform focused on agent configuration, call and media handling, business context, and the flow of a customer conversation.' },
+  { q: 'Are the website product screens live dashboards?', a: 'No. The workspace shown on the homepage is an illustrative design concept. It is not a live dashboard, customer recording, or proof of a production deployment.' },
+  { q: 'Can Yuviz work with our telephony setup?', a: 'The right approach depends on your current numbers, SIP or carrier setup, routing, and deployment constraints. Share those details so we can assess the fit.' },
+  { q: 'Does Yuviz offer CRM and calendar integrations?', a: 'Integration availability depends on the target system and the current implementation. We do not present every connector as available by default; we confirm requirements individually.' },
+  { q: 'What AI models and voice providers are supported?', a: 'Provider support depends on the current configured implementation. Tell us which speech, language-model, or voice services you need and we can confirm the current status.' },
+  { q: 'Is Yuviz certified for HIPAA, SOC 2, or PCI DSS?', a: 'We do not make a certification or compliance claim on this page. If your use case has regulatory or data-handling requirements, discuss them with us before relying on the platform for that workload.' },
+  { q: 'How is pricing determined?', a: 'Pricing depends on call volume, telephony, AI services, deployment, and workflow requirements. Contact us to scope your use case.' },
 ]
-
 export default function FaqPage() {
-  const [openIdx, setOpenIdx] = useState<number | null>(0)
-
-  return (
-    <div className="py-12 bg-background min-h-screen">
-      <div className="container max-w-4xl mx-auto pt-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-soft border border-lime/30 text-lime text-xs font-semibold uppercase tracking-wider mb-4">
-            <HelpCircle size={14} />
-            <span>Help Center & FAQ</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-muted text-base sm:text-lg">
-            Everything you need to know about Yuviz AI voice agents, deployment, security, and pricing.
-          </p>
-        </div>
-
-        <div className="space-y-4 mb-16">
-          {faqs.map((faq, idx) => {
-            const isOpen = openIdx === idx
-            return (
-              <div
-                key={idx}
-                className="border border-line rounded-2xl bg-card overflow-hidden transition-all shadow-sm"
-              >
-                <button
-                  onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-semibold text-base sm:text-lg text-foreground hover:text-lime transition-colors"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    size={20}
-                    className={`text-lime transition-transform duration-200 flex-shrink-0 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-0 text-sm text-muted leading-relaxed border-t border-line/40 mt-2">
-                    <p className="pt-4">{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            )
-          })}
-        </div>
-
-        <div className="p-8 rounded-3xl bg-card border border-line text-center">
-          <h3 className="text-xl font-bold mb-2">Have a question not listed here?</h3>
-          <p className="text-muted text-sm max-w-md mx-auto mb-6">
-            Our telephony architects and voice AI engineers are ready to assist you.
-          </p>
-          <Button href="/contact">
-            Talk to Yuviz Team <ArrowRight size={15} />
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
+  return <main className="pricing-page"><div className="container-new">
+    <div className="max-w-3xl mx-auto text-center mb-10"><span className="eyebrow-new"><span className="eyebrow-dot"/><HelpCircle size={14}/> Help and FAQs</span><h1 className="mt-5 font-[Manrope] text-4xl sm:text-5xl font-extrabold tracking-[-0.05em] text-[#F3F4FC]">Straight answers.<br/><span className="gradient-text">Clear boundaries.</span></h1><p className="mt-5 text-sm sm:text-base leading-8 text-[#9CA6C2]">What to know about the platform, the current website preview, integrations, and implementation scope.</p></div>
+    <div className="faq-list max-w-4xl mx-auto">{faqs.map(faq => <details className="faq-item" key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</div>
+    <div className="contact-card max-w-4xl mx-auto mt-9 flex flex-col sm:flex-row sm:items-center gap-5"><div className="flex-1"><h2>Still have a question?</h2><p className="!m-0">Share the requirements that matter to your team.</p></div><Link href="/contact" className="button-primary shrink-0">Talk to our team <ArrowRight size={16}/></Link></div>
+  </div></main>
 }

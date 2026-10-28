@@ -5,6 +5,14 @@ import {
   Sparkles, Workflow, Zap, Building2, CalendarDays, Database, MessagesSquare, BookOpen, LifeBuoy,
 } from 'lucide-react'
 
+
+function BrandLogo({ name, slug, src }: { name: string; slug?: string; src?: string }) {
+  const logoSrc = src ?? `https://cdn.simpleicons.org/${slug}`
+  return <span className="story-brand-logo" title={name} aria-label={name}>
+    <img src={logoSrc} alt={name} loading="lazy" />
+  </span>
+}
+
 const useCases = [
   { icon: Headphones, title: 'Customer enquiries', text: 'Give callers a clear first response for repeat questions and common requests.' },
   { icon: CalendarCheckIcon, title: 'Appointment conversations', text: 'Gather the details needed to move a booking or scheduling enquiry forward.' },
@@ -107,12 +115,12 @@ export default function Page() {
               <strong>Yuviz</strong>
               <small>Voice workflow</small>
             </div>
-            <article className="story-integration-node node-crm"><span className="story-node-icon coral"><Building2 size={20}/></span><span><strong>CRM</strong><small>Salesforce · HubSpot · Zoho CRM</small></span></article>
-            <article className="story-integration-node node-calendar"><span className="story-node-icon violet"><CalendarDays size={20}/></span><span><strong>Scheduling</strong><small>Google Calendar · Cal.com</small></span></article>
-            <article className="story-integration-node node-helpdesk"><span className="story-node-icon blue"><Radio size={20}/></span><span><strong>Telephony</strong><small>Twilio · Plivo · Vonage</small></span></article>
-            <article className="story-integration-node node-knowledge"><span className="story-node-icon green"><MessagesSquare size={20}/></span><span><strong>Messaging</strong><small>WhatsApp</small></span></article>
-            <article className="story-integration-node node-data"><span className="story-node-icon violet"><Database size={20}/></span><span><strong>Cloud telephony</strong><small>Cloudonix · Vobiz</small></span></article>
-            <article className="story-integration-node node-messaging"><span className="story-node-icon coral"><BookOpen size={20}/></span><span><strong>Google Workspace</strong><small>Google Drive · Google Sheets</small></span></article>
+            <article className="story-integration-node node-crm"><span><strong>CRM</strong><span className="story-brand-logos"><BrandLogo name="Salesforce" slug="salesforce"/><BrandLogo name="HubSpot" slug="hubspot"/><BrandLogo name="Zoho CRM" slug="zoho"/></span></span></article>
+            <article className="story-integration-node node-calendar"><span><strong>Scheduling</strong><span className="story-brand-logos"><BrandLogo name="Google Calendar" slug="googlecalendar"/><BrandLogo name="Cal.com" slug="caldotcom"/></span></span></article>
+            <article className="story-integration-node node-helpdesk"><span><strong>Telephony</strong><span className="story-brand-logos"><BrandLogo name="Twilio" slug="twilio"/><BrandLogo name="Plivo" slug="plivo"/><BrandLogo name="Vonage" slug="vonage"/></span></span></article>
+            <article className="story-integration-node node-knowledge"><span><strong>Messaging</strong><span className="story-brand-logos"><BrandLogo name="WhatsApp" slug="whatsapp"/></span></span></article>
+            <article className="story-integration-node node-data"><span><strong>Cloud telephony</strong><span className="story-brand-logos"><BrandLogo name="Cloudonix" src="https://logo.clearbit.com/cloudonix.com"/><BrandLogo name="Vobiz" src="https://logo.clearbit.com/vobiz.com"/></span></span></article>
+            <article className="story-integration-node node-messaging"><span><strong>Google Workspace</strong><span className="story-brand-logos"><BrandLogo name="Google Drive" slug="googledrive"/><BrandLogo name="Google Sheets" slug="googlesheets"/></span></span></article>
           </div>
           <div className="story-integration-foot">
             <span><Workflow size={16}/> Map the systems to the job</span>

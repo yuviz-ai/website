@@ -1103,3 +1103,28 @@ body.yuviz-light-theme .nav-pill-dock .btn-pill-primary {
 }
 body.yuviz-light-theme .theme-toggle { background: #FFFFFF; color: #5A4A9D; border-color: #DCD5F0; }
 body.yuviz-light-theme .login-pill { background: #4E428B; color: #FFFFFF; border-color: #4E428B; }
+
+
+/* Rounded surfaces for the light theme: soften the sharp checklist/card edges */
+body.yuviz-light-theme .story-principle-list article,
+body.yuviz-light-theme .story-friction-grid article,
+body.yuviz-light-theme .story-pillar,
+body.yuviz-light-theme .story-flow-track article,
+body.yuviz-light-theme .story-use-card,
+body.yuviz-light-theme .story-feature-card,
+body.yuviz-light-theme .story-contact-card,
+body.yuviz-light-theme .story-call-card,
+body.yuviz-light-theme .story-pricing-card,
+body.yuviz-light-theme .story-case-card,
+body.yuviz-light-theme .story-use-index-card,
+body.yuviz-light-theme .story-dialogue-card {
+  border-radius: 20px;
+  overflow: hidden;
+}
+body.yuviz-light-theme .story-principle-list {
+  gap: 12px;
+}
+body.yuviz-light-theme .story-principle-list article {
+  border: 1px solid #E1DDED;
+  box-shadow: 0 8px 24px rgba(39, 35, 75, .055);
+}

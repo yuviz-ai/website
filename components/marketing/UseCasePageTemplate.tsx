@@ -45,7 +45,7 @@ export function UseCasePageTemplate({
           <h1 className="mt-5 font-[Manrope] text-4xl sm:text-6xl font-extrabold tracking-[-0.055em] leading-[1.08] text-[#F3F4FC]">
             {title} {highlightTitle && <span className="gradient-text">{highlightTitle}</span>}
           </h1>
-          <p className="mt-5 max-w-2xl mx-auto text-base sm:text-lg leading-8 text-[#9CA6C2]">{subtitle}</p>
+          <p className="mt-5 max-w-2xl mx-auto text-base sm:text-lg leading-8 text-[#9CA6C2]">Potential scenario: {subtitle}</p><p className="mt-3 max-w-xl mx-auto text-xs leading-6 text-[#7783A2]">Illustrative only. Validate the workflow, available data, integrations, and required safeguards before treating it as deployable.</p>
           <Link href="/contact" className="button-primary mt-7">Discuss this use case <ArrowRight size={16} /></Link>
         </section>
 

@@ -534,3 +534,46 @@ body:has(.story-site) footer .text-[#B85D3B] { color:#C1B3FF!important; }
   .story-button,.story-faq-list summary svg { transition:none; }
   .story-button:hover { transform:none; }
 }
+
+.story-subpage { min-height:100vh; background:#090D19; }
+.story-subpage-hero { padding:158px 0 70px; background:radial-gradient(ellipse at 70% 0%,rgba(113,91,214,.18),transparent 45%),#090D19; }
+.story-subpage-hero h1 { max-width:850px;margin:20px 0 0;color:#F3F5FF;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:clamp(42px,6vw,70px);line-height:1.07;letter-spacing:-.06em;font-weight:800; }
+.story-subpage-hero h1 em { font-style:normal;background:linear-gradient(105deg,#C6B9FF,#A08CFF 50%,#FF9C87);color:transparent;background-clip:text;-webkit-background-clip:text; }
+.story-subpage-hero>div>p { max-width:670px;margin:20px 0 0;color:#A0AAC4;font-size:14px;line-height:1.95; }
+.story-subpage-centered { text-align:center; }
+.story-subpage-centered h1,.story-subpage-centered>div>p { margin-left:auto;margin-right:auto; }
+.story-subpage-centered .story-button { margin-top:26px; }
+.story-contact-layout { display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;padding:0 0 48px;align-items:start; }
+.story-contact-aside { display:grid;gap:14px; }
+.story-contact-card { padding:28px;border:1px solid rgba(174,187,224,.16);border-radius:18px;background:linear-gradient(150deg,rgba(18,27,47,.95),rgba(12,18,34,.97)); }
+.story-contact-card h2,.story-pricing-bottom h2 { margin:17px 0 10px;color:#F0F2FC;font-size:18px;font-weight:800;letter-spacing:-.03em; }
+.story-contact-card>p,.story-contact-muted { margin:0 0 19px;color:#96A1BF;font-size:12px;line-height:1.9; }
+.story-contact-note { display:flex;gap:10px;align-items:flex-start;padding:14px;border:1px solid rgba(184,165,255,.16);border-radius:12px;background:rgba(129,103,226,.06);color:#BBAEFF; }
+.story-contact-note p { margin:0;color:#A4AECA;font-size:10px;line-height:1.8; }
+.story-contact-note a { color:#D0C5FF;text-decoration:underline; }
+.story-contact-form { display:grid;gap:17px; }
+.story-contact-form label { display:grid;gap:8px;color:#D9DFF1;font-size:11px;font-weight:700; }
+.story-form-grid { display:grid;grid-template-columns:1fr 1fr;gap:13px; }
+.story-contact-form input,.story-contact-form select,.story-contact-form textarea { width:100%;min-width:0;border:1px solid rgba(174,187,224,.18);border-radius:10px;padding:12px 13px;background:rgba(5,9,19,.6);color:#F0F2FC;font:inherit;font-size:12px;outline:none; }
+.story-contact-form input::placeholder,.story-contact-form textarea::placeholder { color:#6F7B9A; }
+.story-contact-form input:focus,.story-contact-form select:focus,.story-contact-form textarea:focus { border-color:#B8A5FF;box-shadow:0 0 0 3px rgba(184,165,255,.1); }
+.story-contact-form select option { background:#10172A; }
+.story-contact-form textarea { resize:vertical;line-height:1.7; }
+.story-form-foot { margin:0;color:#7783A1;font-size:10px;line-height:1.7; }
+.story-contact-back { padding:0 0 50px; }
+.story-pricing-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:32px; }
+.story-pricing-card { padding:26px;border:1px solid rgba(174,187,224,.16);border-radius:17px;background:linear-gradient(150deg,rgba(18,27,47,.88),rgba(12,18,34,.92)); }
+.story-pricing-card h2 { margin:21px 0 8px;color:#EDF0FC;font-size:15px;font-weight:800; }
+.story-pricing-card p { margin:0;color:#98A3BF;font-size:11px;line-height:1.9; }
+.story-pricing-bottom { padding-bottom:65px; }
+.story-pricing-bottom>div { display:flex;align-items:center;gap:18px;padding:24px;border:1px solid rgba(184,165,255,.18);border-radius:17px;background:rgba(129,103,226,.055);color:#C4B7FF; }
+.story-pricing-bottom>div>div { flex:1; }
+.story-pricing-bottom h2 { margin:0 0 7px; }
+.story-pricing-bottom p { margin:0;color:#9BA6C1;font-size:11px;line-height:1.8; }
+.story-subpage-disclaimer { max-width:850px;margin:20px auto 0;color:#737F9E;font-size:10px;line-height:1.8;text-align:center; }
+@media(max-width:760px) {
+ .story-subpage-hero { padding:125px 0 48px; }.story-subpage-hero h1 { font-size:clamp(39px,10vw,56px); }
+ .story-contact-layout { grid-template-columns:1fr;padding-bottom:32px; }.story-contact-card { padding:22px; }.story-form-grid { grid-template-columns:1fr;gap:17px; }
+ .story-pricing-grid { grid-template-columns:1fr;padding-bottom:25px; }.story-pricing-card { padding:22px; }
+ .story-pricing-bottom>div { align-items:flex-start;flex-direction:column;padding:22px; }.story-pricing-bottom>div>.story-button { width:100%; }
+}

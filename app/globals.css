@@ -808,3 +808,7 @@ body:has(.story-site) header [class~="hover:bg-[#F4EBE2]"]:hover {
 .story-subpage .story-breadcrumb a { color: #B8C2DC; }
 .story-subpage .story-breadcrumb a:hover { color: #D3C8FF; }
 .story-subpage .story-subpage-disclaimer { color: #8995B2; }
+
+body:has(.story-site) footer.story-watermark-footer p { color: #938C88 !important; }
+body:has(.story-site) footer.story-watermark-footer nav a { color: #A69E99 !important; }
+body:has(.story-site) footer.story-watermark-footer nav a:hover { color: #F0E9E4 !important; }

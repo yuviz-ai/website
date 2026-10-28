@@ -1128,3 +1128,25 @@ body.yuviz-light-theme .story-principle-list article {
   border: 1px solid #E1DDED;
   box-shadow: 0 8px 24px rgba(39, 35, 75, .055);
 }
+
+
+/* Fix FAQ contrast in light mode: the actual homepage uses .story-faq-list */
+body.yuviz-light-theme .story-faq-list details {
+  border-color: #DCD8E9;
+}
+body.yuviz-light-theme .story-faq-list summary {
+  color: #292D45 !important;
+  opacity: 1;
+  font-weight: 700;
+}
+body.yuviz-light-theme .story-faq-list summary svg {
+  color: #7664C5;
+  opacity: 1;
+}
+body.yuviz-light-theme .story-faq-list details p {
+  color: #59627A !important;
+}
+body.yuviz-light-theme .story-faq-list details[open] {
+  background: #FBFAFE;
+  border-radius: 12px;
+}

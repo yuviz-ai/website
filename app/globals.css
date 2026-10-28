@@ -1037,3 +1037,69 @@ body.yuviz-light-theme .story-final-cta {
     radial-gradient(ellipse at 86% 78%, rgba(255, 195, 180, .27), transparent 38%),
     linear-gradient(125deg, #F1EDFC 0%, #FAF6F7 100%);
 }
+
+
+/* Light theme polish: confident contrast, warm editorial canvas, less washed-out gradients */
+body.yuviz-light-theme,
+body.yuviz-light-theme .story-site { background: #F6F4F8; color: #22253B; }
+
+body.yuviz-light-theme .story-hero {
+  background:
+    radial-gradient(ellipse 42% 62% at 82% 36%, rgba(190, 174, 248, .24), transparent 74%),
+    radial-gradient(ellipse 35% 48% at 5% 92%, rgba(245, 190, 173, .18), transparent 72%),
+    linear-gradient(115deg, #FFFEFC 0%, #F8F6FB 48%, #F0EDF9 100%);
+}
+body.yuviz-light-theme .story-hero-grid { opacity: .26; }
+body.yuviz-light-theme .story-kicker { color: #7160B5; }
+body.yuviz-light-theme .story-lede { color: #525C75; }
+body.yuviz-light-theme .story-challenge,
+body.yuviz-light-theme .story-use-cases,
+body.yuviz-light-theme .story-faq { background: #FFFEFD; }
+body.yuviz-light-theme .story-approach,
+body.yuviz-light-theme .story-principles { background: #F1EEF8; }
+body.yuviz-light-theme .story-flow { background: #EAEAF4; }
+body.yuviz-light-theme .story-friction-grid article,
+body.yuviz-light-theme .story-pillar,
+body.yuviz-light-theme .story-flow-track article,
+body.yuviz-light-theme .story-principle-list article,
+body.yuviz-light-theme .story-use-card {
+  background: #FFFFFF;
+  border-color: #DCD9E9;
+  box-shadow: 0 10px 28px rgba(39, 35, 75, .065);
+}
+body.yuviz-light-theme .story-call-card {
+  background: #FFFFFF;
+  border-color: #DAD5EC;
+  box-shadow: 0 28px 65px rgba(45, 39, 84, .15);
+}
+body.yuviz-light-theme .story-chat-row { background: #F5F5FA; border-color: #E0DFEB; }
+body.yuviz-light-theme .story-chat-row.story-agent { background: #EFEBFF; border-color: #D7CCFF; }
+body.yuviz-light-theme .story-tool-row { background: #FFF8F5; border-color: #EFD8D0; }
+body.yuviz-light-theme .story-float-card {
+  background: #262B43;
+  border-color: #343A56;
+  box-shadow: 0 14px 32px rgba(31, 32, 59, .24);
+}
+body.yuviz-light-theme .story-final-cta {
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(191, 174, 248, .28), transparent 38%),
+    radial-gradient(ellipse at 90% 80%, rgba(245, 183, 164, .24), transparent 38%),
+    #F0EDF8;
+  border-top: 1px solid #DDD7EC;
+}
+body.yuviz-light-theme .story-final-cta h2 { color: #22253B; }
+body.yuviz-light-theme .story-final-cta p { color: #535C74; }
+
+/* Correct navigation contrast in light mode: avoid pale-on-white links */
+body.yuviz-light-theme .nav-pill-dock a > span,
+body.yuviz-light-theme .nav-pill-dock a:not(.btn-pill-primary),
+body.yuviz-light-theme .nav-pill-dock button:not(.btn-pill-primary) {
+  color: #41465F !important;
+}
+body.yuviz-light-theme .nav-pill-dock a:hover > span { color: #6C57B8 !important; }
+body.yuviz-light-theme .nav-pill-dock .btn-pill-primary {
+  background: linear-gradient(105deg, #A995F4 0%, #C0A3F1 62%, #F0A397 100%) !important;
+  color: #211B39 !important;
+}
+body.yuviz-light-theme .theme-toggle { background: #FFFFFF; color: #5A4A9D; border-color: #DCD5F0; }
+body.yuviz-light-theme .login-pill { background: #4E428B; color: #FFFFFF; border-color: #4E428B; }

@@ -839,3 +839,170 @@ body.yuviz-light-theme .login-pill:hover { background:#403477; }
 body.yuviz-light-theme footer { background:#F7F8FC!important; color:#68738B!important; border-color:#DDE2EF!important; }
 body.yuviz-light-theme footer a { color:#59647D!important; }
 body.yuviz-light-theme footer a:hover { color:#51418F!important; }
+
+
+/* Refined light theme: warm porcelain, soft lavender atmosphere, and clear card contrast */
+body.yuviz-light-theme {
+  --background: #F8F7FC;
+  --foreground: #20243A;
+  --card: #FFFFFF;
+  --panel: #F0EDFA;
+  --line: #E3E0EF;
+  --muted: #626B83;
+  --ink: #20243A;
+  --border: #E3E0EF;
+  background: #F8F7FC;
+  color: #20243A;
+}
+body.yuviz-light-theme html { background: #F8F7FC; }
+body.yuviz-light-theme .story-site { background: #F8F7FC; color: #20243A; }
+body.yuviz-light-theme .story-hero {
+  background:
+    radial-gradient(ellipse at 76% 30%, rgba(195, 181, 255, .28) 0%, rgba(195, 181, 255, 0) 36%),
+    radial-gradient(ellipse at 16% 78%, rgba(255, 190, 174, .17) 0%, rgba(255, 190, 174, 0) 34%),
+    linear-gradient(135deg, #FCFBFF 0%, #F6F5FC 54%, #F8F5FA 100%);
+}
+body.yuviz-light-theme .story-hero-grid { opacity: .2; }
+body.yuviz-light-theme .story-hero h1,
+body.yuviz-light-theme .story-section h2,
+body.yuviz-light-theme .story-subpage-hero h1,
+body.yuviz-light-theme .story-case-dialogue h2,
+body.yuviz-light-theme .story-faq-page-list summary,
+body.yuviz-light-theme .story-pricing-card h2,
+body.yuviz-light-theme .story-use-index-card h2,
+body.yuviz-light-theme .story-case-card h2,
+body.yuviz-light-theme .story-case-bottom h2 { color: #20243A; }
+body.yuviz-light-theme .story-hero em,
+body.yuviz-light-theme .story-section h2 em,
+body.yuviz-light-theme .story-subpage-hero h1 em {
+  background: linear-gradient(105deg, #8B72E8 8%, #B28BE8 55%, #E58E91 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+body.yuviz-light-theme .story-kicker { color: #7865C4; }
+body.yuviz-light-theme .story-lede,
+body.yuviz-light-theme .story-section p,
+body.yuviz-light-theme .story-subpage-hero p,
+body.yuviz-light-theme .story-case-dialogue>div:first-child>p,
+body.yuviz-light-theme .story-pricing-card p,
+body.yuviz-light-theme .story-use-index-card p,
+body.yuviz-light-theme .story-case-card p,
+body.yuviz-light-theme .story-case-bottom p,
+body.yuviz-light-theme .story-faq-page-list details p { color: #59627A; }
+body.yuviz-light-theme .story-visual-wrap { filter: drop-shadow(0 22px 40px rgba(74, 63, 125, .08)); }
+body.yuviz-light-theme .story-call-card {
+  background: rgba(255,255,255,.94);
+  border-color: #E1DDF0;
+  box-shadow: 0 24px 65px rgba(59, 52, 99, .12);
+}
+body.yuviz-light-theme .story-call-top strong,
+body.yuviz-light-theme .story-tool-row strong { color: #30354D; }
+body.yuviz-light-theme .story-call-top small,
+body.yuviz-light-theme .story-tool-row small,
+body.yuviz-light-theme .story-call-status>span:nth-child(2),
+body.yuviz-light-theme .story-call-foot { color: #747D96; }
+body.yuviz-light-theme .story-chat-row {
+  background: #F7F7FC;
+  border-color: #E4E3F1;
+}
+body.yuviz-light-theme .story-chat-row.story-agent {
+  background: #F1EDFF;
+  border-color: #DED5FF;
+}
+body.yuviz-light-theme .story-chat-row p { color: #404861; }
+body.yuviz-light-theme .story-chat-row small { color: #6C58BB; }
+body.yuviz-light-theme .story-tool-row {
+  background: #FFFAF8;
+  border-color: #F0DED9;
+}
+body.yuviz-light-theme .story-tool-row strong { color: #8E6259; }
+body.yuviz-light-theme .story-float-card {
+  background: #252A42;
+  border-color: rgba(255,255,255,.7);
+  box-shadow: 0 16px 36px rgba(39, 36, 67, .2);
+  color: #F8F7FF;
+}
+body.yuviz-light-theme .story-float-card strong { color: #FFFFFF; }
+body.yuviz-light-theme .story-float-card small { color: #C3C9DD; }
+body.yuviz-light-theme .story-orbit { border-color: rgba(151, 127, 226, .16); }
+
+/* Alternate section surfaces make the long page feel composed, not washed out */
+body.yuviz-light-theme .story-challenge,
+body.yuviz-light-theme .story-use-cases,
+body.yuviz-light-theme .story-faq {
+  background: #FFFFFF;
+}
+body.yuviz-light-theme .story-approach,
+body.yuviz-light-theme .story-principles {
+  background: linear-gradient(180deg, #F4F1FC 0%, #F8F7FC 100%);
+}
+body.yuviz-light-theme .story-flow {
+  background: #F0F2FA;
+}
+body.yuviz-light-theme .story-friction-grid article,
+body.yuviz-light-theme .story-pillar,
+body.yuviz-light-theme .story-flow-track article,
+body.yuviz-light-theme .story-principle-list article,
+body.yuviz-light-theme .story-use-card,
+body.yuviz-light-theme .story-feature-card,
+body.yuviz-light-theme .story-contact-card {
+  background: rgba(255,255,255,.88);
+  border-color: #E2E0EF;
+  box-shadow: 0 12px 30px rgba(49, 45, 88, .045);
+}
+body.yuviz-light-theme .story-friction-grid h3,
+body.yuviz-light-theme .story-pillar h3,
+body.yuviz-light-theme .story-flow-track h3,
+body.yuviz-light-theme .story-principle-list h3,
+body.yuviz-light-theme .story-use-card h3 { color: #292E46; }
+body.yuviz-light-theme .story-number,
+body.yuviz-light-theme .story-flow-num,
+body.yuviz-light-theme .story-pillar-step,
+body.yuviz-light-theme .story-use-label { color: #7865C4; }
+body.yuviz-light-theme .story-architecture-note {
+  background: #E8E4F8;
+  border-color: #D8D0F1;
+  color: #4D4770;
+}
+body.yuviz-light-theme .story-final-cta {
+  background:
+    radial-gradient(ellipse at 18% 20%, rgba(196, 177, 255, .38), transparent 38%),
+    radial-gradient(ellipse at 85% 80%, rgba(255, 184, 166, .32), transparent 36%),
+    linear-gradient(125deg, #F0ECFC, #FAF4F4);
+  border-top: 1px solid #E5DFF2;
+}
+body.yuviz-light-theme .story-final-cta h2 { color: #22263D; }
+body.yuviz-light-theme .story-final-cta p { color: #5C647B; }
+body.yuviz-light-theme .story-final-note { color: #646D84; }
+body.yuviz-light-theme .story-button-quiet {
+  background: rgba(255,255,255,.72);
+  color: #39415A;
+  border-color: #DCD9EB;
+}
+body.yuviz-light-theme .story-button-quiet:hover { background: #FFFFFF; border-color: #BEB2EE; }
+body.yuviz-light-theme .story-proof-note { color: #667089; }
+body.yuviz-light-theme .story-proof-mark { background: #E1F6EE; color: #168765; }
+body.yuviz-light-theme .story-faq-list details,
+body.yuviz-light-theme .story-faq-page-list details { border-color: #E2E0EF; }
+body.yuviz-light-theme .story-text-link,
+body.yuviz-light-theme .story-breadcrumb a { color: #705BC1; }
+body.yuviz-light-theme .story-subpage,
+body.yuviz-light-theme .story-subpage-hero { background: #F8F7FC; }
+body.yuviz-light-theme .story-subpage .story-case-card,
+body.yuviz-light-theme .story-subpage .story-use-index-card,
+body.yuviz-light-theme .story-subpage .story-dialogue-card {
+  background: #FFFFFF;
+  border-color: #E1DDF0;
+  box-shadow: 0 12px 32px rgba(49,45,88,.06);
+}
+body.yuviz-light-theme .story-subpage .story-dialogue-line { background: #F7F7FC; border-color: #E4E3F1; }
+body.yuviz-light-theme .story-subpage .story-dialogue-line.agent { background: #F1EDFF; border-color: #DED5FF; }
+body.yuviz-light-theme .story-subpage .story-dialogue-line p { color: #404861; }
+body.yuviz-light-theme .story-case-bottom>div,
+body.yuviz-light-theme .story-pricing-bottom>div { background: #F0EDFF; border-color: #D9D0FF; color: #51418F; }
+body.yuviz-light-theme .nav-pill-dock { background: rgba(255,255,255,.9)!important; border-color: #E2DFF0!important; }
+body.yuviz-light-theme .nav-pill-dock a>span,
+body.yuviz-light-theme .nav-pill-dock [class~="text-[#221A1E]"] { color: #30354D!important; }
+body.yuviz-light-theme .nav-pill-dock .btn-pill-primary { background: linear-gradient(105deg,#A996F5,#C0A5F5 62%,#F0A59A)!important; color: #211B3A!important; }
+body.yuviz-light-theme footer { background: #F8F7FC!important; color: #68718A!important; border-color: #E2E0EF!important; }

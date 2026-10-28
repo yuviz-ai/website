@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
-import { Logo } from './Navbar'
+import { YuvizLogoIcon } from './Navbar'
 
 // Dedicated Interactive Voice Playground is featured in HeroTeaser.
 // The duplicate footer voice demo box has been removed per specification.
@@ -61,12 +61,12 @@ export function Footer() {
   return (
     <footer className="story-watermark-footer" aria-label="Site footer">
       <div className="story-watermark-brand" aria-hidden="true">
-        <span className="story-watermark-mark"><i /><i /></span>
+        <YuvizLogoIcon className="story-watermark-mark" />
         <span>yuviz<span className="story-watermark-dot">.</span>ai</span>
       </div>
       <div className="story-watermark-rule" aria-hidden="true" />
       <div className="story-watermark-content">
-        <p>© {new Date().getFullYear()} Inlamitato Private Limited (Yuviz AI). All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Yovanex LLP (Yuviz AI). All rights reserved.</p>
         <nav aria-label="Legal">
           <Link href="/contact?topic=privacy">Privacy Policy</Link>
           <Link href="/contact?topic=terms">Terms of Use</Link>

@@ -81,7 +81,7 @@ Today 19 pages share the home title. Proposed pattern: `{Page} | Yuviz.ai`, each
 | H1 | Every call has / a next step. | **Turn conversations / into outcomes.** |
 | Lede | Build voice-agent experiences that listen to your customers, work with business context, and help move the conversation forward. | **Yuviz answers your calls with AI voice agents that understand what callers need — then book, look up, confirm or hand off to your team.** |
 | CTAs | Explore your use case · See how it works | **Book a demo** · **Hear a call** (→ #how-it-works) |
-| Note | Start with one clear workflow. Validate it before you scale. | **Works with your numbers. Multilingual.** ✅ |
+| Note | Start with one clear workflow. Validate it before you scale. | **✓ Keep your existing numbers · ✓ English & Hindi · ✓ Live in days** ✅ |
 | Right side | "CONCEPT" diagram | **Live-call card** — script in §9 |
 
 Claim checks: answer calls ✅ · book ✅ (Google Calendar preset) · look up ✅ (Salesforce/HubSpot/Zoho lookup) · confirm ✅ (WhatsApp/SMS) · hand off ✅ on SIP, ✅ on Vobiz/Cloudonix today · English + Hindi ✅

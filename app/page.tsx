@@ -69,7 +69,7 @@ export default function Page() {
               <Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={17}/></Link>
               <TalkToSarah/>
             </div>
-            <div className="story-proof-note"><span className="story-proof-mark"><Check size={13}/></span> Works with your numbers. Multilingual.</div>
+            <div className="story-proof-note">{['Keep your existing numbers', 'English & Hindi', 'Live in days'].map(p => <span key={p} className="story-proof-item"><span className="story-proof-mark"><Check size={13}/></span>{p}</span>)}</div>
           </div>
 
         </div>

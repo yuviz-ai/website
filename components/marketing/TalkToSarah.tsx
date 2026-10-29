@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Mic, MicOff, PhoneOff } from 'lucide-react'
 import { useDemoCall, type DemoCallState } from '@/lib/useDemoCall'
-import './talk-captions.css'
 
 const CALL_SECONDS = 120
 
@@ -20,9 +19,9 @@ export function TalkToSarah() {
   const { hangUp } = call
   const [left, setLeft] = useState(CALL_SECONDS)
   const startedAt = useRef<number | null>(null)
-  const captionsRef = useRef<HTMLDivElement>(null)
   const live = !['idle', 'connecting', 'ended', 'error'].includes(call.state)
   const onCall = live || call.state === 'connecting'
+  const last = call.transcript[call.transcript.length - 1]
 
   useEffect(() => {
     if (!live) return
@@ -34,10 +33,6 @@ export function TalkToSarah() {
     }, 250)
     return () => window.clearInterval(id)
   }, [live, hangUp])
-
-  useEffect(() => {
-    captionsRef.current?.scrollTo({ top: captionsRef.current.scrollHeight, behavior: 'smooth' })
-  }, [call.transcript])
 
   const begin = () => {
     startedAt.current = null
@@ -63,20 +58,15 @@ export function TalkToSarah() {
     <div className="talk-wrap">
       <div className={`talk-live talk-live-${call.state}`} role="group" aria-label="Call with Sarah">
         <span className="talk-dot" aria-hidden="true" style={{ transform: `scale(${1 + (live && !call.muted ? call.micLevelPct / 140 : 0)})` }}/>
-        <span className="talk-label" aria-live="polite">{STATUS[call.state] ?? 'On call'}</span>
+        <span className="talk-label" aria-live="polite">
+          {last ? <><b>{last.role === 'user' ? 'You' : 'Sarah'}</b><span className="talk-sep">·</span><span className="talk-text">{last.text}</span></> : (STATUS[call.state] ?? 'On call')}
+        </span>
         <span className="talk-time" aria-label={`${mm} minutes ${ss} seconds left`}>{mm}:{ss}</span>
         <button type="button" className="talk-btn" onClick={() => call.setMuted(!call.muted)} aria-pressed={call.muted} disabled={!live} aria-label={call.muted ? 'Unmute' : 'Mute'}>
           {call.muted ? <MicOff size={16}/> : <Mic size={16}/>}
         </button>
         <button type="button" className="talk-btn talk-end" onClick={call.hangUp} aria-label="Hang up"><PhoneOff size={16}/></button>
       </div>
-      {call.transcript.length > 0 && (
-        <div className="talk-captions" ref={captionsRef} aria-live="polite" aria-label="Live transcript">
-          {call.transcript.map(t => (
-            <p key={t.ts + t.role} className={t.role === 'user' ? 'is-you' : 'is-sarah'}><b>{t.role === 'user' ? 'You' : 'Sarah'}</b> {t.text}</p>
-          ))}
-        </div>
-      )}
     </div>
   )
 }

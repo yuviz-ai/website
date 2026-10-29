@@ -295,7 +295,7 @@ export function Navbar() {
                       className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[620px] bg-white border border-[#E8DFD4] rounded-2xl shadow-xl p-5 z-50 overflow-hidden"
                     >
                       <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#F4EBE2]">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-[#796F68] font-semibold">
+                        <span className="text-[11px] uppercase tracking-[0.16em] text-[#796F68] font-extrabold">
                           By industry
                         </span>
                         <Link
@@ -471,7 +471,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="absolute inset-0 bg-[#221A1E]/30 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#090D19]/55 backdrop-blur-sm"
             />
 
             {/* Slide-over Drawer Panel */}
@@ -480,7 +480,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-[86%] max-w-sm bg-[#FAF7F2] border-l border-[#E8DFD4] shadow-2xl p-6 flex flex-col justify-between overflow-y-auto"
+              className="yz-drawer absolute right-0 top-0 bottom-0 w-[86%] max-w-sm bg-[#FAF7F2] border-l border-[#E8DFD4] shadow-2xl p-6 flex flex-col justify-between overflow-y-auto"
             >
               <div>
                 {/* Drawer Header */}

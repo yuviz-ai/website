@@ -62,9 +62,10 @@ a {
 }
 
 ::selection {
-  background: var(--lime);
-  color: #FFFFFF;
+  background: rgba(158, 139, 255, .32);
+  color: inherit;
 }
+body.yuviz-light-theme ::selection { background: rgba(110, 88, 201, .2); }
 
 .container {
   width: min(1180px, calc(100% - 36px));
@@ -1584,3 +1585,54 @@ body.yuviz-light-theme .story-uc-caps h2 { color: #20243A; }
 .story-footer-company span { display: block; margin-top: 10px; }
 body.yuviz-light-theme .story-footer-tagline, body.yuviz-light-theme .story-footer-company { color: #646C84; }
 body.yuviz-light-theme .story-footer-company { border-color: #E2DEEE; background: #FFFFFF; }
+/* Mobile menu drawer: brand theme (dark default, light via body.yuviz-light-theme) */
+body .yz-drawer { background: #111729 !important; border-color: rgba(174,187,224,.14) !important; color: #F0F2FC; }
+body .yz-drawer [class*="border-"] { border-color: rgba(174,187,224,.14) !important; }
+body .yz-drawer [class*="text-[#221A1E]"], body .yz-drawer a > span { color: #F0F2FC !important; }
+body .yz-drawer [class*="text-[#635952]"] { color: #A9B2CC !important; }
+body .yz-drawer [class*="text-[#B85D3B]"] { color: #B8A5FF !important; }
+body .yz-drawer [class*="hover:text-[#B85D3B]"]:hover { color: #FFFFFF !important; }
+body .yz-drawer button[class*="bg-white"] { background: rgba(255,255,255,.04) !important; color: #F0F2FC !important; }
+body .yz-drawer button[class*="bg-white"]:hover { background: rgba(255,255,255,.09) !important; }
+body .yz-drawer .btn-pill-primary { background: linear-gradient(110deg,#C5B7FF,#A995FF 60%,#FFAA94) !important; color: #111426 !important; border-color: transparent !important; box-shadow: 0 10px 28px rgba(125,100,228,.25) !important; }
+body .yz-drawer .btn-pill-secondary { background: rgba(255,255,255,.04) !important; color: #DCE2F4 !important; border: 1px solid rgba(174,187,224,.22) !important; }
+body.yuviz-light-theme .yz-drawer { background: #FFFFFF !important; border-color: #E4E0EE !important; color: #20243A; }
+body.yuviz-light-theme .yz-drawer [class*="border-"] { border-color: #ECE8F4 !important; }
+body.yuviz-light-theme .yz-drawer [class*="text-[#221A1E]"], body.yuviz-light-theme .yz-drawer a > span { color: #20243A !important; }
+body.yuviz-light-theme .yz-drawer [class*="text-[#635952]"] { color: #4F5872 !important; }
+body.yuviz-light-theme .yz-drawer [class*="text-[#B85D3B]"] { color: #6E58C9 !important; }
+body.yuviz-light-theme .yz-drawer [class*="hover:text-[#B85D3B]"]:hover { color: #5B47B5 !important; }
+body.yuviz-light-theme .yz-drawer button[class*="bg-white"] { background: #F7F5FC !important; color: #20243A !important; }
+body.yuviz-light-theme .yz-drawer .btn-pill-primary { background: linear-gradient(105deg,#A996F5,#C0A5F5 62%,#F0A59A) !important; color: #211B3A !important; }
+body.yuviz-light-theme .yz-drawer .btn-pill-secondary { background: #FFFFFF !important; color: #20243A !important; border-color: #DED8EE !important; }
+/* Hero proof points: three short checks */
+.story-proof-note { flex-wrap: wrap; gap: 10px 22px; }
+.story-proof-note > span.story-proof-item { display: inline-flex; align-items: center; gap: 8px; }
+/* Light theme: readable desktop dropdown menus (the escaped selectors above never matched) */
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full [class*="text-[#221A1E]"] { color: #20243A !important; }
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full [class*="text-[#796F68]"] { color: #545C74 !important; }
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full [class*="text-[#B85D3B]"] { color: #6E58C9 !important; }
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full [class*="bg-[#F7EEE7]"] { background: #F1EDFF !important; }
+body.yuviz-light-theme .nav-pill-dock .absolute.top-full a:hover [class*="text-[#221A1E]"] { color: #5B47B5 !important; }
+/* Talk to Sarah: the live call becomes one wide bar with the latest line inside it */
+.story-actions:has(.talk-live) > .story-button-primary { display: none; }
+.story-actions:has(.talk-live) .talk-wrap { width: min(100%, 720px); justify-items: stretch; }
+.talk-live { width: 100%; }
+.talk-live .talk-label { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; overflow: hidden; white-space: nowrap; text-align: left; }
+.talk-live .talk-label b { flex: 0 0 auto; color: #C6B9FF; font-size: 11.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.talk-live .talk-sep { flex: 0 0 auto; color: #7D87A6; }
+.talk-live .talk-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-weight: 600; color: #E3E7F5; }
+body.yuviz-light-theme .talk-live .talk-label b { color: #6E58C9; }
+body.yuviz-light-theme .talk-live .talk-text { color: #2B2F45; }
+.story-actions:has(.talk-live) .talk-wrap { grid-template-columns: minmax(0, 1fr); flex: 0 1 720px; max-width: 100%; }
+.talk-live { min-width: 0; max-width: 100%; display: flex; }
+/* Split-heading supporting line: a real lede, not fine print */
+.story-flow-heading > p, .story-use-heading > p { max-width: 460px; padding-left: 18px; border-left: 2px solid rgba(184,165,255,.45); color: #C9D0E6; font-size: 18px; font-weight: 500; line-height: 1.6; letter-spacing: -.005em; text-wrap: balance; }
+body.yuviz-light-theme .story-flow-heading > p, body.yuviz-light-theme .story-use-heading > p { color: #3F4760 !important; border-left-color: #C9BCF5; }
+@media (max-width: 760px) { .story-flow-heading > p, .story-use-heading > p { font-size: 16px; } }
+/* Section supporting lines: original sans font, a little larger, with a lavender accent line */
+.story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { max-width: 460px; margin: 0; padding-left: 18px; border-left: 2px solid rgba(184,165,255,.45); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-style: normal; font-weight: 400; font-size: 17px; line-height: 1.75; color: #B4BCD3; text-wrap: balance; }
+.story-challenge-copy { align-self: end; }
+body.yuviz-light-theme .story-flow-heading > p, body.yuviz-light-theme .story-use-heading > p, body.yuviz-light-theme .story-challenge-copy p { color: #4F5872 !important; border-left-color: #C9BCF5; }
+@media (max-width: 760px) { .story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { font-size: 16px; } }
+.story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { max-width: 600px; }

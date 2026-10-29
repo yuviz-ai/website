@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { LOGIN_URL } from '@/lib/authUrls'
 import { usePathname } from 'next/navigation'
 import {
   Menu,
@@ -11,16 +12,12 @@ import {
   Bot,
   PhoneIncoming,
   PhoneOutgoing,
-  Database,
-  BarChart3,
-  Webhook,
   GitBranch,
   FileText,
   HelpCircle,
   Code2,
   Sparkles,
   Headphones,
-  ShieldCheck,
   Zap,
   Home,
   CreditCard,
@@ -31,7 +28,9 @@ import {
   TrendingUp,
   UserPlus,
   ArrowRight,
-  PhoneCall
+  PhoneCall,
+  Sun,
+  Moon
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -67,12 +66,12 @@ export function YuvizLogoIcon({ className = 'w-6 h-6' }: { className?: string })
 export function Logo({ className = '' }: { className?: string }) {
   return (
     <Link href="/" className={`inline-flex items-center gap-2.5 group shrink-0 ${className}`}>
-      <div className="w-7 h-7 relative rounded-full overflow-hidden flex items-center justify-center bg-[#FAF6EE] shadow-2xs group-hover:scale-105 transition-transform duration-200">
+      <div className="w-9 h-9 relative rounded-full overflow-hidden flex items-center justify-center p-[3px] bg-[linear-gradient(135deg,#9E8BFF,#F58F7A)] shadow-[0_0_0_3px_rgba(158,139,255,.16),0_4px_14px_rgba(158,139,255,.35)] group-hover:scale-105 transition-transform duration-200">
         {/* Render crisp raster with vector fallback */}
         <img
           src="/yuviz-logo.jpg"
           alt="Yuviz"
-          className="w-full h-full object-contain mix-blend-multiply"
+          className="w-full h-full rounded-full object-cover"
           onError={(e) => {
             // fallback if image fails
             e.currentTarget.style.display = 'none'
@@ -87,84 +86,29 @@ export function Logo({ className = '' }: { className?: string }) {
   )
 }
 
-// 8 Use cases matching Orato
-const useCasesMenu = [
-  {
-    title: 'Real Estate',
-    desc: 'Qualify leads & schedule viewings',
-    href: '/use-cases/real-estate',
-    icon: Home,
-  },
-  {
-    title: 'Banking',
-    desc: 'Card activations, EMI & KYC',
-    href: '/use-cases/banking',
-    icon: CreditCard,
-  },
-  {
-    title: 'Healthcare',
-    desc: 'Reminders, refills & triage',
-    href: '/use-cases/healthcare',
-    icon: Heart,
-  },
-  {
-    title: 'E-Commerce',
-    desc: 'Cart recovery & order support',
-    href: '/use-cases/e-commerce',
-    icon: ShoppingCart,
-  },
-  {
-    title: 'Restaurants',
-    desc: 'Reservations & takeout',
-    href: '/use-cases/restaurants',
-    icon: Utensils,
-  },
-  {
-    title: 'Government',
-    desc: 'Citizen helplines & enrollments',
-    href: '/use-cases/government',
-    icon: Landmark,
-  },
-  {
-    title: 'Sales',
-    desc: 'Outbound prospecting & demos',
-    href: '/use-cases/sales',
-    icon: TrendingUp,
-  },
-  {
-    title: 'HR & Hiring',
-    desc: 'Screens & interview scheduling',
-    href: '/use-cases/hr-hiring',
-    icon: UserPlus,
-  },
+const productMenu = [
+  { title: 'Agent builder', desc: 'Design agents, voices and call flows visually', href: '/product/agent-builder', icon: Bot },
+  { title: 'Inbound calls', desc: 'Answer every call on your own numbers', href: '/product/inbound-calls', icon: PhoneIncoming },
+  { title: 'Campaigns', desc: 'Reach contact lists with paced, retried calls', href: '/product/outbound-calls', icon: PhoneOutgoing },
+  { title: 'IVR builder', desc: 'Replace keypad menus with spoken ones', href: '/product/ivr-builder', icon: GitBranch },
 ]
 
-// Resources menu
+const useCasesMenu = [
+  { title: 'Real estate', desc: 'Qualify buyers and book site visits', href: '/use-cases/real-estate', icon: Home },
+  { title: 'Banking', desc: 'Answer account questions and route to the right team', href: '/use-cases/banking', icon: CreditCard },
+  { title: 'Healthcare', desc: 'Appointments, reminders and front-desk questions', href: '/use-cases/healthcare', icon: Heart },
+  { title: 'E-commerce', desc: 'Order status and support routing', href: '/use-cases/e-commerce', icon: ShoppingCart },
+  { title: 'Restaurants', desc: 'Reservations and opening-hours questions', href: '/use-cases/restaurants', icon: Utensils },
+  { title: 'Public services', desc: 'Citizen helplines and service information', href: '/use-cases/government', icon: Landmark },
+  { title: 'Sales', desc: 'Qualify leads and book demos', href: '/use-cases/sales', icon: TrendingUp },
+  { title: 'HR & hiring', desc: 'Candidate screening and interview scheduling', href: '/use-cases/hr-hiring', icon: UserPlus },
+]
+
 const resourcesMenu = [
-  {
-    title: 'FAQ',
-    desc: 'Pricing, setup, security, and how Yuviz works',
-    href: '/resources/faq',
-    icon: HelpCircle,
-  },
-  {
-    title: 'Blog',
-    desc: 'Voice AI insights and architecture updates',
-    href: '/resources/blog',
-    icon: FileText,
-  },
-  {
-    title: 'API Integration',
-    desc: 'Guides for connecting Twilio, Salesforce & HubSpot',
-    href: '/resources/api-integration',
-    icon: Code2,
-  },
-  {
-    title: 'Documentation',
-    desc: 'Developer quickstarts & SDK reference',
-    href: '/resources/documentation',
-    icon: Sparkles,
-  },
+  { title: 'FAQ', desc: 'Setup, providers, security and pricing', href: '/resources/faq', icon: HelpCircle },
+  { title: 'Blogs', desc: 'Practical writing on voice AI', href: '/resources/blog', icon: FileText },
+  { title: 'Integrations', desc: 'What connects to Yuviz today', href: '/resources/api-integration', icon: Code2 },
+  { title: 'Developers', desc: 'How Yuviz fits your stack', href: '/resources/documentation', icon: Sparkles },
 ]
 
 export function Button({
@@ -197,8 +141,24 @@ export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null)
+  const [lightTheme, setLightTheme] = useState(false)
   const pathname = usePathname()
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem('yuviz-theme')
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
+    const shouldUseLight = savedTheme ? savedTheme === 'light' : prefersLight
+    setLightTheme(shouldUseLight)
+    document.body.classList.toggle('yuviz-light-theme', shouldUseLight)
+  }, [])
+
+  const toggleTheme = () => {
+    const nextLightTheme = !lightTheme
+    setLightTheme(nextLightTheme)
+    document.body.classList.toggle('yuviz-light-theme', nextLightTheme)
+    window.localStorage.setItem('yuviz-theme', nextLightTheme ? 'light' : 'dark')
+  }
 
   useEffect(() => {
     setActiveDropdown(null)
@@ -226,7 +186,7 @@ export function Navbar() {
       <header className="fixed top-3 md:top-5 inset-x-0 z-50 pointer-events-none transition-all duration-300">
         <div className="container relative flex items-center justify-center">
           
-          {/* Centered Curved Pill Dock (Exact Orato Style with Logo Inside) */}
+          {/* Centered pill navbar with the logo inside */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2 px-3 py-1.5 rounded-full nav-pill-dock pointer-events-auto transition-all">
             
             {/* Logo inside the curved pill dock */}
@@ -237,6 +197,69 @@ export function Navbar() {
             {/* Navigation Links inside the pill */}
             <div className="flex items-center gap-0.5 px-1">
               
+              {/* Product Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('product')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  type="button"
+                  aria-expanded={activeDropdown === 'product'}
+                  className={`flex items-center gap-1 px-3 py-1.5 text-xs xl:text-sm font-medium rounded-full transition-colors cursor-pointer ${
+                    activeDropdown === 'product' || pathname.startsWith('/product')
+                      ? 'text-[#B85D3B] bg-[#F7EEE7] font-semibold'
+                      : 'text-[#635952] hover:text-[#221A1E]'
+                  }`}
+                >
+                  Product
+                  <ChevronDown
+                    size={13}
+                    className={`transition-transform duration-200 opacity-60 ${
+                      activeDropdown === 'product' ? 'rotate-180 text-[#B85D3B]' : ''
+                    }`}
+                  />
+                </button>
+
+                
+                <AnimatePresence>
+                  {activeDropdown === 'product' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                      transition={{ duration: 0.16, ease: 'easeOut' }}
+                      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[460px] bg-white border border-[#E8DFD4] rounded-2xl shadow-xl p-4 z-50 overflow-hidden"
+                    >
+                      <div className="grid grid-cols-1 gap-1.5">
+                        {productMenu.map((item) => {
+                          const Icon = item.icon
+                          return (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#FAF7F2] transition-colors"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-[#F7EEE7] flex items-center justify-center text-[#B85D3B] group-hover:scale-105 transition-transform shrink-0 mt-0.5">
+                                <Icon size={16} />
+                              </div>
+                              <div>
+                                <p className="text-xs font-semibold text-[#221A1E] group-hover:text-[#B85D3B] transition-colors">
+                                  {item.title}
+                                </p>
+                                <p className="text-[11px] text-[#796F68] leading-snug">
+                                  {item.desc}
+                                </p>
+                              </div>
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               {/* Use Cases Dropdown */}
               <div
                 className="relative"
@@ -252,7 +275,7 @@ export function Navbar() {
                       : 'text-[#635952] hover:text-[#221A1E]'
                   }`}
                 >
-                  Use Cases
+                  Use cases
                   <ChevronDown
                     size={13}
                     className={`transition-transform duration-200 opacity-60 ${
@@ -272,14 +295,14 @@ export function Navbar() {
                       className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[620px] bg-white border border-[#E8DFD4] rounded-2xl shadow-xl p-5 z-50 overflow-hidden"
                     >
                       <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#F4EBE2]">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-[#796F68] font-semibold">
-                          Industry Voice Solutions
+                        <span className="text-[11px] uppercase tracking-[0.16em] text-[#796F68] font-extrabold">
+                          By industry
                         </span>
                         <Link
-                          href="/use-cases/real-estate"
+                          href="/use-cases"
                           className="text-[11px] font-semibold text-[#B85D3B] hover:underline flex items-center gap-1"
                         >
-                          Explore all industries <ArrowRight size={11} />
+                          All industries <ArrowRight size={11} />
                         </Link>
                       </div>
 
@@ -385,21 +408,9 @@ export function Navbar() {
               >
                 Pricing
               </Link>
-
-              {/* Contact Link */}
-              <Link
-                href="/contact"
-                className={`px-3 py-1.5 text-xs xl:text-sm font-medium rounded-full transition-colors ${
-                  pathname === '/contact'
-                    ? 'text-[#B85D3B] font-semibold'
-                    : 'text-[#635952] hover:text-[#221A1E]'
-                }`}
-              >
-                Contact
-              </Link>
             </div>
 
-            {/* In-pill CTA Button: Book a demo */}
+            {/* In-pill CTA */}
             <div className="pl-1">
               <Link
                 href="/contact"
@@ -410,13 +421,13 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Floating Login Pill on Top Right (Exact Orato Style) */}
-          <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 pointer-events-auto">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-4 py-1.5 rounded-full text-xs font-medium text-[#221A1E] bg-white/85 hover:bg-white border border-[#E8DFD4] shadow-2xs hover:shadow-sm transition-all"
-            >
-              Login
+          {/* Theme switch and login stay visible at the top right */}
+          <div className="hidden lg:flex fixed right-5 xl:right-8 top-3 md:top-5 z-[60] items-center gap-2 pointer-events-auto">
+            <button type="button" onClick={toggleTheme} aria-label={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} title={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} className="theme-toggle inline-flex min-h-10 w-10 items-center justify-center rounded-full border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5B7FF]">
+              {lightTheme ? <Moon size={17} /> : <Sun size={17} />}
+            </button>
+            <Link href={LOGIN_URL} aria-label="Log in" className="login-pill inline-flex min-h-10 items-center justify-center px-5 py-2 rounded-full text-sm font-semibold border shadow-lg transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5B7FF]">
+              Log in
             </Link>
           </div>
 
@@ -425,11 +436,14 @@ export function Navbar() {
             <Logo />
             
             <div className="flex items-center gap-2">
+              <button type="button" onClick={toggleTheme} aria-label={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} title={lightTheme ? 'Switch to dark theme' : 'Switch to light theme'} className="theme-toggle inline-flex h-9 w-9 items-center justify-center rounded-full border">
+                {lightTheme ? <Moon size={16} /> : <Sun size={16} />}
+              </button>
               <Link
                 href="/contact"
                 className="btn-pill-primary px-3 py-1 text-xs font-semibold"
               >
-                Book demo
+                Book a demo
               </Link>
               
               <button
@@ -457,7 +471,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="absolute inset-0 bg-[#221A1E]/30 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#090D19]/55 backdrop-blur-sm"
             />
 
             {/* Slide-over Drawer Panel */}
@@ -466,7 +480,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-[86%] max-w-sm bg-[#FAF7F2] border-l border-[#E8DFD4] shadow-2xl p-6 flex flex-col justify-between overflow-y-auto"
+              className="yz-drawer absolute right-0 top-0 bottom-0 w-[86%] max-w-sm bg-[#FAF7F2] border-l border-[#E8DFD4] shadow-2xl p-6 flex flex-col justify-between overflow-y-auto"
             >
               <div>
                 {/* Drawer Header */}
@@ -483,13 +497,54 @@ export function Navbar() {
 
                 {/* Mobile Navigation List */}
                 <nav className="mt-6 flex flex-col gap-1.5">
+                  {/* Product Accordion */}
+                  <div className="border-b border-[#E8DFD4]/70 pb-2">
+                    <button
+                      onClick={() => toggleMobileAccordion('product')}
+                      className="flex items-center justify-between w-full py-2.5 text-sm font-semibold text-[#221A1E] text-left"
+                    >
+                      <span>Product</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 text-[#796F68] ${
+                          mobileAccordion === 'product' ? 'rotate-180 text-[#B85D3B]' : ''
+                        }`}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {mobileAccordion === 'product' && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="overflow-hidden pl-2 pt-1 pb-2 flex flex-col gap-2"
+                        >
+                          {productMenu.map((item) => {
+                            const Icon = item.icon
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="flex items-center gap-2.5 py-1.5 text-xs text-[#635952] hover:text-[#B85D3B]"
+                              >
+                                <Icon size={14} className="text-[#B85D3B]" />
+                                <span>{item.title}</span>
+                              </Link>
+                            )
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
                   {/* Use Cases Accordion */}
                   <div className="border-b border-[#E8DFD4]/70 pb-2">
                     <button
                       onClick={() => toggleMobileAccordion('usecases')}
                       className="flex items-center justify-between w-full py-2.5 text-sm font-semibold text-[#221A1E] text-left"
                     >
-                      <span>Use Cases</span>
+                      <span>Use cases</span>
                       <ChevronDown
                         size={16}
                         className={`transition-transform duration-200 text-[#796F68] ${
@@ -573,13 +628,6 @@ export function Navbar() {
                     Pricing
                   </Link>
 
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="py-2.5 text-sm font-semibold text-[#221A1E] hover:text-[#B85D3B] border-b border-[#E8DFD4]/70"
-                  >
-                    Contact
-                  </Link>
                 </nav>
               </div>
 
@@ -593,11 +641,11 @@ export function Navbar() {
                   Book a demo
                 </Link>
                 <Link
-                  href="/contact"
+                  href={LOGIN_URL}
                   onClick={() => setMobileMenuOpen(false)}
                   className="btn-pill-secondary w-full py-2.5 text-xs font-medium justify-center text-center"
                 >
-                  Sign In / Customer Portal
+                  Log in
                 </Link>
               </div>
             </motion.aside>

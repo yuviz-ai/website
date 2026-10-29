@@ -1,21 +1,27 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, AudioLines, Network, Workflow, Zap } from 'lucide-react'
 
+export const metadata: Metadata = {
+  title: 'Pricing | Yuviz.ai',
+  description: 'Pricing follows your call minutes and the AI services you choose. Tell us your volume and we’ll give you an estimate.',
+}
+
 const factors = [
-  { icon: Network, title: 'Call volume and routing', text: 'Expected minutes, inbound or outbound direction, and how calls reach the voice experience.' },
-  { icon: Zap, title: 'AI services and voice', text: 'The speech, language-model, and voice services needed for the intended workflow.' },
-  { icon: Workflow, title: 'Workflow and integration scope', text: 'The business context, tools, handoff rules, and systems that need to be involved.' },
+  { icon: Network, title: 'Call minutes', text: 'Expected volume, inbound or outbound.' },
+  { icon: Zap, title: 'AI services', text: 'The speech, language and voice providers you choose.' },
+  { icon: Workflow, title: 'Integrations', text: 'The tools your agent needs to act in.' },
 ]
 
 export default function PricingPage() {
   return <main className="story-site story-subpage">
-    <section className="story-subpage-hero story-subpage-centered"><div className="story-container">
-      <span className="story-kicker">PRICING & SCOPE</span>
-      <h1>Price the work you need.<br/><em>Not a made-up plan.</em></h1>
-      <p>Voice AI costs depend on the call path, AI services, usage, and workflow requirements. We’ll first understand the scope instead of publishing unverified plan prices or service guarantees.</p>
-      <Link href="/contact" className="story-button story-button-primary">Discuss your workflow <ArrowRight size={16}/></Link>
+    <section className="story-subpage-hero"><div className="story-container">
+      <span className="story-kicker">PRICING</span>
+      <h1>Pay for the calls<br/><em>you actually take.</em></h1>
+      <p>Pricing follows your call minutes and the AI services you choose. Tell us your volume and we’ll give you an estimate.</p>
+      <Link href="/contact" className="story-button story-button-primary">Get an estimate <ArrowRight size={16}/></Link>
     </div></section>
     <section className="story-container story-pricing-grid">{factors.map(({icon:Icon,title,text})=><article key={title} className="story-pricing-card"><span className="story-pillar-icon"><Icon size={21}/></span><h2>{title}</h2><p>{text}</p></article>)}</section>
-    <section className="story-container story-pricing-bottom"><div><AudioLines size={22}/><div><h2>Need an estimate for a real use case?</h2><p>Share expected call patterns, telephony, required systems, and deployment constraints. We can discuss scope before commercial terms.</p></div><Link href="/contact" className="story-button story-button-primary">Talk to Yuviz <ArrowRight size={16}/></Link></div><p className="story-subpage-disclaimer">This page is not a published price list or a commitment to specific third-party integrations, response times, certifications, or service-level agreements. Those details must be confirmed for each deployment.</p></section>
+    <section className="story-container story-pricing-bottom"><div><AudioLines size={22}/><div><h2>Have a call volume in mind?</h2><p>Share your expected minutes and use case; we’ll come back with numbers.</p></div><Link href="/contact" className="story-button story-button-primary">Get an estimate <ArrowRight size={16}/></Link></div></section>
   </main>
 }

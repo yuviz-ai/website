@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import Link from 'next/link'
-import { ArrowRight, AudioLines, Mail, ShieldCheck } from 'lucide-react'
+import { ArrowRight, AudioLines, Mail } from 'lucide-react'
 
 export default function ContactPage() {
   const [prepared, setPrepared] = useState(false)
-  const [form, setForm] = useState({ name: '', email: '', company: '', useCase: 'Inbound customer enquiries', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', company: '', useCase: 'Appointment booking', message: '' })
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -26,14 +25,13 @@ export default function ContactPage() {
 
   return <main className="story-site story-subpage">
     <section className="story-subpage-hero"><div className="story-container">
-      <span className="story-kicker">LET’S TALK ABOUT THE CALL</span>
-      <h1>Start with the problem.<br/><em>Map the next step.</em></h1>
-      <p>Tell us about your callers, the systems around the conversation, and the outcome you want to improve. We’ll discuss fit and what needs to be validated.</p>
+      <span className="story-kicker">BOOK A DEMO</span>
+      <h1>Tell us about<br/><em>your calls.</em></h1>
+      <p>Who calls you, what they need, and what should happen next. We’ll show you an agent handling it.</p>
     </div></section>
     <section className="story-container story-contact-layout">
       <aside className="story-contact-aside">
-        <div className="story-contact-card"><span className="story-pillar-icon"><AudioLines size={21}/></span><h2>A practical conversation, not a scripted pitch.</h2><p>We can talk through call flows, business context, telephony, handoff requirements, and the work needed to validate a first workflow.</p><a href="mailto:hello@yuviz.ai" className="story-text-link"><Mail size={15}/> hello@yuviz.ai <ArrowRight size={14}/></a></div>
-        <div className="story-contact-note"><ShieldCheck size={17}/><p>This form prepares an email in your mail application. It does not submit data to a Yuviz backend, and we won’t show a false “request received” message.</p></div>
+        <div className="story-contact-card"><span className="story-pillar-icon"><AudioLines size={21}/></span><h2>A real conversation, not a pitch.</h2><p>We’ll look at your call flow, numbers and tools, and show you what Yuviz does today.</p><a href="mailto:hello@yuviz.ai" className="story-text-link"><Mail size={15}/> hello@yuviz.ai <ArrowRight size={14}/></a></div>
       </aside>
       <section className="story-contact-card">
         <h2>Tell us what you’re building</h2>
@@ -46,14 +44,13 @@ export default function ContactPage() {
           </div>
           <div className="story-form-grid">
             <label>Company<input autoComplete="organization" value={form.company} onChange={e=>setForm({...form,company:e.target.value})} placeholder="Company name"/></label>
-            <label>Primary use case<select value={form.useCase} onChange={e=>setForm({...form,useCase:e.target.value})}><option>Inbound customer enquiries</option><option>Appointment-related conversations</option><option>Lead qualification</option><option>Human handoff and call routing</option><option>Telephony architecture</option><option>Other workflow</option></select></label>
+            <label>Primary use case<select value={form.useCase} onChange={e=>setForm({...form,useCase:e.target.value})}><option>Appointment booking</option><option>Front-desk questions</option><option>Lead qualification</option><option>Outbound reminders</option><option>Human handoff</option><option>Other</option></select></label>
           </div>
           <label>What would you like to improve?<textarea rows={5} value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="Describe the call flow, current systems, and desired outcome."/></label>
-          <button type="submit" className="story-button story-button-primary">Prepare enquiry email <ArrowRight size={16}/></button>
-          <p className="story-form-foot">No server-side submission is configured on this form today.</p>
+          <button type="submit" className="story-button story-button-primary">Send <ArrowRight size={16}/></button>
+          <p className="story-form-foot">This opens an email to hello@yuviz.ai.</p>
         </form>
       </section>
     </section>
-    <div className="story-container story-contact-back"><Link href="/" className="story-text-link"><ArrowRight size={14} className="rotate-180"/> Back to the Yuviz overview</Link></div>
   </main>
 }

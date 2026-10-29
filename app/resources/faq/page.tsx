@@ -3,23 +3,22 @@ import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Yuviz.ai',
-  description: 'Answers about the Yuviz voice AI platform, current prototype, telephony, integrations, and implementation scope.',
+  title: 'FAQ | Yuviz.ai',
+  description: 'Answers about what Yuviz does, supported providers and languages, human handoff, certifications and pricing.',
 }
 
 const faqs = [
-  { q: 'What is Yuviz.ai?', a: 'Yuviz is building a voice AI platform focused on agent configuration, telephony and media handling, business context, and the flow of a customer conversation.' },
-  { q: 'What is currently implemented?', a: 'The current prototype includes SIP/FreeSWITCH telephony, a C++ media gateway, a conversation service, configuration services, and call-routing and handoff work. Production readiness and feature availability depend on the deployment and still require validation.' },
-  { q: 'Does Yuviz guarantee sub-300ms latency?', a: 'No general latency guarantee is published here. Voice-to-voice latency depends on the telephony path, media transport, speech services, model response, synthesis, network conditions, and how latency is measured.' },
-  { q: 'Can Yuviz connect to a CRM or business system?', a: 'Integration depends on the target system, the actions required, and the current implementation. Tell us what needs to happen after the call so we can confirm what exists and what would need engineering.' },
-  { q: 'Does Yuviz support human handoff?', a: 'Human handoff has been exercised in the current SIP prototype. The transfer behavior, context preservation, and supported deployment paths should be confirmed for your environment.' },
-  { q: 'Which AI providers are supported?', a: 'Provider support depends on the current configured implementation. We do not claim every cloud speech, language-model, or voice provider is production-ready by default.' },
-  { q: 'Does Yuviz have HIPAA, SOC 2, PCI DSS, or other certifications?', a: 'No such certification claim is made on this page. If your use case has regulatory, privacy, or data-retention requirements, discuss them with us before relying on the platform for that workload.' },
-  { q: 'How does pricing work?', a: 'Pricing depends on call volume, telephony, AI services, deployment needs, and workflow scope. Contact us to discuss the requirements before commercial terms are proposed.' },
+  { q: 'What does Yuviz do?', a: 'Yuviz runs AI voice agents on your phone numbers. They answer and make calls, follow the flow you design, take actions in your tools, and hand off to your team when needed.' },
+  { q: 'What can it do today?', a: 'Answer and make calls on your numbers, follow designed flows, interrupt naturally, look up callers, book, confirm, transfer to people, and record transcripts and summaries.' },
+  { q: 'Which providers are supported?', a: 'Telephony: Vobiz, Twilio and Plivo numbers, SIP, Cloudonix and BYOC. AI: OpenAI, Anthropic, Gemini, Groq, Ollama. Speech: Deepgram, Whisper. Voices: ElevenLabs, Cartesia, Deepgram, Sarvam, Kokoro.' },
+  { q: 'Which languages are supported?', a: 'English and Hindi.' },
+  { q: 'Does Yuviz support human handoff?', a: 'Yes — the agent can transfer a call to your team.' },
+  { q: 'Does Yuviz have SOC 2, HIPAA or PCI certifications?', a: 'We don’t hold SOC 2, HIPAA or PCI certifications yet. Tell us your requirements and we’ll be straight about fit.' },
+  { q: 'How is pricing worked out?', a: 'By call volume and the AI services you choose. Book a demo and we’ll estimate it with you.' },
 ]
 export default function FAQPage() {
-  return <main className="story-site story-subpage"><section className="story-subpage-hero"><div className="story-container"><span className="story-kicker">QUESTIONS & ANSWERS</span><h1>Clear answers.<br/><em>Honest boundaries.</em></h1><p>Learn about the current Yuviz direction, the prototype, integrations, and what needs to be confirmed for a real deployment.</p></div></section>
+  return <main className="story-site story-subpage"><section className="story-subpage-hero"><div className="story-container"><span className="story-kicker">QUESTIONS & ANSWERS</span><h1>Questions,<br/><em>answered.</em></h1></div></section>
     <section className="story-container story-faq-page-list">{faqs.map(faq=><details key={faq.q}><summary>{faq.q}<ChevronDown size={17}/></summary><p>{faq.a}</p></details>)}</section>
-    <section className="story-container story-use-index-note"><p>Have a specific call flow, provider, or integration requirement? Share the details so we can discuss current support and remaining work.</p><Link href="/contact" className="story-button story-button-primary">Ask Yuviz <ArrowRight size={16}/></Link></section>
+    <section className="story-container story-use-index-note"><p>Have a question we haven’t answered?</p><Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={16}/></Link></section>
   </main>
 }

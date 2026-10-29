@@ -1,25 +1,47 @@
 import Link from 'next/link'
-import {
-  ArrowDownRight, ArrowRight, AudioLines, Bot, Check, ChevronDown, CirclePlay,
-  Headphones, MessageSquareText, Network, PhoneCall, Radio, ShieldCheck,
-  Sparkles, Workflow, Zap, Building2, CalendarDays, Database, MessagesSquare, BookOpen, LifeBuoy,
-} from 'lucide-react'
+import type { Metadata } from 'next'
+import { ArrowDownRight, ArrowRight, Check, ChevronDown, Cpu, Headphones, MessageSquareText, PhoneCall, Server } from 'lucide-react'
+import { UseCasePlay } from '@/components/marketing/UseCasePlay'
+import { TalkToSarah } from '@/components/marketing/TalkToSarah'
+import { ProblemCards } from '@/components/marketing/ProblemCards'
+import { HelloToDone } from '@/components/marketing/HelloToDone'
 
+const lede = 'Yuviz answers your calls with AI voice agents that understand what callers need — then book, look up, confirm or hand off to your team.'
 
-function BrandLogo({ name, slug, src }: { name: string; slug?: string; src?: string }) {
-  const logoSrc = src ?? `https://cdn.simpleicons.org/${slug}`
-  const initials = name.split(/\\s+/).map(part => part[0]).join('').slice(0, 2).toUpperCase()
-  return <span className="story-brand-logo" title={name} aria-label={name}>
-    <img src={logoSrc} alt={name} loading="lazy" onError={event => { event.currentTarget.style.display = 'none'; event.currentTarget.nextElementSibling?.classList.add('is-visible') }} />
-    <span className="story-brand-fallback" aria-hidden="true">{initials}</span>
-  </span>
+export const metadata: Metadata = {
+  title: 'Yuviz.ai | AI voice agents for business',
+  description: lede,
+  openGraph: { title: 'Yuviz.ai | AI voice agents for business', description: lede },
 }
 
+const integrations = [
+  { name: 'Twilio', logo: 'twilio.svg', x: 18, y: 16 },
+  { name: 'Salesforce', logo: 'salesforce.svg', x: 34, y: 16 },
+  { name: 'WhatsApp', logo: 'whatsapp.svg', x: 6, y: 50 },
+  { name: 'Vonage', logo: 'vonage.svg', x: 21, y: 50 },
+  { name: 'Google Drive', logo: 'googledrive.svg', x: 26, y: 84 },
+  { name: 'HubSpot', logo: 'hubspot.svg', x: 36, y: 50 },
+  { name: 'Zoho', logo: 'zoho.svg', x: 50, y: 84, wide: true },
+  { name: 'Google Calendar', logo: 'googlecalendar.svg', x: 66, y: 16 },
+  { name: 'Plivo', logo: 'plivo.svg', x: 82, y: 16, wide: true },
+  { name: 'Vobiz', logo: 'vobiz.svg', x: 79, y: 50 },
+  { name: 'Cal.com', logo: 'caldotcom.svg', x: 64, y: 50 },
+  { name: 'Cloudonix', logo: 'cloudonix.png', x: 74, y: 84, wide: true },
+  { name: 'Google Sheets', logo: 'googlesheets.svg', x: 94, y: 50 },
+]
+
+// Circuit-style traces from the hub (500,220 in a 1000x440 box); alternate which axis turns first.
+const traces = integrations.map((i, n) => {
+  const x = i.x * 10, y = i.y * 4.4
+  if (n % 2) return { path: `M500 220 V${y} H${x}`, accent: `M${(500 + x) / 2 - 8} ${y} h16` }
+  return { path: `M500 220 H${x} V${y}`, accent: `M${x} ${(220 + y) / 2 - 8} v16` }
+})
+
 const useCases = [
-  { icon: Headphones, title: 'Customer enquiries', text: 'Give callers a clear first response for repeat questions and common requests.' },
-  { icon: CalendarCheckIcon, title: 'Appointment conversations', text: 'Gather the details needed to move a booking or scheduling enquiry forward.' },
-  { icon: MessageSquareText, title: 'Lead qualification', text: 'Ask consistent discovery questions and capture the caller’s intent for follow-up.' },
-  { icon: PhoneCall, title: 'Call routing and handoff', text: 'Recognize when a conversation needs a human and design the right next step.' },
+  { icon: CalendarCheckIcon, title: 'Appointment booking', text: 'Check availability, book, and send a confirmation.', call: { slug: 'appointment-booking', voice: 'Sarah · English', lines: ["Hi, I'd like to book a dental check-up this week.", "Sure! I have Thursday at 11 or Friday at 4:30. Which suits you?", "Friday at 4:30, please.", "You're booked for Friday at 4:30. I've sent the confirmation on WhatsApp."], starts: [0.0, 3.14, 7.67, 9.7], speakers: ["caller", "agent", "caller", "agent"] as ('agent' | 'caller')[] } },
+  { icon: Headphones, title: 'Front-desk questions', text: 'Timings, prices, directions and status, any hour.', call: { slug: 'front-desk', voice: 'Matilda · English', lines: ["Are you open on Sunday?", "Yes, we're open on Sunday from 10 till 2.", "And is there parking nearby?", "There's free parking right behind the building. See you soon!"], starts: [0.0, 1.42, 4.42, 6.54], speakers: ["caller", "agent", "caller", "agent"] as ('agent' | 'caller')[] } },
+  { icon: MessageSquareText, title: 'Lead qualification', text: 'Ask the same discovery questions on every call and log the answers.', call: { slug: 'lead-qualification', voice: 'George · English', lines: ["Hi, I saw your ad for the new apartments.", "Thanks for calling! Are you looking to buy in the next three months?", "Yes, probably a two-bedroom.", "Great, I've noted that down. Our sales team will call you back today."], starts: [0.0, 2.76, 6.74, 9.42], speakers: ["caller", "agent", "caller", "agent"] as ('agent' | 'caller')[] } },
+  { icon: PhoneCall, title: 'Outbound reminders', text: 'Call a list with pacing and retries.', call: { slug: 'outbound-reminders', voice: 'Jessica · Hindi', lines: ["नमस्ते! मैं लोटस क्लिनिक से बोल रही हूँ। कल सुबह ग्यारह बजे आपका अपॉइंटमेंट है।", "हाँ, मुझे याद है। धन्यवाद।", "बढ़िया! अगर समय बदलना हो, तो बस बताइए।", "नहीं, ठीक है। कल मिलते हैं।"], starts: [0.0, 5.41, 9.16, 12.4], speakers: ["agent", "caller", "agent", "caller"] as ('agent' | 'caller')[] } },
 ]
 
 function CalendarCheckIcon({ size = 20 }: { size?: number }) {
@@ -27,11 +49,10 @@ function CalendarCheckIcon({ size = 20 }: { size?: number }) {
 }
 
 const faqs = [
-  { q: 'What is Yuviz.ai?', a: 'Yuviz is building a voice AI platform focused on configuring voice agents and coordinating telephony, audio, agent context, and response flow for customer conversations.' },
-  { q: 'Are the product screens on this page live dashboards?', a: 'No. The workspace and conversation visuals on this page are illustrative design concepts. They are not a live dashboard, customer recording, or evidence of a production deployment.' },
-  { q: 'Can Yuviz connect to our CRM or internal systems?', a: 'That depends on the system, the action you need, and the current implementation. Tell us what needs to happen after a call and we’ll distinguish available functionality from integration work.' },
-  { q: 'Which AI providers and telephony setups are supported?', a: 'Provider and telephony support depends on the configured deployment. Share your SIP/carrier setup and preferred speech, language-model, or voice services so we can confirm the current fit.' },
-  { q: 'How is pricing determined?', a: 'Pricing depends on call volume, telephony, AI services, deployment needs, and workflow scope. We discuss those requirements before proposing commercial terms.' },
+  { q: 'What does Yuviz do?', a: 'Yuviz runs AI voice agents on your phone numbers. They answer and make calls, follow the flow you design, take actions in your tools, and hand off to your team when needed.' },
+  { q: 'Can I keep my phone numbers?', a: 'Yes. Yuviz works with Vobiz, Cloudonix and SIP trunks today. Twilio and Plivo numbers can be managed too (not yet verified on real calls).' },
+  { q: 'Which languages are supported?', a: 'English and Hindi today.' },
+  { q: 'How is pricing worked out?', a: 'By call volume and the AI services you choose. Book a demo and we’ll estimate it with you.' },
 ]
 
 export default function Page() {
@@ -39,32 +60,18 @@ export default function Page() {
     <main id="top" className="story-site">
       <section className="story-hero">
         <div className="story-hero-grid" aria-hidden="true" />
-        <div className="story-container story-hero-layout">
+        <div className="story-container story-hero-layout story-hero-solo">
           <div className="story-hero-copy">
-            <div className="story-eyebrow"><span className="story-live-dot" /> VOICE AI FOR REAL CUSTOMER CONVERSATIONS</div>
-            <h1>Every call has<br />a <span>next step.</span></h1>
-            <p className="story-lede">Build voice-agent experiences that listen to your customers, work with business context, and help move the conversation forward.</p>
+            <div className="story-eyebrow"><span className="story-live-dot" /> AI VOICE AGENTS FOR BUSINESS</div>
+            <h1>Turn conversations<br /><span>into outcomes.</span></h1>
+            <p className="story-lede">{lede}</p>
             <div className="story-actions">
-              <Link href="/contact" className="story-button story-button-primary">Explore your use case <ArrowRight size={17}/></Link>
-              <a href="#how-it-works" className="story-button story-button-quiet"><CirclePlay size={17}/> See how it works</a>
+              <Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={17}/></Link>
+              <TalkToSarah/>
             </div>
-            <div className="story-proof-note"><span className="story-proof-mark"><Check size={13}/></span> Start with one clear workflow. Validate it before you scale.</div>
+            <div className="story-proof-note"><span className="story-proof-mark"><Check size={13}/></span> Works with your numbers. Multilingual.</div>
           </div>
 
-          <div className="story-visual-wrap">
-            <div className="story-orbit story-orbit-one" aria-hidden="true" />
-            <div className="story-orbit story-orbit-two" aria-hidden="true" />
-            <div className="story-call-card">
-              <div className="story-call-top"><span className="story-mini-brand"><AudioLines size={17}/></span><div><strong>Yuviz voice experience</strong><small>Illustrative conversation preview</small></div><span className="story-live-label"><span/> CONCEPT</span></div>
-              <div className="story-call-status"><span className="story-wave"><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/></span><span>Conversation flow</span><span className="story-status-line"/></div>
-              <div className="story-chat-row story-caller"><span className="story-chat-avatar"><PhoneCall size={14}/></span><div><small>CALLER</small><p>Hi, I’m calling to ask about an appointment.</p></div></div>
-              <div className="story-chat-row story-agent"><span className="story-chat-avatar"><AudioLines size={14}/></span><div><small>VOICE AGENT</small><p>Of course. I can help gather the details. What day works best for you?</p></div></div>
-              <div className="story-tool-row"><span className="story-tool-icon"><Workflow size={15}/></span><div><strong>Next step</strong><small>Collect details · Follow configured workflow</small></div><span className="story-tool-pill">EXAMPLE</span></div>
-              <div className="story-call-foot"><span><span className="story-green-dot"/> Voice-first interaction</span><span>Illustrative UI · Not live data</span></div>
-            </div>
-            <div className="story-float-card story-float-top"><span className="story-float-icon"><Radio size={16}/></span><span><strong>Live call path</strong><small>Telephony + audio</small></span></div>
-            <div className="story-float-card story-float-bottom"><span className="story-float-icon violet"><Network size={16}/></span><span><strong>Context-aware flow</strong><small>Configured agent behavior</small></span></div>
-          </div>
         </div>
         <a href="#the-challenge" className="story-scroll-cue"><span>SCROLL TO EXPLORE</span><ArrowDownRight size={15}/></a>
       </section>
@@ -72,29 +79,30 @@ export default function Page() {
       <section id="the-challenge" className="story-section story-challenge">
         <div className="story-container story-split">
           <div className="story-section-intro">
-            <span className="story-kicker">THE CUSTOMER MOMENT</span>
-            <h2>Customers call for answers.<br/><em>Not another dead end.</em></h2>
+            <span className="story-kicker">WHY VOICE AGENTS</span>
+            <h2>Every missed call<br/><em>is a missed outcome.</em></h2>
           </div>
           <div className="story-challenge-copy">
-            <p>When a phone call is the fastest way to get help, a missed call or unclear next step creates friction for everyone.</p>
-            <p>Voice automation should do more than speak naturally. It should understand the purpose of the conversation, stay within its boundaries, and know what should happen next.</p>
-            <a href="#the-approach" className="story-text-link">A more useful way to handle calls <ArrowRight size={15}/></a>
+            <p>Callers want an answer now. Teams can’t staff every line, every hour — so calls wait, drop, or end without a next step.</p>
           </div>
         </div>
-        <div className="story-container story-friction-grid">
-          <article><span className="story-number">01</span><h3>Repeat questions</h3><p>Teams spend time answering the same routine enquiries again and again.</p></article>
-          <article><span className="story-number">02</span><h3>Scattered context</h3><p>Useful answers may depend on business knowledge and the caller’s intent.</p></article>
-          <article><span className="story-number">03</span><h3>Unclear handoff</h3><p>When automation reaches its limit, the caller still needs a clear next step.</p></article>
+        <ProblemCards/>
+      </section>
+
+      <section id="how-it-works" className="story-section story-flow">
+        <div className="story-container">
+          <div className="story-split story-flow-heading"><div><span className="story-kicker">HOW IT WORKS</span><h2>From hello<br/><em>to done.</em></h2></div><p>Follow one call through Yuviz: answered on your number, understood, acted on, and passed to your team when a person is needed.</p></div>
+          <HelloToDone/>
         </div>
       </section>
 
-      <section id="the-approach" className="story-section story-approach">
+      <section id="own-your-stack" className="story-section story-own">
         <div className="story-container">
-          <div className="story-centered-heading"><span className="story-kicker">INTRODUCING YUVIZ</span><h2>Make the conversation<br/><em>part of the workflow.</em></h2><p>Bring voice, agent behavior, business context, and call flow into a system you can shape around a specific customer need.</p></div>
-          <div className="story-pillars">
-            <article className="story-pillar"><span className="story-pillar-icon"><AudioLines size={21}/></span><span className="story-pillar-step">01 / LISTEN</span><h3>Start with the caller</h3><p>Design the experience around what the customer says, the details that matter, and the intent behind the request.</p></article>
-            <article className="story-pillar"><span className="story-pillar-icon violet"><Bot size={21}/></span><span className="story-pillar-step">02 / UNDERSTAND</span><h3>Use the right context</h3><p>Shape agent instructions and relevant knowledge around a bounded job, rather than relying on a generic answer.</p></article>
-            <article className="story-pillar"><span className="story-pillar-icon coral"><Workflow size={21}/></span><span className="story-pillar-step">03 / MOVE FORWARD</span><h3>Define the next step</h3><p>Plan what the agent should do, what it should not do, and when a person needs to take over.</p></article>
+          <div className="story-split story-flow-heading"><div><span className="story-kicker">OWN YOUR STACK</span><h2>Your numbers.<br/>Your models.<br/><em>Your data.</em></h2></div><p>Yuviz doesn’t lock you into one carrier or one AI vendor.</p></div>
+          <div className="story-own-grid">
+            <article><PhoneCall size={22} aria-hidden="true"/><h3>Bring your carrier</h3><p>Vobiz, Cloudonix, Twilio, Plivo or your own SIP trunk. Keep the numbers you already have.</p></article>
+            <article><Cpu size={22} aria-hidden="true"/><h3>Choose your AI</h3><p>OpenAI, Anthropic, Gemini, Groq, or a local model with Ollama. Pick per agent and switch any time.</p></article>
+            <article><Server size={22} aria-hidden="true"/><h3>Keep your data</h3><p>Self-host Yuviz on your own servers with Docker. Separate workspaces per customer, secrets encrypted at rest.</p></article>
           </div>
         </div>
       </section>
@@ -102,75 +110,58 @@ export default function Page() {
       <section id="integrations" className="story-section story-integrations">
         <div className="story-container">
           <div className="story-centered-heading story-integrations-heading">
-            <span className="story-kicker">BUILT AROUND YOUR WORKFLOW</span>
-            <h2>Voice AI belongs<br/><em>in your existing stack.</em></h2>
-            <p>Connect telephony, customer records, scheduling, messaging, and workspace tools around your conversation workflows.</p>
+            <span className="story-kicker">INTEGRATIONS</span>
+            <h2>Voice AI that fits<br/><em>your existing tools.</em></h2>
+            <p>Bring your own phone numbers and connect the systems your team already uses.</p>
           </div>
           <div className="story-integration-stage">
             <div className="story-integration-grid" aria-hidden="true"/>
-            <svg className="story-integration-lines" viewBox="0 0 900 430" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M450 215 L190 80 M450 215 L450 55 M450 215 L710 80 M450 215 L170 340 M450 215 L450 375 M450 215 L730 340"/>
+            <svg className="story-int-traces" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true">
+              <path className="trace" d={traces.map(t => t.path).join(' ')}/>
+              <path className="accent" d={traces.map(t => t.accent).join(' ')}/>
+              {traces.map((t, n) => <path key={n} className="pulse" d={t.path} pathLength={100} style={{ animationDelay: `${(n * 0.37) % 2.4}s` }}/>)}
             </svg>
             <div className="story-integration-hub">
-              <span className="story-hub-orbit"/>
-              <span className="story-hub-mark"><img src="/icon.svg" alt="Yuviz logo" /></span>
-              <strong>Yuviz</strong>
-              <small>Voice workflow</small>
+              <span className="story-hub-mark"><img src="/yuviz-logo.jpg" alt="Yuviz" /></span>
             </div>
-            <article className="story-integration-node node-crm"><span><strong>CRM</strong><span className="story-brand-logos"><BrandLogo name="Salesforce" slug="salesforce"/><BrandLogo name="HubSpot" slug="hubspot"/><BrandLogo name="Zoho CRM" slug="zoho"/></span></span></article>
-            <article className="story-integration-node node-calendar"><span><strong>Scheduling</strong><span className="story-brand-logos"><BrandLogo name="Google Calendar" slug="googlecalendar"/><BrandLogo name="Cal.com" slug="caldotcom"/></span></span></article>
-            <article className="story-integration-node node-helpdesk"><span><strong>Telephony</strong><span className="story-brand-logos"><BrandLogo name="Twilio" slug="twilio"/><BrandLogo name="Plivo" slug="plivo"/><BrandLogo name="Vonage" slug="vonage"/></span></span></article>
-            <article className="story-integration-node node-knowledge"><span><strong>Messaging</strong><span className="story-brand-logos"><BrandLogo name="WhatsApp" slug="whatsapp"/></span></span></article>
-            <article className="story-integration-node node-data"><span><strong>Cloud telephony</strong><span className="story-brand-logos"><BrandLogo name="Cloudonix" src="https://logo.clearbit.com/cloudonix.com"/><BrandLogo name="Vobiz" src="https://logo.clearbit.com/vobiz.com"/></span></span></article>
-            <article className="story-integration-node node-messaging"><span><strong>Google Workspace</strong><span className="story-brand-logos"><BrandLogo name="Google Drive" slug="googledrive"/><BrandLogo name="Google Sheets" slug="googlesheets"/></span></span></article>
+            {integrations.map(i => (
+              <span key={i.name} className={`story-int-tile${i.wide ? ' wide' : ''}`} title={i.name} style={{ '--x': `${i.x}%`, '--y': `${i.y}%` } as React.CSSProperties}>
+                <img src={`/logos/${i.logo}`} alt={i.name} loading="lazy" />
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="how-it-works" className="story-section story-flow">
-        <div className="story-container">
-          <div className="story-split story-flow-heading"><div><span className="story-kicker">FROM HELLO TO NEXT STEP</span><h2>A voice experience<br/><em>with a clear path.</em></h2></div></div>
-          <div className="story-flow-track">
-            <article><span className="story-flow-icon"><PhoneCall size={20}/></span><span className="story-flow-num">STEP 01</span><h3>The call arrives</h3><p>Telephony routing connects the caller to the voice experience.</p></article>
-            <span className="story-flow-arrow"><ArrowRight size={18}/></span>
-            <article><span className="story-flow-icon violet"><AudioLines size={20}/></span><span className="story-flow-num">STEP 02</span><h3>Audio is handled</h3><p>The media path carries audio between the caller and the agent system.</p></article>
-            <span className="story-flow-arrow"><ArrowRight size={18}/></span>
-            <article><span className="story-flow-icon coral"><Sparkles size={20}/></span><span className="story-flow-num">STEP 03</span><h3>The agent responds</h3><p>Conversation logic uses configured instructions and available context to shape a response.</p></article>
-            <span className="story-flow-arrow"><ArrowRight size={18}/></span>
-            <article><span className="story-flow-icon green"><Check size={20}/></span><span className="story-flow-num">STEP 04</span><h3>Choose the next step</h3><p>Continue the conversation, follow a configured action, or hand off when needed.</p></article>
+      <section className="story-section story-principles">
+        <div className="story-container story-principles-layout">
+          <div><span className="story-kicker">BUILT FOR REAL CALLS</span><h2>Fluent is good.<br/><em>Reliable is better.</em></h2><Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={16}/></Link></div>
+          <div className="story-principle-list">
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Natural interruptions</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Callers can cut in; the agent stops and listens.</p></details>
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Clear boundaries</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>You decide what the agent can do, and when it must hand over.</p></details>
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Test before you go live</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Call your agent from the browser before a single customer does.</p></details>
+            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Every call on record</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Transcript, summary and sentiment for each conversation.</p></details>
           </div>
         </div>
       </section>
 
       <section id="use-cases" className="story-section story-use-cases">
         <div className="story-container">
-          <div className="story-split story-use-heading"><div><span className="story-kicker">WHERE TO BEGIN</span><h2>One useful conversation<br/><em>can be a strong start.</em></h2></div><p>Choose a clear, repeatable job. Confirm the required data and actions. Then evaluate how well the experience handles real variations and edge cases.</p></div>
-          <div className="story-use-grid">{useCases.map((item, i) => { const Icon = item.icon; return <article key={item.title} className="story-use-card"><span className="story-use-icon"><Icon size={20}/></span><span className="story-number">0{i+1}</span><h3>{item.title}</h3><p>{item.text}</p><span className="story-use-label">POTENTIAL WORKFLOW</span></article> })}</div>
-        </div>
-      </section>
-
-      <section className="story-section story-principles">
-        <div className="story-container story-principles-layout">
-          <div><span className="story-kicker">DESIGNED FOR REAL CALLS</span><h2>Fluent is good.<br/><em>Reliable is better.</em></h2><p className="story-principles-lede">A good voice experience needs a plan for the moments when speech is unclear, the request changes, a tool is unavailable, or a human should step in.</p><Link href="/contact" className="story-button story-button-primary">Discuss your call flow <ArrowRight size={16}/></Link></div>
-          <div className="story-principle-list">
-            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Defined boundaries</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Make clear what the agent can handle, what it must avoid, and when it should ask for help.</p></details>
-            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Human handoff as a path</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Plan how a caller reaches a person when the request needs judgement, support, or an exception.</p></details>
-            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Measure the whole outcome</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Evaluate whether the caller’s need was resolved, not just whether the agent responded quickly.</p></details>
-            <details><summary><span className="story-principle-check"><Check size={16}/></span><h3>Validate before expanding</h3><ChevronDown className="story-principle-chevron" size={16}/></summary><p>Test real call variations and edge cases in one workflow before extending to more use cases.</p></details>
-          </div>
+          <div className="story-split story-use-heading"><div><span className="story-kicker">WHERE TO START</span><h2>Start with one call.<br/><em>Then scale.</em></h2></div><Link href="/use-cases" className="story-text-link">See all industries <ArrowRight size={15}/></Link></div>
+          <div className="story-use-grid">{useCases.map(item => { const Icon = item.icon; return <article key={item.title} className="story-use-card"><span className="story-use-icon"><Icon size={20}/></span><UseCasePlay src={`/calls/home-${item.call.slug}.m4a`} voice={item.call.voice} lines={item.call.lines} starts={item.call.starts} speakers={item.call.speakers}><h3>{item.title}</h3><p>{item.text}</p></UseCasePlay></article> })}</div>
         </div>
       </section>
 
       <section id="faq" className="story-section story-faq">
         <div className="story-container story-faq-layout">
-          <div><span className="story-kicker">GOOD QUESTIONS</span><h2>Know what’s real<br/><em>before you get started.</em></h2><p>We’ll discuss your workflow and be clear about current capabilities, dependencies, and what would need to be built.</p><Link href="/contact" className="story-text-link">Ask us about your use case <ArrowRight size={15}/></Link></div>
+          <div><span className="story-kicker">GOOD QUESTIONS</span><h2>Know what’s real<br/><em>before you get started.</em></h2><Link href="/resources/faq" className="story-text-link">See all questions <ArrowRight size={15}/></Link></div>
           <div className="story-faq-list">{faqs.map(faq => <details key={faq.q}><summary>{faq.q}<ChevronDown size={17}/></summary><p>{faq.a}</p></details>)}</div>
         </div>
       </section>
 
       <section className="story-final-cta">
         <div className="story-final-glow" aria-hidden="true"/>
-        <div className="story-container story-final-content"><span className="story-kicker">LET’S START WITH THE CALL</span><h2>What should your<br/><em>next conversation do?</em></h2><p>Tell us about the callers, the workflow, and the outcome you want. We’ll work through the practical fit and what it takes to validate a first use case.</p><div className="story-actions story-actions-center"><Link href="/contact" className="story-button story-button-primary">Talk through your use case <ArrowRight size={17}/></Link><a href="mailto:hello@yuviz.ai" className="story-button story-button-quiet">Email Yuviz</a></div></div>
+        <div className="story-container story-final-content"><span className="story-kicker">READY WHEN YOU ARE</span><h2>What should your<br/><em>next call achieve?</em></h2><p>Tell us about your calls and the outcome you want. We’ll show you an agent doing it.</p><div className="story-actions story-actions-center"><Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={17}/></Link><a href="mailto:hello@yuviz.ai" className="story-button story-button-quiet">Email us</a></div></div>
       </section>
     </main>
   )

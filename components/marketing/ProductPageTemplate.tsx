@@ -1,43 +1,75 @@
-import type React from 'react'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, AudioLines, Check, Network, Workflow } from 'lucide-react'
+import type { Metadata } from 'next'
+import type React from 'react'
+import {
+  ArrowRight, AudioLines, GitBranch, Link2, ListChecks, Mic, MonitorPlay, PhoneForwarded, PhoneIncoming, Radio, Repeat, Route, Upload, Workflow,
+} from 'lucide-react'
 
-export interface FeatureItem {
-  title: string
-  description: string
-  icon?: React.ElementType
-  tag?: string
-}
-export interface ProductPageProps {
-  badge: string
-  title: string
-  highlightTitle?: string
-  subtitle: string
-  features: FeatureItem[]
-  specsTitle?: string
-  specs?: { label: string; value: string }[]
-  codeSnippet?: string
-  benefitsTitle?: string
-  benefits?: string[]
-  ctaTitle?: string
-  ctaDescription?: string
+interface Point { title: string; icon: React.ElementType }
+export interface Product {
+  slug: string
+  name: string
+  highlight: string
+  summary: string
+  points: Point[]
 }
 
-export function ProductPageTemplate({ badge, title, highlightTitle }: ProductPageProps) {
-  const areas = [
-    { icon: AudioLines, title: 'Conversation design', description: 'Define what the agent should understand, what context it may use, and how it should respond.' },
-    { icon: Workflow, title: 'Actions and boundaries', description: 'Identify required tools, permitted actions, fallback behavior, and when a person should take over.' },
-    { icon: Network, title: 'Systems and dependencies', description: 'Map telephony, data, provider, and operational dependencies before implementation.' },
-  ]
+export const PRODUCTS: Product[] = [
+  {
+    slug: 'agent-builder', name: 'Agent builder', highlight: 'Design the call, visually.', summary: 'Design agents, voices and call flows visually',
+    points: [
+      { title: 'Conversation steps as a graph', icon: GitBranch },
+      { title: 'Choose voice, language and AI providers', icon: Mic },
+      { title: 'Test calls from the browser', icon: MonitorPlay },
+    ],
+  },
+  {
+    slug: 'inbound-calls', name: 'Inbound calls', highlight: 'Answer every call.', summary: 'Answer every call on your own numbers',
+    points: [
+      { title: 'Route each number to an agent', icon: PhoneIncoming },
+      { title: 'Natural interruptions', icon: AudioLines },
+      { title: 'Transfer to your team', icon: PhoneForwarded },
+    ],
+  },
+  {
+    slug: 'outbound-calls', name: 'Outbound campaigns', highlight: 'Call your list, at your pace.', summary: 'Reach contact lists with paced, retried calls',
+    points: [
+      { title: 'Upload contacts, set pacing', icon: Upload },
+      { title: 'Retries with gaps and limits', icon: Repeat },
+      { title: 'Readiness checks before you start', icon: ListChecks },
+    ],
+  },
+  {
+    slug: 'ivr-builder', name: 'IVR builder', highlight: 'Menus callers can talk to.', summary: 'Replace keypad menus with spoken ones',
+    points: [
+      { title: 'Build spoken menus', icon: Workflow },
+      { title: 'Route by what callers say', icon: Route },
+      { title: 'Runs on live inbound calls', icon: Radio },
+    ],
+  },
+]
+
+const bySlug = (slug: string) => {
+  const product = PRODUCTS.find(p => p.slug === slug)
+  if (!product) throw new Error(`Unknown product: ${slug}`)
+  return product
+}
+
+export function productMetadata(slug: string): Metadata {
+  const { name, summary } = bySlug(slug)
+  return { title: `${name} | Yuviz.ai`, description: `${summary}.` }
+}
+
+export function ProductPageTemplate({ slug }: { slug: string }) {
+  const { name, highlight, summary, points } = bySlug(slug)
   return <main className="story-site story-subpage">
-    <section className="story-subpage-hero story-subpage-centered"><div className="story-container">
-      <span className="story-kicker">PRODUCT AREA · {badge.toUpperCase()}</span>
-      <h1>{title}<br/><em>{highlightTitle || 'Explore the workflow.'}</em></h1>
-      <p>This page introduces a product area to discuss, not a guarantee that every capability, provider, or integration is enabled today. We’ll confirm the current implementation against your requirements.</p>
-      <Link href="/contact" className="story-button story-button-primary">Discuss this workflow <ArrowRight size={16}/></Link>
-      <Link href="/#the-approach" className="story-text-link">How Yuviz approaches voice AI <ArrowUpRight size={14}/></Link>
+    <section className="story-subpage-hero"><div className="story-container">
+      <span className="story-kicker">{name.toUpperCase()}</span>
+      <h1>{name}<br/><em>{highlight}</em></h1>
+      <p>{summary}.</p>
+      <Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={16}/></Link>
     </div></section>
-    <section className="story-container story-case-grid">{areas.map(({icon:Icon,title:areaTitle,description},index)=><article className="story-case-card" key={areaTitle}><span className="story-number">0{index+1} / AREA</span><span className="story-pillar-icon"><Icon size={20}/></span><h2>{areaTitle}</h2><p>{description}</p></article>)}</section>
-    <section className="story-container story-case-bottom"><div><span className="story-pillar-icon"><Check size={20}/></span><div><h2>Validate the requirements before committing to the outcome.</h2><p>Tell us about the target systems, call flow, data requirements, and success criteria. We’ll distinguish current functionality from additional engineering or third-party dependencies.</p></div><Link href="/contact" className="story-button story-button-primary">Talk to Yuviz <ArrowRight size={16}/></Link></div><p className="story-subpage-disclaimer">No latency, uptime, compliance, customer-result, or integration guarantee is implied by this page.</p><Link href="/pricing" className="story-text-link">Discuss pricing and scope <ArrowRight size={14}/></Link></section>
+    <section className="story-container story-case-grid">{points.map(({ title, icon: Icon }, index) => <article className="story-case-card" key={title}><span className="story-number">0{index + 1}</span><span className="story-pillar-icon"><Icon size={20}/></span><h2>{title}</h2></article>)}</section>
+    <section className="story-container story-case-bottom"><div><span className="story-pillar-icon"><Link2 size={20}/></span><div><h2>What should your next call achieve?</h2><p>Tell us about your calls and the outcome you want. We’ll show you an agent doing it.</p></div><div className="story-case-actions"><Link href="/pricing" className="story-text-link">See pricing <ArrowRight size={14}/></Link><Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={16}/></Link></div></div></section>
   </main>
 }

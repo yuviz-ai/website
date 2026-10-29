@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Navbar } from '@/components/marketing/Navbar'
-import { Footer } from '@/components/marketing/LiveDemo'
+import { Footer } from '@/components/marketing/Footer'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yuviz.ai'),
@@ -16,15 +16,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: '/yuviz-logo.jpg',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    apple: '/yuviz-logo.jpg',
+    apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
   },
 }
 

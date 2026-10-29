@@ -7,9 +7,8 @@ const routes = [
   '/use-cases/e-commerce', '/use-cases/restaurants', '/use-cases/government',
   '/use-cases/sales', '/use-cases/hr-hiring',
   '/product/agent-builder', '/product/inbound-calls', '/product/outbound-calls',
-  '/product/knowledge-base', '/product/call-analytics', '/product/api-webhooks',
-  '/product/enterprise-deployment', '/product/ivr-builder',
-  '/resources/faq', '/resources/blog', '/resources/documentation', '/resources/api-integration',
+  '/product/ivr-builder',
+  '/resources/faq', '/resources/blog', '/resources/blog/voice-ai-platform-guide', '/resources/documentation', '/resources/api-integration',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

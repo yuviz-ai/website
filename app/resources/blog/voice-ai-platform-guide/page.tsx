@@ -27,7 +27,7 @@ export default function VoiceAiGuidePage() {
   return <main className="story-site story-subpage">
     <section className="story-subpage-hero story-article-hero">
       <div className="story-container story-article">
-        <Link href="/resources/blog" className="story-article-back"><ArrowLeft size={14}/> Back to the journal</Link>
+        <Link href="/resources/blog" className="story-article-back"><ArrowLeft size={14}/> Back to blogs</Link>
         <span className="story-kicker">VOICE AI GUIDE</span>
         <h1>Voice AI for business calls:<br/><em>design for reliability.</em></h1>
         <p>A practical guide to call architecture, useful workflows, business context, human handoff, and the quality metrics that matter after the demo.</p>

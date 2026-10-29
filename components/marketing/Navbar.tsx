@@ -89,7 +89,7 @@ export function Logo({ className = '' }: { className?: string }) {
 const productMenu = [
   { title: 'Agent builder', desc: 'Design agents, voices and call flows visually', href: '/product/agent-builder', icon: Bot },
   { title: 'Inbound calls', desc: 'Answer every call on your own numbers', href: '/product/inbound-calls', icon: PhoneIncoming },
-  { title: 'Outbound campaigns', desc: 'Reach contact lists with paced, retried calls', href: '/product/outbound-calls', icon: PhoneOutgoing },
+  { title: 'Campaigns', desc: 'Reach contact lists with paced, retried calls', href: '/product/outbound-calls', icon: PhoneOutgoing },
   { title: 'IVR builder', desc: 'Replace keypad menus with spoken ones', href: '/product/ivr-builder', icon: GitBranch },
 ]
 
@@ -106,7 +106,7 @@ const useCasesMenu = [
 
 const resourcesMenu = [
   { title: 'FAQ', desc: 'Setup, providers, security and pricing', href: '/resources/faq', icon: HelpCircle },
-  { title: 'Journal', desc: 'Practical writing on voice AI', href: '/resources/blog', icon: FileText },
+  { title: 'Blogs', desc: 'Practical writing on voice AI', href: '/resources/blog', icon: FileText },
   { title: 'Integrations', desc: 'What connects to Yuviz today', href: '/resources/api-integration', icon: Code2 },
   { title: 'Developers', desc: 'How Yuviz fits your stack', href: '/resources/documentation', icon: Sparkles },
 ]
@@ -229,9 +229,9 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 6, scale: 0.98 }}
                       transition={{ duration: 0.16, ease: 'easeOut' }}
-                      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[620px] bg-white border border-[#E8DFD4] rounded-2xl shadow-xl p-5 z-50 overflow-hidden"
+                      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[460px] bg-white border border-[#E8DFD4] rounded-2xl shadow-xl p-4 z-50 overflow-hidden"
                     >
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 gap-1.5">
                         {productMenu.map((item) => {
                           const Icon = item.icon
                           return (

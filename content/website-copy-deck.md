@@ -42,7 +42,7 @@ No longer claimed after the Knowledge base and Call analytics pages were removed
 **Product ▾** (new)
 - Agent builder — Design agents, voices and call flows visually ✅
 - Inbound calls — Answer every call on your own numbers ✅
-- Outbound campaigns — Reach contact lists with paced, retried calls ✅
+- Campaigns — Reach contact lists with paced, retried calls ✅
 - IVR builder — Replace keypad menus with spoken ones ✅
 
 **Use cases ▾** (heading: *By industry*) — fixes the regulated-action wording (KYC, triage, refills):
@@ -58,7 +58,7 @@ No longer claimed after the Knowledge base and Call analytics pages were removed
 
 **Resources ▾**
 - FAQ — Setup, providers, security and pricing
-- Journal — Practical writing on voice AI
+- Blogs — Practical writing on voice AI
 - Integrations — What connects to Yuviz today *(was "Guides for connecting Twilio, Salesforce & HubSpot")*
 - Developers — How Yuviz fits your stack *(was "Developer quickstarts & SDK reference" — no SDKs exist ❌)*
 
@@ -253,8 +253,8 @@ Knowledge base, Call analytics, Tools & integrations and Security & deployment p
   - **Latency guarantee?** — delete the question (no figure to give).
   - **Pricing?** — same as home.
 
-### Journal (/resources/blog)
-- Rename "Blog" → **Journal** (matches kicker). Keep the featured guide. Delete the three "UPCOMING TOPIC" cards until written.
+### Blogs (/resources/blog)
+- Label it **Blogs**. Keep the featured guide. Delete the three "UPCOMING TOPIC" cards until written.
 
 ### Developers (/resources/documentation)
 - H1: **How Yuviz fits / your stack.**

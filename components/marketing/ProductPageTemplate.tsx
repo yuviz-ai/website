@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    slug: 'outbound-calls', name: 'Outbound campaigns', highlight: 'Call your list, at your pace.', summary: 'Reach contact lists with paced, retried calls',
+    slug: 'outbound-calls', name: 'Campaigns', highlight: 'Call your list, at your pace.', summary: 'Reach contact lists with paced, retried calls',
     points: [
       { title: 'Upload contacts, set pacing', icon: Upload },
       { title: 'Retries with gaps and limits', icon: Repeat },

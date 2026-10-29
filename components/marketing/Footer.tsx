@@ -12,8 +12,8 @@ const ASK_AI = [
 
 const COLUMNS: { title: string; links: [string, string][] }[] = [
   { title: 'Use cases', links: [['Real estate', '/use-cases/real-estate'], ['Banking', '/use-cases/banking'], ['Healthcare', '/use-cases/healthcare'], ['E-commerce', '/use-cases/e-commerce'], ['Restaurants', '/use-cases/restaurants'], ['Public services', '/use-cases/government'], ['Sales', '/use-cases/sales'], ['HR & hiring', '/use-cases/hr-hiring']] },
-  { title: 'Product', links: [['Agent builder', '/product/agent-builder'], ['Inbound calls', '/product/inbound-calls'], ['Outbound campaigns', '/product/outbound-calls'], ['IVR builder', '/product/ivr-builder'], ['Pricing', '/pricing']] },
-  { title: 'Resources', links: [['FAQ', '/resources/faq'], ['Journal', '/resources/blog'], ['Integrations', '/resources/api-integration'], ['Developers', '/resources/documentation'], ['Contact', '/contact']] },
+  { title: 'Product', links: [['Agent builder', '/product/agent-builder'], ['Inbound calls', '/product/inbound-calls'], ['Campaigns', '/product/outbound-calls'], ['IVR builder', '/product/ivr-builder'], ['Pricing', '/pricing']] },
+  { title: 'Resources', links: [['FAQ', '/resources/faq'], ['Blogs', '/resources/blog'], ['Integrations', '/resources/api-integration'], ['Developers', '/resources/documentation'], ['Contact', '/contact']] },
   { title: 'Legal', links: [['Privacy Policy', '/contact?topic=privacy'], ['Terms of Use', '/contact?topic=terms']] },
 ]
 

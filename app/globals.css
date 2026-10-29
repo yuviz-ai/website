@@ -1636,3 +1636,5 @@ body.yuviz-light-theme .story-flow-heading > p, body.yuviz-light-theme .story-us
 body.yuviz-light-theme .story-flow-heading > p, body.yuviz-light-theme .story-use-heading > p, body.yuviz-light-theme .story-challenge-copy p { color: #4F5872 !important; border-left-color: #C9BCF5; }
 @media (max-width: 760px) { .story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { font-size: 16px; } }
 .story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { max-width: 600px; }
+/* Light theme: hero eyebrow must read on the pale background */
+body.yuviz-light-theme .story-eyebrow { color: #6E58C9 !important; }

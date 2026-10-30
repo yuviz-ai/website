@@ -7,10 +7,10 @@ import { useEffect, useState } from 'react';
 const STEP_MS = 5000;
 
 const steps = [
-  { image: 'instructions', heading: 'Write what the agent should do', text: 'Set the opening line and how it behaves. Ask AI rewrites it for you, and you review every change.' },
-  { image: 'voice', heading: 'Pick languages and a voice', text: 'Choose the languages, voice and models. The cost per minute updates as you go.' },
-  { image: 'knowledge', heading: 'Give it knowledge and tools', text: 'Add the documents it answers from and the apps it can act in, like your calendar or CRM.' },
-  { image: 'chat', heading: 'Test in chat, then go live', text: 'Talk to the agent before any caller does, then switch it live on your number.' },
+  { image: 'instructions', heading: 'Write what the agent should do', text: 'Describe its job. Ask AI can polish it.' },
+  { image: 'voice', heading: 'Pick languages and a voice', text: 'See the cost per minute as you choose.' },
+  { image: 'knowledge', heading: 'Give it knowledge and tools', text: 'Add documents and connect your apps.' },
+  { image: 'chat', heading: 'Test in chat, then go live', text: 'Try it first, then switch it on.' },
 ];
 
 export function ConfigureInMinutes() {

@@ -1638,72 +1638,40 @@ body.yuviz-light-theme .story-flow-heading > p, body.yuviz-light-theme .story-us
 .story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { max-width: 600px; }
 /* Light theme: hero eyebrow must read on the pale background */
 body.yuviz-light-theme .story-eyebrow { color: #6E58C9 !important; }
-
-/* Configure an agent in minutes section */
-.story-configure-heading > p { max-width: 520px; padding-left: 18px; border-left: 2px solid rgba(184,165,255,.45); color: #C9D0E6; font-size: 18px; font-weight: 500; line-height: 1.6; }
-body.yuviz-light-theme .story-configure-heading > p { color: #3F4760 !important; border-left-color: #C9BCF5; }
-@media (max-width: 760px) { .story-configure-heading > p { font-size: 16px; } }
-
-.story-configure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px; margin: 56px 0 48px; }
-.story-configure-step { padding: 36px; background: rgba(255,255,255,.04); border: 1px solid rgba(174,187,224,.14); border-radius: 16px; }
-.story-configure-step-num { font-size: 40px; font-weight: 700; color: #B8A5FF; line-height: 1; margin-bottom: 16px; }
-.story-configure-step h3 { font-size: 18px; font-weight: 600; color: #F3F5FF; margin: 0 0 12px; line-height: 1.4; }
-.story-configure-step p { font-size: 14px; color: #A0AAC4; line-height: 1.6; margin: 0 0 20px; }
-.story-configure-screenshot { min-height: 220px; background: rgba(93,88,151,.1); border: 1px dashed rgba(184,165,255,.25); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7D87A6; font-size: 13px; }
-
-body.yuviz-light-theme .story-configure-step { background: #F7F5FC; border-color: #E4DFF5; }
-body.yuviz-light-theme .story-configure-step h3 { color: #20243A; }
-body.yuviz-light-theme .story-configure-step p { color: #4F5872; }
-body.yuviz-light-theme .story-configure-step-num { color: #6E58C9; }
-body.yuviz-light-theme .story-configure-screenshot { background: #EBE4FC; border-color: #D9CCFF; color: #5B47B5; }
-
-.story-configure-cta { text-align: center; margin-top: 48px; }
-
-/* Configure section animations */
-@keyframes configStepFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.story-configure-grid { opacity: 0; }
-.story-configure-grid.animate-in { opacity: 1; }
-.story-configure-grid.animate-in .story-configure-step {
-  animation: configStepFadeIn 0.6s ease-out forwards;
-  animation-delay: var(--step-delay, 0ms);
-}
-
-.story-configure-screenshot {
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-.story-configure-step:hover .story-configure-screenshot {
-  background: rgba(93,88,151,.15);
-  border-color: rgba(184,165,255,.4);
-}
-body.yuviz-light-theme .story-configure-step:hover .story-configure-screenshot {
-  background: #E0D4FF;
-  border-color: #C9BCF5;
-}
-
-/* Real product images in configure steps */
-.story-configure-screenshot {
-  min-height: auto;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.story-config-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.15);
-}
-
-body.yuviz-light-theme .story-config-image {
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
-}
+/* Configure an agent in minutes: step list beside a real console screenshot */
+.cfg-stage { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 40px; align-items: center; margin-top: 56px; }
+.cfg-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cfg-step { position: relative; width: 100%; display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; text-align: left; background: transparent; border: 1px solid transparent; border-radius: 14px; color: inherit; cursor: pointer; overflow: hidden; transition: background .25s, border-color .25s; }
+.cfg-step:hover { background: rgba(255,255,255,.03); }
+.cfg-step:focus-visible { outline: 2px solid #B8A5FF; outline-offset: 2px; }
+.cfg-step.on { background: rgba(184,165,255,.07); border-color: rgba(184,165,255,.22); }
+.cfg-step-num { flex: 0 0 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #A0AAC4; border: 1px solid rgba(174,187,224,.25); transition: all .25s; }
+.cfg-step.on .cfg-step-num { color: #111426; background: #B8A5FF; border-color: #B8A5FF; }
+.cfg-step-body { display: grid; gap: 6px; }
+.cfg-step-body b { font-size: 16px; font-weight: 700; color: #F3F5FF; line-height: 1.35; }
+.cfg-step-body span { font-size: 14px; line-height: 1.6; color: #A0AAC4; }
+.cfg-step:not(.on) .cfg-step-body span { display: none; }
+.cfg-progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: linear-gradient(90deg,#B8A5FF,#FF927C); transform-origin: left; animation: cfgFill linear forwards; }
+.cfg-progress.paused { animation: none; transform: scaleX(1); opacity: .5; }
+@keyframes cfgFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.cfg-window { border-radius: 14px; overflow: hidden; border: 1px solid rgba(174,187,224,.18); background: #0D1324; box-shadow: 0 30px 80px -20px rgba(70,50,170,.45), 0 0 0 1px rgba(255,255,255,.02); }
+.cfg-window-bar { display: flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px; border-bottom: 1px solid rgba(174,187,224,.12); background: #111A2D; }
+.cfg-window-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(174,187,224,.25); }
+.cfg-window-bar span { margin-left: 10px; font-size: 11px; color: #7D87A6; letter-spacing: .02em; }
+.cfg-shots { position: relative; aspect-ratio: 1204 / 752; }
+.cfg-shot { position: absolute; inset: 0; opacity: 0; transform: scale(1.015); transition: opacity .6s ease, transform .9s ease; }
+.cfg-shot.on { opacity: 1; transform: none; }
+.cfg-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+.cfg-img-light { display: none !important; }
+body.yuviz-light-theme .cfg-img-light { display: block !important; }
+body.yuviz-light-theme .cfg-img-dark { display: none !important; }
+.cfg-cta { margin-top: 32px; display: flex; justify-content: center; }
+body.yuviz-light-theme .cfg-step.on { background: #F3EFFF; border-color: #DCD2FA; }
+body.yuviz-light-theme .cfg-step:hover { background: #F7F5FC; }
+body.yuviz-light-theme .cfg-step-body b { color: #20243A; }
+body.yuviz-light-theme .cfg-step-body span, body.yuviz-light-theme .cfg-step-num { color: #4F5872; }
+body.yuviz-light-theme .cfg-step.on .cfg-step-num { color: #FFFFFF; background: #6E58C9; border-color: #6E58C9; }
+body.yuviz-light-theme .cfg-window { background: #FFFFFF; border-color: #E4E0EE; box-shadow: 0 30px 70px -25px rgba(110,88,201,.35); }
+body.yuviz-light-theme .cfg-window-bar { background: #F7F5FC; border-color: #ECE8F4; }
+@media (max-width: 900px) { .cfg-stage { grid-template-columns: 1fr; gap: 24px; } .cfg-window { order: -1; } }
+@media (prefers-reduced-motion: reduce) { .cfg-shot { transition: none; } .cfg-progress { display: none; } }

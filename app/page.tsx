@@ -20,14 +20,15 @@ const integrations = [
   { name: 'Salesforce', logo: 'salesforce.svg', x: 34, y: 16 },
   { name: 'WhatsApp', logo: 'whatsapp.svg', x: 6, y: 50 },
   { name: 'Vonage', logo: 'vonage.svg', x: 21, y: 50 },
-  { name: 'Google Drive', logo: 'googledrive.svg', x: 26, y: 84 },
+  { name: 'Google Drive', logo: 'googledrive.svg', x: 18, y: 84 },
   { name: 'HubSpot', logo: 'hubspot.svg', x: 36, y: 50 },
-  { name: 'Zoho', logo: 'zoho.svg', x: 50, y: 84, wide: true },
+  { name: 'Zoho CRM', logo: 'zoho.svg', x: 38, y: 84, wide: true },
+  { name: 'Zoho Desk', logo: 'zohodesk.svg', x: 62, y: 84, wide: true },
   { name: 'Google Calendar', logo: 'googlecalendar.svg', x: 66, y: 16 },
   { name: 'Plivo', logo: 'plivo.svg', x: 82, y: 16, wide: true },
   { name: 'Vobiz', logo: 'vobiz.svg', x: 79, y: 50 },
   { name: 'Cal.com', logo: 'caldotcom.svg', x: 64, y: 50 },
-  { name: 'Cloudonix', logo: 'cloudonix.png', x: 74, y: 84, wide: true },
+  { name: 'Cloudonix', logo: 'cloudonix.png', x: 82, y: 84, wide: true },
   { name: 'Google Sheets', logo: 'googlesheets.svg', x: 94, y: 50 },
 ]
 

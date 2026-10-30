@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const faqs = [
   { q: 'What does Yuviz do?', a: 'Yuviz runs AI voice agents on your phone numbers. They answer and make calls, follow the flow you design, take actions in your tools, and hand off to your team when needed.' },
   { q: 'What can it do today?', a: 'Answer and make calls on your numbers, follow designed flows, interrupt naturally, look up callers, book, confirm, transfer to people, and record transcripts and summaries.' },
-  { q: 'Which providers are supported?', a: 'Telephony: Vobiz, Twilio and Plivo numbers, SIP, Cloudonix and BYOC. AI: OpenAI, Anthropic, Gemini, Groq, Ollama. Speech: Deepgram, Whisper. Voices: ElevenLabs, Cartesia, Deepgram, Sarvam, Kokoro.' },
+  { q: 'Which providers are supported?', a: 'Telephony: Vobiz, Twilio and Plivo numbers, SIP, Cloudonix and BYOC. AI: OpenAI, Anthropic, Gemini, Groq. Speech: Deepgram, Sarvam. Voices: ElevenLabs, Cartesia, Deepgram, Sarvam.' },
   { q: 'Which languages are supported?', a: 'English and Hindi.' },
   { q: 'Does Yuviz support human handoff?', a: 'Yes — the agent can transfer a call to your team.' },
   { q: 'Does Yuviz have SOC 2, HIPAA or PCI certifications?', a: 'We don’t hold SOC 2, HIPAA or PCI certifications yet. Tell us your requirements and we’ll be straight about fit.' },

@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { ArrowDownRight, ArrowRight, Check, ChevronDown, Cpu, Headphones, MessageSquareText, PhoneCall, Server } from 'lucide-react'
+import { ArrowDownRight, ArrowRight, Check, ChevronDown, Headphones, MessageSquareText, PhoneCall } from 'lucide-react'
 import { UseCasePlay } from '@/components/marketing/UseCasePlay'
 import { TalkToSarah } from '@/components/marketing/TalkToSarah'
 import { ProblemCards } from '@/components/marketing/ProblemCards'
 import { HelloToDone } from '@/components/marketing/HelloToDone'
+import { ConfigureInMinutes } from '@/components/marketing/ConfigureInMinutes'
 
 const lede = 'Yuviz answers your calls with AI voice agents that understand what callers need — then book, look up, confirm or hand off to your team.'
 
@@ -19,14 +20,15 @@ const integrations = [
   { name: 'Salesforce', logo: 'salesforce.svg', x: 34, y: 16 },
   { name: 'WhatsApp', logo: 'whatsapp.svg', x: 6, y: 50 },
   { name: 'Vonage', logo: 'vonage.svg', x: 21, y: 50 },
-  { name: 'Google Drive', logo: 'googledrive.svg', x: 26, y: 84 },
+  { name: 'Google Drive', logo: 'googledrive.svg', x: 18, y: 84 },
   { name: 'HubSpot', logo: 'hubspot.svg', x: 36, y: 50 },
-  { name: 'Zoho', logo: 'zoho.svg', x: 50, y: 84, wide: true },
+  { name: 'Zoho CRM', logo: 'zohocrm.svg', x: 38, y: 84, wide: true },
+  { name: 'Zoho Desk', logo: 'zohodesk.svg', x: 62, y: 84, wide: true },
   { name: 'Google Calendar', logo: 'googlecalendar.svg', x: 66, y: 16 },
   { name: 'Plivo', logo: 'plivo.svg', x: 82, y: 16, wide: true },
   { name: 'Vobiz', logo: 'vobiz.svg', x: 79, y: 50 },
   { name: 'Cal.com', logo: 'caldotcom.svg', x: 64, y: 50 },
-  { name: 'Cloudonix', logo: 'cloudonix.png', x: 74, y: 84, wide: true },
+  { name: 'Cloudonix', logo: 'cloudonix.png', x: 82, y: 84, wide: true },
   { name: 'Google Sheets', logo: 'googlesheets.svg', x: 94, y: 50 },
 ]
 
@@ -96,16 +98,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="own-your-stack" className="story-section story-own">
-        <div className="story-container">
-          <div className="story-split story-flow-heading"><div><span className="story-kicker">OWN YOUR STACK</span><h2>Your numbers.<br/>Your models.<br/><em>Your data.</em></h2></div><p>Yuviz doesn’t lock you into one carrier or one AI vendor.</p></div>
-          <div className="story-own-grid">
-            <article><PhoneCall size={22} aria-hidden="true"/><h3>Bring your carrier</h3><p>Vobiz, Cloudonix, Twilio, Plivo or your own SIP trunk. Keep the numbers you already have.</p></article>
-            <article><Cpu size={22} aria-hidden="true"/><h3>Choose your AI</h3><p>OpenAI, Anthropic, Gemini, Groq, or a local model with Ollama. Pick per agent and switch any time.</p></article>
-            <article><Server size={22} aria-hidden="true"/><h3>Keep your data</h3><p>Self-host Yuviz on your own servers with Docker. Separate workspaces per customer, secrets encrypted at rest.</p></article>
-          </div>
-        </div>
-      </section>
+      <ConfigureInMinutes/>
 
       <section id="integrations" className="story-section story-integrations">
         <div className="story-container">

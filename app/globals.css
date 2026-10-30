@@ -1638,3 +1638,41 @@ body.yuviz-light-theme .story-flow-heading > p, body.yuviz-light-theme .story-us
 .story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { max-width: 600px; }
 /* Light theme: hero eyebrow must read on the pale background */
 body.yuviz-light-theme .story-eyebrow { color: #6E58C9 !important; }
+/* Configure an agent in minutes: step list beside a real console screenshot */
+.cfg-stage { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 40px; align-items: center; margin-top: 56px; }
+.cfg-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cfg-step { position: relative; width: 100%; display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; text-align: left; background: transparent; border: 1px solid transparent; border-radius: 14px; color: inherit; cursor: pointer; overflow: hidden; transition: background .25s, border-color .25s; }
+.cfg-step:hover { background: rgba(255,255,255,.03); }
+.cfg-step:focus-visible { outline: 2px solid #B8A5FF; outline-offset: 2px; }
+.cfg-step.on { background: rgba(184,165,255,.07); border-color: rgba(184,165,255,.22); }
+.cfg-step-num { flex: 0 0 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #A0AAC4; border: 1px solid rgba(174,187,224,.25); transition: all .25s; }
+.cfg-step.on .cfg-step-num { color: #111426; background: #B8A5FF; border-color: #B8A5FF; }
+.cfg-step-body { display: grid; gap: 6px; }
+.cfg-step-body b { font-size: 16px; font-weight: 700; color: #F3F5FF; line-height: 1.35; }
+.cfg-step-body span { font-size: 14px; line-height: 1.6; color: #A0AAC4; }
+.cfg-step:not(.on) .cfg-step-body span { display: none; }
+.cfg-progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: linear-gradient(90deg,#B8A5FF,#FF927C); transform-origin: left; animation: cfgFill linear forwards; }
+.cfg-progress.paused { animation: none; transform: scaleX(1); opacity: .5; }
+@keyframes cfgFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.cfg-window { border-radius: 14px; overflow: hidden; border: 1px solid rgba(174,187,224,.18); background: #0D1324; box-shadow: 0 30px 80px -20px rgba(70,50,170,.45), 0 0 0 1px rgba(255,255,255,.02); }
+.cfg-window-bar { display: flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px; border-bottom: 1px solid rgba(174,187,224,.12); background: #111A2D; }
+.cfg-window-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(174,187,224,.25); }
+.cfg-window-bar span { margin-left: 10px; font-size: 11px; color: #7D87A6; letter-spacing: .02em; }
+.cfg-shots { position: relative; aspect-ratio: 1204 / 752; }
+.cfg-shot { position: absolute; inset: 0; opacity: 0; transform: scale(1.015); transition: opacity .6s ease, transform .9s ease; }
+.cfg-shot.on { opacity: 1; transform: none; }
+.cfg-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+.cfg-img-light { display: none !important; }
+body.yuviz-light-theme .cfg-img-light { display: block !important; }
+body.yuviz-light-theme .cfg-img-dark { display: none !important; }
+.cfg-side { display: grid; gap: 22px; }
+.cfg-cta { justify-self: start; margin-left: 66px; }
+body.yuviz-light-theme .cfg-step.on { background: #F3EFFF; border-color: #DCD2FA; }
+body.yuviz-light-theme .cfg-step:hover { background: #F7F5FC; }
+body.yuviz-light-theme .cfg-step-body b { color: #20243A; }
+body.yuviz-light-theme .cfg-step-body span, body.yuviz-light-theme .cfg-step-num { color: #4F5872; }
+body.yuviz-light-theme .cfg-step.on .cfg-step-num { color: #FFFFFF; background: #6E58C9; border-color: #6E58C9; }
+body.yuviz-light-theme .cfg-window { background: #FFFFFF; border-color: #E4E0EE; box-shadow: 0 30px 70px -25px rgba(110,88,201,.35); }
+body.yuviz-light-theme .cfg-window-bar { background: #F7F5FC; border-color: #ECE8F4; }
+@media (max-width: 900px) { .cfg-stage { grid-template-columns: 1fr; gap: 24px; } .cfg-window { order: -1; } }
+@media (prefers-reduced-motion: reduce) { .cfg-shot { transition: none; } .cfg-progress { display: none; } }

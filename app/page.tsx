@@ -5,6 +5,7 @@ import { UseCasePlay } from '@/components/marketing/UseCasePlay'
 import { TalkToSarah } from '@/components/marketing/TalkToSarah'
 import { ProblemCards } from '@/components/marketing/ProblemCards'
 import { HelloToDone } from '@/components/marketing/HelloToDone'
+import { ConfigureInMinutes } from '@/components/marketing/ConfigureInMinutes'
 
 const lede = 'Yuviz answers your calls with AI voice agents that understand what callers need — then book, look up, confirm or hand off to your team.'
 
@@ -95,6 +96,8 @@ export default function Page() {
           <HelloToDone/>
         </div>
       </section>
+
+      <ConfigureInMinutes/>
 
       <section id="own-your-stack" className="story-section story-own">
         <div className="story-container">

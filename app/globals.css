@@ -1638,3 +1638,72 @@ body.yuviz-light-theme .story-flow-heading > p, body.yuviz-light-theme .story-us
 .story-flow-heading > p, .story-use-heading > p, .story-challenge-copy p { max-width: 600px; }
 /* Light theme: hero eyebrow must read on the pale background */
 body.yuviz-light-theme .story-eyebrow { color: #6E58C9 !important; }
+
+/* Configure an agent in minutes section */
+.story-configure-heading > p { max-width: 520px; padding-left: 18px; border-left: 2px solid rgba(184,165,255,.45); color: #C9D0E6; font-size: 18px; font-weight: 500; line-height: 1.6; }
+body.yuviz-light-theme .story-configure-heading > p { color: #3F4760 !important; border-left-color: #C9BCF5; }
+@media (max-width: 760px) { .story-configure-heading > p { font-size: 16px; } }
+
+.story-configure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px; margin: 56px 0 48px; }
+.story-configure-step { padding: 36px; background: rgba(255,255,255,.04); border: 1px solid rgba(174,187,224,.14); border-radius: 16px; }
+.story-configure-step-num { font-size: 40px; font-weight: 700; color: #B8A5FF; line-height: 1; margin-bottom: 16px; }
+.story-configure-step h3 { font-size: 18px; font-weight: 600; color: #F3F5FF; margin: 0 0 12px; line-height: 1.4; }
+.story-configure-step p { font-size: 14px; color: #A0AAC4; line-height: 1.6; margin: 0 0 20px; }
+.story-configure-screenshot { min-height: 220px; background: rgba(93,88,151,.1); border: 1px dashed rgba(184,165,255,.25); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7D87A6; font-size: 13px; }
+
+body.yuviz-light-theme .story-configure-step { background: #F7F5FC; border-color: #E4DFF5; }
+body.yuviz-light-theme .story-configure-step h3 { color: #20243A; }
+body.yuviz-light-theme .story-configure-step p { color: #4F5872; }
+body.yuviz-light-theme .story-configure-step-num { color: #6E58C9; }
+body.yuviz-light-theme .story-configure-screenshot { background: #EBE4FC; border-color: #D9CCFF; color: #5B47B5; }
+
+.story-configure-cta { text-align: center; margin-top: 48px; }
+
+/* Configure section animations */
+@keyframes configStepFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.story-configure-grid { opacity: 0; }
+.story-configure-grid.animate-in { opacity: 1; }
+.story-configure-grid.animate-in .story-configure-step {
+  animation: configStepFadeIn 0.6s ease-out forwards;
+  animation-delay: var(--step-delay, 0ms);
+}
+
+.story-configure-screenshot {
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.story-configure-step:hover .story-configure-screenshot {
+  background: rgba(93,88,151,.15);
+  border-color: rgba(184,165,255,.4);
+}
+body.yuviz-light-theme .story-configure-step:hover .story-configure-screenshot {
+  background: #E0D4FF;
+  border-color: #C9BCF5;
+}
+
+/* Real product images in configure steps */
+.story-configure-screenshot {
+  min-height: auto;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.story-config-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+}
+
+body.yuviz-light-theme .story-config-image {
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}

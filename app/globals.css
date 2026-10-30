@@ -1665,7 +1665,8 @@ body.yuviz-light-theme .story-eyebrow { color: #6E58C9 !important; }
 .cfg-img-light { display: none !important; }
 body.yuviz-light-theme .cfg-img-light { display: block !important; }
 body.yuviz-light-theme .cfg-img-dark { display: none !important; }
-.cfg-cta { margin-top: 32px; display: flex; justify-content: center; }
+.cfg-side { display: grid; gap: 22px; }
+.cfg-cta { justify-self: start; margin-left: 66px; }
 body.yuviz-light-theme .cfg-step.on { background: #F3EFFF; border-color: #DCD2FA; }
 body.yuviz-light-theme .cfg-step:hover { background: #F7F5FC; }
 body.yuviz-light-theme .cfg-step-body b { color: #20243A; }

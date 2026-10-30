@@ -35,21 +35,24 @@ export function ConfigureInMinutes() {
         </div>
 
         <div className="cfg-stage" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-          <ol className="cfg-steps">
-            {steps.map((s, i) => (
-              <li key={s.image}>
-                <button type="button" className={`cfg-step${i === active ? ' on' : ''}`} aria-current={i === active}
-                  onClick={() => setActive(i)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
-                  <span className="cfg-step-num">{i + 1}</span>
-                  <span className="cfg-step-body">
-                    <b>{s.heading}</b>
-                    <span>{s.text}</span>
-                  </span>
-                  {i === active && <span key={`${active}-${paused}`} className={`cfg-progress${paused ? ' paused' : ''}`} style={{ animationDuration: `${STEP_MS}ms` }} aria-hidden="true" />}
-                </button>
-              </li>
-            ))}
-          </ol>
+          <div className="cfg-side">
+            <ol className="cfg-steps">
+              {steps.map((s, i) => (
+                <li key={s.image}>
+                  <button type="button" className={`cfg-step${i === active ? ' on' : ''}`} aria-current={i === active}
+                    onClick={() => setActive(i)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
+                    <span className="cfg-step-num">{i + 1}</span>
+                    <span className="cfg-step-body">
+                      <b>{s.heading}</b>
+                      <span>{s.text}</span>
+                    </span>
+                    {i === active && <span key={`${active}-${paused}`} className={`cfg-progress${paused ? ' paused' : ''}`} style={{ animationDuration: `${STEP_MS}ms` }} aria-hidden="true" />}
+                  </button>
+                </li>
+              ))}
+            </ol>
+            <Link href="/product/agent-builder" className="story-text-link cfg-cta">See the agent builder <ArrowRight size={15} /></Link>
+          </div>
 
           <div className="cfg-window">
             <div className="cfg-window-bar" aria-hidden="true"><i/><i/><i/><span>console.yuviz.ai</span></div>
@@ -62,10 +65,6 @@ export function ConfigureInMinutes() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="cfg-cta">
-          <Link href="/product/agent-builder" className="story-text-link">See the agent builder <ArrowRight size={15} /></Link>
         </div>
       </div>
     </section>

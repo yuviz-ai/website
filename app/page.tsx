@@ -22,7 +22,7 @@ const integrations = [
   { name: 'Vonage', logo: 'vonage.svg', x: 21, y: 50 },
   { name: 'Google Drive', logo: 'googledrive.svg', x: 18, y: 84 },
   { name: 'HubSpot', logo: 'hubspot.svg', x: 36, y: 50 },
-  { name: 'Zoho CRM', logo: 'zoho.svg', x: 38, y: 84, wide: true },
+  { name: 'Zoho CRM', logo: 'zohocrm.svg', x: 38, y: 84, wide: true },
   { name: 'Zoho Desk', logo: 'zohodesk.svg', x: 62, y: 84, wide: true },
   { name: 'Google Calendar', logo: 'googlecalendar.svg', x: 66, y: 16 },
   { name: 'Plivo', logo: 'plivo.svg', x: 82, y: 16, wide: true },

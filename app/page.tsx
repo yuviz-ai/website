@@ -104,7 +104,7 @@ export default function Page() {
             </div>
             <ul className="story-proof-note" aria-label="Platform strengths">{['Enterprise-grade security', 'Low-latency real-time voice', 'Built for scale'].map(p => <li key={p} className="story-proof-item"><span className="story-proof-mark"><Check size={13}/></span>{p}</li>)}</ul>
           </div>
-
+          <HeroExperiencePreview />
         </div>
         <a href="#the-challenge" className="story-scroll-cue"><span>SCROLL TO EXPLORE</span><ArrowDownRight size={15}/></a>
       </section>

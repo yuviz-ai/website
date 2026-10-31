@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import Link from 'next/link'
-import { MessageCircle, X, Send, Phone, Mic, MicOff, PhoneOff, ArrowLeft, Sparkles } from 'lucide-react'
+import { MessageCircle, X, Send, Phone, Mic, MicOff, PhoneOff, ArrowLeft, Sparkles, AudioLines } from 'lucide-react'
 import { useDemoCall, type DemoCallState } from '@/lib/useDemoCall'
 
 type Message = { role: 'assistant' | 'user'; text: string }
@@ -32,6 +32,7 @@ export function YuvizGuideWidget() {
   const activeCall = !['idle', 'ended', 'error'].includes(call.state)
 
   useEffect(() => { feedRef.current?.scrollTo({ top: feedRef.current.scrollHeight, behavior: 'smooth' }) }, [messages, mode])
+  useEffect(() => { const openAssistant = () => setOpen(true); window.addEventListener('yuviz:open-assistant', openAssistant); return () => window.removeEventListener('yuviz:open-assistant', openAssistant) }, [])
   useEffect(() => {
     if (!activeCall) return
     const id = window.setInterval(() => setVoiceSeconds(v => {
@@ -94,7 +95,7 @@ export function YuvizGuideWidget() {
         </div>}
       </section>}
       <button type="button" className={`yuviz-guide-launcher ${open ? 'is-open' : ''}`} onClick={()=>open?close():setOpen(true)} aria-label={open?'Close Talk to Yuviz':'Open Talk to Yuviz'}>
-        {open ? <X size={22}/> : <><span className="yuviz-guide-launch-icon"><MessageCircle size={21}/></span><span>Talk to Yuviz</span></>}
+        {open ? <AudioLines size={22}/> : <><span className="yuviz-guide-launch-icon"><MessageCircle size={21}/></span><span>Talk to Yuviz</span></>}
       </button>
     </div>
   )

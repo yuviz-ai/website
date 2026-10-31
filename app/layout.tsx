@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Navbar } from '@/components/marketing/Navbar'
 import { Footer } from '@/components/marketing/Footer'
+import { YuvizAssistant } from '@/components/marketing/YuvizAssistant'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yuviz.ai'),
@@ -38,9 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-[#090D19] scroll-smooth">
       <body className="antialiased flex flex-col min-h-screen bg-[#090D19] text-[#F3F5FF] font-sans">
-        <Navbar />
-        <div className="flex-1">{children}</div>
-        <Footer />
+        <YuvizAssistant>
+          <Navbar />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </YuvizAssistant>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

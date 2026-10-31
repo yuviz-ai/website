@@ -1,20 +1,26 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { ArrowDownRight, ArrowRight, Check, ChevronDown, Headphones, MessageSquareText, PhoneCall } from 'lucide-react'
+import { ArrowDownRight, ArrowRight, Check, AudioLines, ChevronDown, Headphones, MessageSquareText, PhoneCall, Play, Settings, ShieldCheck, Sparkles } from 'lucide-react'
 import { UseCasePlay } from '@/components/marketing/UseCasePlay'
-import { TalkToSarah } from '@/components/marketing/TalkToSarah'
+import { SignalWave } from '@/components/marketing/SignalWave'
+import { InlineCall } from '@/components/assistant/InlineCall'
 import { ProblemCards } from '@/components/marketing/ProblemCards'
 import { HelloToDone } from '@/components/marketing/HelloToDone'
 import { ConfigureInMinutes } from '@/components/marketing/ConfigureInMinutes'
-import { HeroExperiencePreview } from '@/components/marketing/HeroExperiencePreview'
 
-const lede = 'Yuviz answers your calls with AI voice agents that understand what callers need — then book, look up, confirm or hand off to your team.'
+const lede = 'Yuviz AI voice agents understand, act, and integrate—across calls, systems, and teams.'
 
 export const metadata: Metadata = {
   title: 'Yuviz.ai | AI voice agents for business',
   description: lede,
   openGraph: { title: 'Yuviz.ai | AI voice agents for business', description: lede },
 }
+
+const proofPoints = [
+  { icon: ShieldCheck, top: 'Enterprise grade', bottom: 'security' },
+  { icon: AudioLines, top: 'Low latency', bottom: 'real-time voice' },
+  { icon: Settings, top: 'Built for scale', bottom: '' },
+]
 
 const integrations = [
   { name: 'Twilio', logo: 'twilio.svg', x: 18, y: 16 },
@@ -58,25 +64,24 @@ const faqs = [
   { q: 'How is pricing worked out?', a: 'By call volume and the AI services you choose. Book a demo and we’ll estimate it with you.' },
 ]
 
-
 export default function Page() {
   return (
     <main id="top" className="story-site">
       <section className="story-hero">
         <div className="story-hero-grid" aria-hidden="true" />
-        <svg className="story-wave story-wave-hero" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="yuviz-wave-a" x1="0" x2="1"><stop offset="0%" stopColor="#8B5CF6"/><stop offset="55%" stopColor="#B06BEE"/><stop offset="100%" stopColor="#F28AAE"/></linearGradient><linearGradient id="yuviz-wave-b" x1="0" x2="1"><stop offset="0%" stopColor="#A78BFA"/><stop offset="100%" stopColor="#F9A8D4"/></linearGradient></defs><path d="M0 150 C190 70 330 220 520 150 S850 70 1040 145 1270 215 1440 110 V260 H0Z" fill="url(#yuviz-wave-a)" opacity=".16"/><path d="M0 188 C220 95 350 240 570 165 S900 100 1090 172 1290 220 1440 145" fill="none" stroke="url(#yuviz-wave-b)" strokeWidth="3" opacity=".8"/><path d="M0 215 C210 130 390 250 600 195 S900 125 1110 205 1310 235 1440 185" fill="none" stroke="url(#yuviz-wave-a)" strokeWidth="1.5" opacity=".55"/></svg>
-        <div className="story-container story-hero-layout story-hero-composition">
+        <SignalWave className="story-wave story-wave-hero"/>
+        <div className="story-container story-hero-layout story-hero-solo">
           <div className="story-hero-copy">
-            <div className="story-eyebrow"><span className="story-live-dot" /> AI VOICE AGENTS FOR BUSINESS</div>
+            <div className="story-hero-badge"><Sparkles size={15} aria-hidden="true"/> AI Voice Platform for Customer Conversations</div>
             <h1>Turn conversations<br /><span>into outcomes.</span></h1>
-            <p className="story-lede">{lede}</p>
+            <p className="story-lede">Yuviz AI voice agents understand, act, and integrate—across<br className="story-lede-break"/> calls, systems, and teams.</p>
             <div className="story-actions">
-              <Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={17}/></Link>
-              <TalkToSarah/>
+              <InlineCall label="Talk to Yuviz AI" className="story-button story-button-primary"/>
+              <a href="#how-it-works" className="story-button story-hero-cta-outline"><Play size={16} aria-hidden="true"/> See how it works</a>
             </div>
-            <ul className="story-proof-note" aria-label="Platform strengths">{['Enterprise-grade security', 'Low-latency real-time voice', 'Built for scale'].map(p => <li key={p} className="story-proof-item"><span className="story-proof-mark"><Check size={13}/></span>{p}</li>)}</ul>
+            <ul className="story-proof-row">{proofPoints.map(({ icon: Icon, top, bottom }) => <li key={top}><Icon size={22} aria-hidden="true"/><span>{top}{bottom && <>{' '}<br/>{bottom}</>}</span></li>)}</ul>
           </div>
-          <HeroExperiencePreview />
+
         </div>
         <a href="#the-challenge" className="story-scroll-cue"><span>SCROLL TO EXPLORE</span><ArrowDownRight size={15}/></a>
       </section>
@@ -156,7 +161,7 @@ export default function Page() {
       </section>
 
       <section className="story-final-cta">
-        <div className="story-final-glow" aria-hidden="true"/><svg className="story-wave story-wave-final" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="yuviz-final-wave" x1="0" x2="1"><stop offset="0%" stopColor="#8B5CF6"/><stop offset="100%" stopColor="#F28AAE"/></linearGradient></defs><path d="M0 110 C180 20 350 190 540 110 S870 35 1060 120 1280 170 1440 75" fill="none" stroke="url(#yuviz-final-wave)" strokeWidth="3" opacity=".75"/><path d="M0 150 C210 60 380 210 590 145 S900 65 1100 160 1290 190 1440 120" fill="none" stroke="#D8B4FE" strokeWidth="1.5" opacity=".5"/></svg>
+        <div className="story-final-glow" aria-hidden="true"/><SignalWave className="story-wave story-wave-final"/>
         <div className="story-container story-final-content"><span className="story-kicker">READY WHEN YOU ARE</span><h2>What should your<br/><em>next call achieve?</em></h2><p>Tell us about your calls and the outcome you want. We’ll show you an agent doing it.</p><div className="story-actions story-actions-center"><Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={17}/></Link><a href="mailto:hello@yuviz.ai" className="story-button story-button-quiet">Email us</a></div></div>
       </section>
     </main>

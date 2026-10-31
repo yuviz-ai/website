@@ -90,7 +90,7 @@ const productMenu = [
   { title: 'Agent builder', desc: 'Design agents, voices and call flows visually', href: '/product/agent-builder', icon: Bot },
   { title: 'Inbound calls', desc: 'Answer every call on your own numbers', href: '/product/inbound-calls', icon: PhoneIncoming },
   { title: 'Campaigns', desc: 'Reach contact lists with paced, retried calls', href: '/product/outbound-calls', icon: PhoneOutgoing },
-  { title: 'IVR builder', desc: 'Replace keypad menus with spoken ones', href: '/product/ivr-builder', icon: GitBranch },
+  { title: 'IVR builder', desc: 'Phone menus that route callers to the right place', href: '/product/ivr-builder', icon: GitBranch },
 ]
 
 const useCasesMenu = [
@@ -164,6 +164,10 @@ export function Navbar() {
     setActiveDropdown(null)
     setMobileMenuOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    document.body.classList.toggle('yz-menu-open', mobileMenuOpen)
+  }, [mobileMenuOpen])
 
   const handleMouseEnter = (name: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)

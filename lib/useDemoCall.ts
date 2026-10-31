@@ -25,28 +25,45 @@ export interface Turn { role: 'user' | 'assistant'; text: string; ts: number }
 
 const PASS_ERRORS: Record<number, string> = {
   403: 'The demo only works from the Yuviz website.',
-  404: 'The live demo is switched off right now. Book a demo to talk to the team.',
-  429: "You've used your demo calls for now. Book a demo to talk to the team.",
+  404: 'The live demo is switched off right now.',
+  429: "You've used your demo calls for this hour.",
 }
 
-async function getDemoPass(): Promise<{ credential: string; tenant: string; agent: string }> {
+export type CallErrorKind = 'limit' | 'unavailable' | 'mic' | 'retry'
+
+class DemoCallError extends Error {
+  constructor(message: string, readonly kind: CallErrorKind) { super(message) }
+}
+
+export interface CallEndpoints { apiUrl?: string; webcallUrl?: string }
+
+async function getDemoPass(apiUrl: string): Promise<{ credential: string; tenant: string; agent: string }> {
   let res: Response
   try {
-    res = await fetch(`${DEMO_API_URL}/public/demo-call`, { method: 'POST' })
+    res = await fetch(`${apiUrl}/public/demo-call`, { method: 'POST' })
   } catch {
     throw new Error("We couldn't reach the demo. Check your connection and try again.")
   }
-  if (!res.ok) throw new Error(PASS_ERRORS[res.status] || 'The demo is unavailable right now. Please try again shortly.')
+  if (!res.ok) {
+    const kind: CallErrorKind = res.status === 429 ? 'limit' : res.status === 403 || res.status === 404 ? 'unavailable' : 'retry'
+    throw new DemoCallError(PASS_ERRORS[res.status] || 'The demo is unavailable right now. Please try again shortly.', kind)
+  }
   return res.json()
 }
 
-export function useDemoCall() {
+export function useDemoCall(endpoints: CallEndpoints = {}) {
   const [state, setState] = useState<DemoCallState>('idle')
   const [transcript, setTranscript] = useState<Turn[]>([])
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
+  const [errorKind, setErrorKind] = useState<CallErrorKind | null>(null)
   const [micLevelPct, setMicLevelPct] = useState(0)
   const [muted, setMutedState] = useState(false)
   const mutedRef = useRef(false)
+  const [speakerOn, setSpeakerOnState] = useState(true)
+  const speakerOnRef = useRef(true)
+  const outputRef = useRef<GainNode | null>(null)
+  const endpointsRef = useRef(endpoints)
+  endpointsRef.current = endpoints
 
   const sessionGenRef = useRef(0)
   const wsRef = useRef<WebSocket | null>(null)
@@ -87,6 +104,7 @@ export function useDemoCall() {
     streamRef.current = null
     audioCtxRef.current?.close().catch(() => {})
     audioCtxRef.current = null
+    outputRef.current = null
   }
 
   useEffect(() => () => teardown(), [])
@@ -102,7 +120,7 @@ export function useDemoCall() {
     audioBuffer.copyToChannel(float32, 0)
     const source = ctx.createBufferSource()
     source.buffer = audioBuffer
-    source.connect(ctx.destination)
+    source.connect(outputRef.current ?? ctx.destination)
     const startAt = Math.max(ctx.currentTime, playheadRef.current)
     source.start(startAt)
     playheadRef.current = startAt + audioBuffer.duration
@@ -121,7 +139,7 @@ export function useDemoCall() {
     anyAudioSentRef.current = false
     talkStartRef.current = performance.now()
     recordingStartedAtRef.current = talkStartRef.current
-    setErrorMsg(null)
+    setErrorMsg(null); setErrorKind(null)
     if (agentSpeakingRef.current) {
       stopAgentPlayback()
       wsRef.current?.send(JSON.stringify({ type: 'cancel' }))
@@ -148,21 +166,26 @@ export function useDemoCall() {
     setMutedState(false)
     setTranscript([])
     setState('connecting')
-    setErrorMsg(null)
+    setErrorMsg(null); setErrorKind(null)
     let stream: MediaStream
     try {
       stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true } })
     } catch {
       setState('error')
-      setErrorMsg('Microphone access is needed to talk to Sarah. Allow it in your browser and try again.')
+      setErrorMsg('Microphone access is needed to talk to the agent. Allow it in your browser and try again.')
+      setErrorKind('mic')
       return
     }
     streamRef.current = stream
     try {
       // The pass is short-lived, so fetch it only after the mic prompt is answered.
-      const pass = await getDemoPass()
+      const pass = await getDemoPass(endpointsRef.current.apiUrl || DEMO_API_URL)
       const ctx = new AudioContext({ sampleRate: SAMPLE_RATE })
       audioCtxRef.current = ctx
+      const output = ctx.createGain()
+      output.gain.value = speakerOnRef.current ? 1 : 0
+      output.connect(ctx.destination)
+      outputRef.current = output
       playheadRef.current = 0
       noiseFloorDbRef.current = -50
       calibrationSamplesRef.current = []
@@ -173,11 +196,11 @@ export function useDemoCall() {
       workletRef.current = worklet
       source.connect(worklet)
 
-      const ws = new WebSocket(`${DEMO_WEBCALL_URL}/webcall?tenant=${encodeURIComponent(pass.tenant)}&agent=${encodeURIComponent(pass.agent)}`)
+      const ws = new WebSocket(`${endpointsRef.current.webcallUrl || DEMO_WEBCALL_URL}/webcall?tenant=${encodeURIComponent(pass.tenant)}&agent=${encodeURIComponent(pass.agent)}`)
       ws.binaryType = 'arraybuffer'
       wsRef.current = ws
       ws.onopen = () => ws.send(JSON.stringify({ type: 'test_credential', credential: pass.credential }))
-      ws.onerror = () => { setState('error'); setErrorMsg("The call couldn't connect. Please try again.") }
+      ws.onerror = () => { setState('error'); setErrorKind('retry'); setErrorMsg("The call couldn't connect. Please try again.") }
       ws.onclose = () => setState(s => (s === 'error' ? s : 'ended'))
       ws.onmessage = ev => {
         if (ev.data instanceof ArrayBuffer) {
@@ -215,7 +238,7 @@ export function useDemoCall() {
             setState('ready')
             break
           case 'error':
-            if (msg.fatal) { setState('error'); setErrorMsg('Sarah is unavailable right now. Please try again shortly.') }
+            if (msg.fatal) { setState('error'); setErrorKind('retry'); setErrorMsg('The agent is unavailable right now. Please try again shortly.') }
             break
         }
       }
@@ -264,6 +287,7 @@ export function useDemoCall() {
       teardown()
       setState('error')
       setErrorMsg(e instanceof Error ? e.message : "The call couldn't start. Please try again.")
+      setErrorKind(e instanceof DemoCallError ? e.kind : 'retry')
     }
   }, [])
 
@@ -278,8 +302,14 @@ export function useDemoCall() {
     }
   }, [])
 
-  const hangUp = useCallback(() => { teardown(); setState('ended') }, [])
-  const reset = useCallback(() => { teardown(); setState('idle'); setTranscript([]); setErrorMsg(null); setMicLevelPct(0) }, [])
+  const setSpeakerOn = useCallback((on: boolean) => {
+    speakerOnRef.current = on
+    setSpeakerOnState(on)
+    if (outputRef.current) outputRef.current.gain.value = on ? 1 : 0
+  }, [])
 
-  return { state, transcript, errorMsg, micLevelPct, muted, setMuted, start, hangUp, reset }
+  const hangUp = useCallback(() => { teardown(); setState('ended') }, [])
+  const reset = useCallback(() => { teardown(); setState('idle'); setTranscript([]); setErrorMsg(null); setErrorKind(null); setMicLevelPct(0) }, [])
+
+  return { state, transcript, errorMsg, errorKind, micLevelPct, muted, setMuted, speakerOn, setSpeakerOn, start, hangUp, reset }
 }

@@ -1,6 +1,7 @@
 'use client'
 
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { FormEvent } from 'react'
 import Link from 'next/link'
 import { MessageCircle, X, Send, Phone, Mic, MicOff, PhoneOff, ArrowLeft, Sparkles } from 'lucide-react'
 import { useDemoCall, type DemoCallState } from '@/lib/useDemoCall'
@@ -80,7 +81,7 @@ export function YuvizGuideWidget() {
         </div>}
         {mode === 'voice' && <div className="yuviz-guide-voice">
           <div className={`yuviz-guide-avatar ${activeCall ? 'active' : ''}`}><Phone size={25}/></div>
-          <h3>Talk to Sarah</h3><p className="yuviz-guide-callstatus" aria-live="polite">{status[call.state] ?? 'Ready when you are'}</p>
+          <h3>Talk to Sarah</h3><p className="yuviz-guide-callstatus" aria-live="polite">{status[call.state] ?? 'Ready when you are'}{activeCall ? ` · ${Math.floor(voiceSeconds/60)}:${String(voiceSeconds%60).padStart(2,'0')}` : ''}</p>
           <div className={`yuviz-guide-wave voice ${activeCall ? 'playing' : ''}`} aria-hidden="true">{Array.from({length:31},(_,i)=><i key={i} style={{'--bar':`${8 + Math.abs(Math.sin(i*.53))*35}px`} as React.CSSProperties}/>)}</div>
           {call.transcript.length > 0 && <div className="yuviz-guide-lastline"><b>{call.transcript[call.transcript.length-1].role === 'user' ? 'You' : 'Sarah'}</b>: {call.transcript[call.transcript.length-1].text}</div>}
           {call.errorMsg && <p className="yuviz-guide-error" role="alert">{call.errorMsg}</p>}

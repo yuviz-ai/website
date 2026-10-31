@@ -62,6 +62,7 @@ export default function Page() {
     <main id="top" className="story-site">
       <section className="story-hero">
         <div className="story-hero-grid" aria-hidden="true" />
+        <svg className="story-wave story-wave-hero" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="yuviz-wave-a" x1="0" x2="1"><stop offset="0%" stopColor="#8B5CF6"/><stop offset="55%" stopColor="#B06BEE"/><stop offset="100%" stopColor="#F28AAE"/></linearGradient><linearGradient id="yuviz-wave-b" x1="0" x2="1"><stop offset="0%" stopColor="#A78BFA"/><stop offset="100%" stopColor="#F9A8D4"/></linearGradient></defs><path d="M0 150 C190 70 330 220 520 150 S850 70 1040 145 1270 215 1440 110 V260 H0Z" fill="url(#yuviz-wave-a)" opacity=".16"/><path d="M0 188 C220 95 350 240 570 165 S900 100 1090 172 1290 220 1440 145" fill="none" stroke="url(#yuviz-wave-b)" strokeWidth="3" opacity=".8"/><path d="M0 215 C210 130 390 250 600 195 S900 125 1110 205 1310 235 1440 185" fill="none" stroke="url(#yuviz-wave-a)" strokeWidth="1.5" opacity=".55"/></svg>
         <div className="story-container story-hero-layout story-hero-solo">
           <div className="story-hero-copy">
             <div className="story-eyebrow"><span className="story-live-dot" /> AI VOICE AGENTS FOR BUSINESS</div>
@@ -71,7 +72,7 @@ export default function Page() {
               <Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={17}/></Link>
               <TalkToSarah/>
             </div>
-            <div className="story-proof-note">{['Keep your existing numbers', 'English & Hindi', 'Live in days'].map(p => <span key={p} className="story-proof-item"><span className="story-proof-mark"><Check size={13}/></span>{p}</span>)}</div>
+            <ul className="story-proof-note" aria-label="Platform strengths">{['Enterprise-grade security', 'Low-latency real-time voice', 'Built for scale'].map(p => <li key={p} className="story-proof-item"><span className="story-proof-mark"><Check size={13}/></span>{p}</li>)}</ul>
           </div>
 
         </div>
@@ -153,7 +154,7 @@ export default function Page() {
       </section>
 
       <section className="story-final-cta">
-        <div className="story-final-glow" aria-hidden="true"/>
+        <div className="story-final-glow" aria-hidden="true"/><svg className="story-wave story-wave-final" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="yuviz-final-wave" x1="0" x2="1"><stop offset="0%" stopColor="#8B5CF6"/><stop offset="100%" stopColor="#F28AAE"/></linearGradient></defs><path d="M0 110 C180 20 350 190 540 110 S870 35 1060 120 1280 170 1440 75" fill="none" stroke="url(#yuviz-final-wave)" strokeWidth="3" opacity=".75"/><path d="M0 150 C210 60 380 210 590 145 S900 65 1100 160 1290 190 1440 120" fill="none" stroke="#D8B4FE" strokeWidth="1.5" opacity=".5"/></svg>
         <div className="story-container story-final-content"><span className="story-kicker">READY WHEN YOU ARE</span><h2>What should your<br/><em>next call achieve?</em></h2><p>Tell us about your calls and the outcome you want. We’ll show you an agent doing it.</p><div className="story-actions story-actions-center"><Link href="/contact" className="story-button story-button-primary">Book a demo <ArrowRight size={17}/></Link><a href="mailto:hello@yuviz.ai" className="story-button story-button-quiet">Email us</a></div></div>
       </section>
     </main>

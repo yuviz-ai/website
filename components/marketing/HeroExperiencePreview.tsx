@@ -2,7 +2,7 @@
 
 import { ArrowRight, AudioLines, Bot, MessageCircle, Send, Phone, Mic, Volume2, Sparkles } from 'lucide-react'
 
-function HeroExperiencePreview() {
+export function HeroExperiencePreview() {
   const openAssistant = () => window.dispatchEvent(new Event('yuviz:open-assistant'))
   return (
     <aside className="story-hero-showcase" aria-label="Yuviz assistant experience preview">

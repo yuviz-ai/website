@@ -1676,3 +1676,88 @@ body.yuviz-light-theme .cfg-window { background: #FFFFFF; border-color: #E4E0EE;
 body.yuviz-light-theme .cfg-window-bar { background: #F7F5FC; border-color: #ECE8F4; }
 @media (max-width: 900px) { .cfg-stage { grid-template-columns: 1fr; gap: 24px; } .cfg-window { order: -1; } }
 @media (prefers-reduced-motion: reduce) { .cfg-shot { transition: none; } .cfg-progress { display: none; } }
+
+
+/* P0 — flowing Yuviz signal waves */
+.story-wave { position:absolute; left:0; width:100%; pointer-events:none; z-index:0; }
+.story-wave-hero { bottom:0; height:210px; opacity:.95; }
+.story-wave-final { top:0; height:170px; opacity:.72; }
+.story-hero { overflow:hidden; }
+.story-hero-copy { position:relative; z-index:2; }
+.story-proof-note { justify-content:flex-start; flex-wrap:wrap; gap:12px 20px; margin:28px 0 0; padding:0; list-style:none; }
+.story-proof-note .story-proof-item { display:inline-flex; align-items:center; gap:8px; color:#C7CDE0; font-size:11px; font-weight:700; }
+.story-proof-note .story-proof-mark { flex:0 0 19px; }
+.story-final-content { position:relative; z-index:2; }
+@media (max-width:760px) { .story-wave-hero { height:145px; } .story-proof-note { display:grid; gap:10px; } }
+
+/* P0 — persistent chat + browser voice assistant */
+.yuviz-guide-root { position:fixed; right:26px; bottom:24px; z-index:120; font-family:'Plus Jakarta Sans',system-ui,sans-serif; }
+.yuviz-guide-launcher { display:flex; align-items:center; gap:10px; min-height:54px; padding:0 20px 0 13px; border:1px solid rgba(255,255,255,.38); border-radius:999px; background:linear-gradient(110deg,#8B5CF6,#A78BFA 55%,#F28AAE); color:#fff; font:700 13px inherit; font-size:13px; font-weight:800; box-shadow:0 14px 38px rgba(92,62,180,.32); cursor:pointer; transition:transform .2s,box-shadow .2s; }
+.yuviz-guide-launcher:hover { transform:translateY(-2px); box-shadow:0 18px 42px rgba(92,62,180,.4); }
+.yuviz-guide-launch-icon { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,.2); }
+.yuviz-guide-launcher.is-open { width:52px; height:52px; min-height:52px; justify-content:center; padding:0; }
+.yuviz-guide-panel { position:absolute; right:0; bottom:68px; display:flex; flex-direction:column; width:390px; height:min(610px,calc(100dvh - 120px)); overflow:hidden; border:1px solid #E5DDF7; border-radius:24px; background:rgba(255,255,255,.97); color:#24213A; box-shadow:0 26px 90px rgba(37,25,77,.24); backdrop-filter:blur(20px); animation:yuviz-panel-in .22s ease-out; }
+@keyframes yuviz-panel-in { from { opacity:0; transform:translateY(10px) scale(.985); } to { opacity:1; transform:none; } }
+.yuviz-guide-head { display:flex; align-items:center; justify-content:space-between; padding:17px 18px; border-bottom:1px solid #EEEAF6; background:linear-gradient(110deg,rgba(139,92,246,.08),rgba(242,138,174,.1)); }
+.yuviz-guide-brand { display:flex; align-items:center; gap:11px; }
+.yuviz-guide-brand>span:last-child { display:grid; gap:2px; }
+.yuviz-guide-brand strong { color:#25213B; font-size:14px; font-weight:800; }
+.yuviz-guide-brand small { color:#77718E; font-size:10px; }
+.yuviz-guide-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:13px; background:linear-gradient(135deg,#8B5CF6,#F28AAE); color:#fff; }
+.yuviz-guide-iconbtn,.yuviz-guide-subhead button { display:grid; place-items:center; width:34px; height:34px; border:0; border-radius:50%; background:rgba(109,82,174,.08); color:#65538F; cursor:pointer; }
+.yuviz-guide-choice { display:flex; flex:1; flex-direction:column; justify-content:center; padding:24px; }
+.yuviz-guide-choice h3,.yuviz-guide-voice h3 { margin:20px 0 7px; color:#25213B; font-size:23px; font-weight:800; letter-spacing:-.04em; }
+.yuviz-guide-choice>p { margin:0 0 22px; color:#77718E; font-size:13px; line-height:1.6; }
+.yuviz-guide-option { display:flex; align-items:center; gap:13px; width:100%; margin-top:10px; padding:15px 14px; border:1px solid #E9E3F5; border-radius:16px; background:#fff; color:#292440; text-align:left; cursor:pointer; transition:border-color .2s,transform .2s,background .2s; }
+.yuviz-guide-option:hover { transform:translateY(-1px); border-color:#BBA8F3; background:#FCFAFF; }
+.yuviz-guide-option>span:first-child { display:grid; place-items:center; flex:0 0 42px; height:42px; border-radius:13px; background:#F1ECFF; color:#7658D1; }
+.yuviz-guide-option>span:nth-child(2) { display:grid; gap:4px; flex:1; }
+.yuviz-guide-option b { font-size:12px; font-weight:800; }
+.yuviz-guide-option small { color:#77718E; font-size:10px; }
+.yuviz-guide-chevron { transform:rotate(180deg); color:#9A8ABF; }
+.yuviz-guide-footnote { margin:22px 0 0; color:#85809A; font-size:10px; text-align:center; }
+.yuviz-guide-footnote a,.yuviz-guide-disclaimer a { color:#7658D1; font-weight:800; text-decoration:underline; text-underline-offset:2px; }
+.yuviz-guide-wave { display:flex; align-items:center; justify-content:center; gap:4px; height:65px; border-radius:18px; background:linear-gradient(110deg,rgba(139,92,246,.08),rgba(242,138,174,.12)); }
+.yuviz-guide-wave i { display:block; width:4px; height:var(--bar); border-radius:10px; background:linear-gradient(180deg,#8B5CF6,#F28AAE); opacity:.85; }
+.yuviz-guide-chat { display:flex; flex:1; flex-direction:column; min-height:0; }
+.yuviz-guide-subhead { display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:1px solid #F0EDF6; color:#39334F; font-size:12px; font-weight:800; }
+.yuviz-guide-subhead button:last-child { display:block; width:auto; margin-left:auto; padding:0 10px; border-radius:8px; font-size:10px; }
+.yuviz-guide-feed { display:flex; flex:1; flex-direction:column; align-items:flex-start; gap:11px; min-height:0; overflow:auto; padding:17px 15px; }
+.yuviz-guide-message { max-width:88%; padding:11px 13px; border:1px solid #ECE7F5; border-radius:15px 15px 15px 5px; background:#F8F6FC; color:#49445E; font-size:11px; line-height:1.65; }
+.yuviz-guide-message.user { align-self:flex-end; border-color:#DDD2FA; border-radius:15px 15px 5px 15px; background:#F0EBFF; color:#44356E; }
+.yuviz-guide-quick { display:grid; gap:7px; width:100%; margin-top:3px; }
+.yuviz-guide-quick button { padding:9px 11px; border:1px solid #E4DCF6; border-radius:999px; background:#fff; color:#6C53B6; font-size:10px; text-align:left; cursor:pointer; }
+.yuviz-guide-compose { display:flex; gap:8px; padding:12px; border-top:1px solid #EEEAF6; }
+.yuviz-guide-compose input { flex:1; min-width:0; height:42px; padding:0 13px; border:1px solid #E5E0EF; border-radius:12px; outline:none; color:#292440; font:inherit; font-size:12px; }
+.yuviz-guide-compose input:focus { border-color:#A78BFA; box-shadow:0 0 0 3px rgba(139,92,246,.1); }
+.yuviz-guide-compose button { display:grid; place-items:center; width:42px; border:0; border-radius:12px; background:linear-gradient(135deg,#8B5CF6,#D78BEA); color:#fff; cursor:pointer; }
+.yuviz-guide-compose button:disabled { opacity:.45; cursor:not-allowed; }
+.yuviz-guide-disclaimer { margin:0; padding:0 13px 12px; color:#8B859D; font-size:9px; line-height:1.5; text-align:center; }
+.yuviz-guide-voice { display:flex; flex:1; flex-direction:column; align-items:center; justify-content:center; padding:22px; text-align:center; }
+.yuviz-guide-avatar { display:grid; place-items:center; width:76px; height:76px; border-radius:50%; background:linear-gradient(135deg,#8B5CF6,#E58BC4); color:#fff; box-shadow:0 0 0 10px rgba(139,92,246,.08); }
+.yuviz-guide-avatar.active { animation:yuviz-avatar-pulse 1.5s ease-in-out infinite; }
+@keyframes yuviz-avatar-pulse { 50% { box-shadow:0 0 0 17px rgba(139,92,246,.04); transform:scale(1.03); } }
+.yuviz-guide-voice h3 { margin-top:20px; }
+.yuviz-guide-callstatus { margin:0; color:#7658D1; font-size:12px; font-weight:700; }
+.yuviz-guide-wave.voice { width:100%; margin:20px 0; background:transparent; }
+.yuviz-guide-wave.voice i { height:calc(var(--bar)*.6); opacity:.45; }
+.yuviz-guide-wave.voice.playing i { animation:yuviz-wave 650ms ease-in-out infinite alternate; opacity:1; }
+.yuviz-guide-wave.voice.playing i:nth-child(3n) { animation-delay:180ms; }
+.yuviz-guide-wave.voice.playing i:nth-child(4n) { animation-delay:320ms; }
+@keyframes yuviz-wave { to { transform:scaleY(.35); } }
+.yuviz-guide-lastline { max-width:100%; max-height:66px; overflow:auto; color:#5F5875; font-size:11px; line-height:1.5; }
+.yuviz-guide-lastline b { color:#7658D1; }
+.yuviz-guide-error { color:#C2415A; font-size:11px; }
+.yuviz-guide-callcontrols { display:flex; align-items:center; justify-content:center; gap:12px; margin:20px 0 12px; }
+.yuviz-guide-callcontrols button { display:flex; align-items:center; justify-content:center; gap:8px; width:46px; height:46px; border:0; border-radius:50%; background:#F0EBFF; color:#684DB9; cursor:pointer; }
+.yuviz-guide-callcontrols button.muted { background:#FFF0F1; color:#C2415A; }
+.yuviz-guide-callcontrols button.hangup { background:#E5484D; color:#fff; }
+.yuviz-guide-callcontrols button.start { width:auto; padding:0 20px; border-radius:999px; background:linear-gradient(110deg,#8B5CF6,#F28AAE); color:#fff; font-size:11px; font-weight:800; }
+.yuviz-guide-back { margin-top:6px; border:0; background:transparent; color:#7658D1; font-size:10px; font-weight:800; cursor:pointer; }
+@media (max-width:600px) {
+  .yuviz-guide-root { right:12px; bottom:12px; left:12px; display:flex; justify-content:flex-end; }
+  .yuviz-guide-launcher { min-height:50px; }
+  .yuviz-guide-panel { position:fixed; right:0; bottom:0; left:0; width:100%; height:min(78dvh,700px); border-radius:24px 24px 0 0; }
+  .yuviz-guide-launcher.is-open { position:relative; z-index:2; }
+}
+@media (prefers-reduced-motion:reduce) { .yuviz-guide-panel,.yuviz-guide-avatar.active,.yuviz-guide-wave.voice.playing i { animation:none; } }

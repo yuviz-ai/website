@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { ArrowDownRight, ArrowRight, Check, ChevronDown, Headphones, MessageSquareText, PhoneCall } from 'lucide-react'
+import { ArrowDownRight, ArrowRight, Check, ChevronDown, Headphones, MessageSquareText, PhoneCall, AudioLines, Bot, MessageCircle, Send, Phone, Mic, Volume2, Sparkles } from 'lucide-react'
 import { UseCasePlay } from '@/components/marketing/UseCasePlay'
 import { TalkToSarah } from '@/components/marketing/TalkToSarah'
 import { ProblemCards } from '@/components/marketing/ProblemCards'
@@ -57,13 +57,43 @@ const faqs = [
   { q: 'How is pricing worked out?', a: 'By call volume and the AI services you choose. Book a demo and we’ll estimate it with you.' },
 ]
 
+
+function HeroExperiencePreview() {
+  const openAssistant = () => window.dispatchEvent(new Event('yuviz:open-assistant'))
+  return (
+    <aside className="story-hero-showcase" aria-label="Yuviz assistant experience preview">
+      <div className="story-preview-note"><span className="story-preview-arrow">↗</span><span>One platform.<br/><b>Every conversation.</b></span></div>
+      <article className="story-preview-card story-preview-connect">
+        <header><span className="story-preview-brand"><Sparkles size={15}/></span><b>Talk to Yuviz</b><span className="story-available"><i/> Available</span><button onClick={openAssistant} aria-label="Open Yuviz assistant">×</button></header>
+        <p>How would you like to connect?</p>
+        <button className="story-preview-choice" onClick={openAssistant}><MessageCircle/><span><b>Chat with us</b><small>Ask questions, get help, and explore Yuviz.</small></span><ArrowRight/></button>
+        <button className="story-preview-choice" onClick={openAssistant}><Phone/><span><b>Talk to our AI agent</b><small>Have a real-time voice conversation in your browser.</small></span><ArrowRight/></button>
+        <footer>Powered by <strong>Yuviz AI</strong></footer>
+      </article>
+      <article className="story-preview-card story-preview-chat">
+        <header><span className="story-preview-brand"><Bot size={15}/></span><span><b>Yuviz Assistant</b><small><i/> Online · Example conversation</small></span><button onClick={openAssistant} aria-label="Open chat">···</button></header>
+        <div className="story-preview-bubble user">Hi! I’d like to know how Yuviz can help automate customer calls.</div>
+        <div className="story-preview-bubble assistant">Hello! Yuviz AI voice agents can handle inbound and outbound calls, understand intent, take actions, and integrate with your systems.</div>
+        <div className="story-preview-bubble assistant">Would you like to explore a quick demo?</div>
+        <div className="story-preview-suggestions"><button onClick={openAssistant}>Yes, show me</button><button onClick={openAssistant}>Tell me more</button></div>
+        <button className="story-preview-input" onClick={openAssistant}>Type a message… <Send size={14}/></button>
+      </article>
+      <article className="story-preview-card story-preview-call">
+        <header><span className="story-preview-brand"><AudioLines size={15}/></span><b>Yuviz AI Agent</b><span>Live demo preview</span><button onClick={openAssistant} aria-label="Try voice demo">↗</button></header>
+        <div className="story-preview-call-body"><span className="story-preview-orb"><AudioLines size={30}/></span><b>Talk to an AI agent</b><small>Real-time browser voice experience</small><div className="story-preview-wave">{Array.from({length:29},(_,i)=><i key={i}/>)}</div><div className="story-preview-controls"><span><Mic size={16}/><small>Mic</small></span><button onClick={openAssistant}><Phone size={17}/></button><span><Volume2 size={16}/><small>Audio</small></span></div></div>
+      </article>
+      <button className="story-preview-launcher" onClick={openAssistant} aria-label="Open Talk to Yuviz"><AudioLines size={22}/></button>
+    </aside>
+  )
+}
+
 export default function Page() {
   return (
     <main id="top" className="story-site">
       <section className="story-hero">
         <div className="story-hero-grid" aria-hidden="true" />
         <svg className="story-wave story-wave-hero" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="yuviz-wave-a" x1="0" x2="1"><stop offset="0%" stopColor="#8B5CF6"/><stop offset="55%" stopColor="#B06BEE"/><stop offset="100%" stopColor="#F28AAE"/></linearGradient><linearGradient id="yuviz-wave-b" x1="0" x2="1"><stop offset="0%" stopColor="#A78BFA"/><stop offset="100%" stopColor="#F9A8D4"/></linearGradient></defs><path d="M0 150 C190 70 330 220 520 150 S850 70 1040 145 1270 215 1440 110 V260 H0Z" fill="url(#yuviz-wave-a)" opacity=".16"/><path d="M0 188 C220 95 350 240 570 165 S900 100 1090 172 1290 220 1440 145" fill="none" stroke="url(#yuviz-wave-b)" strokeWidth="3" opacity=".8"/><path d="M0 215 C210 130 390 250 600 195 S900 125 1110 205 1310 235 1440 185" fill="none" stroke="url(#yuviz-wave-a)" strokeWidth="1.5" opacity=".55"/></svg>
-        <div className="story-container story-hero-layout story-hero-solo">
+        <div className="story-container story-hero-layout story-hero-composition">
           <div className="story-hero-copy">
             <div className="story-eyebrow"><span className="story-live-dot" /> AI VOICE AGENTS FOR BUSINESS</div>
             <h1>Turn conversations<br /><span>into outcomes.</span></h1>

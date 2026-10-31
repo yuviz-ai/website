@@ -73,7 +73,6 @@ export function ProductPageTemplate({ slug }: { slug: string }) {
       {points.map(({ title, text, icon: Icon, image }, index) => (
         <article className="prod-shot" key={title}>
           <div className="prod-shot-copy">
-            <span className="story-number">0{index + 1}</span>
             <span className="story-pillar-icon"><Icon size={20}/></span>
             <h2>{title}</h2>
             <p>{text}</p>
